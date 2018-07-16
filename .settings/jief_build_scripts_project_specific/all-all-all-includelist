@@ -1,0 +1,9 @@
+
+echo "
+
+../darling/src
+../apfs-fuse
+../apfs-fuse/3rdparty/lzfse/src
+
+" | awk '$0!=""{ printf " -I%s", $0; }'
+

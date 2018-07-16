@@ -1,0 +1,5 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`LC_ALL=en_US.ISO8859-1 perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+echo -I/usr/local/opt/openssl/include -I/usr/include/libxml2 -I/usr/local/Cellar/icu4c/61.1/include -I/usr/local/include/osxfuse/fuse
