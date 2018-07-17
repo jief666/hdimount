@@ -26,13 +26,13 @@ along with hdimount.  If not, see <http://www.gnu.org/licenses/>.
 //------------------------------------------- Crypto choice
 // I tried tiny-AES-C from https://github.com/kokke/tiny-AES-c.git but it was very slow.
 
-#  if !defined(SPARSEBUNDLEFS_USE_OPENSSL) && !defined(SPARSEBUNDLEFS_USE_EMBEDDED_CRYPTO)
-#    define SPARSEBUNDLEFS_USE_EMBEDDED_CRYPTO // default : use embedded crypto
-#  endif
+#if !defined(SPARSEBUNDLEFS_USE_OPENSSL) && !defined(SPARSEBUNDLEFS_USE_EMBEDDED_CRYPTO)
+#  define SPARSEBUNDLEFS_USE_EMBEDDED_CRYPTO // default : use embedded crypto
+#endif
 
 #ifdef SPARSEBUNDLEFS_USE_EMBEDDED_CRYPTO
 #  ifdef SPARSEBUNDLEFS_USE_OPENSSL
-//#    define COMPARE_OPENSSL_AND_EMBEDDED_CRYPTO
+#    define COMPARE_OPENSSL_AND_EMBEDDED_CRYPTO
 #  endif
 #endif
 

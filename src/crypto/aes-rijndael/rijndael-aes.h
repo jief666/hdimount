@@ -31,7 +31,7 @@
 #ifndef _AES_H
 #define _AES_H
 
-//#include <stdlib.h>
+#include "brg_types.h"
 
 /*  This include is used to find 8 & 32 bit unsigned integer types  */
 #include "../aes-rijndael/brg_types.h"

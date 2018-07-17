@@ -3,6 +3,7 @@
 #include <assert.h>
 
 #include "hmac-sha1/hmac/hmac.h"
+#include "gladman-sha/hmac.h"
 //#include "Crypto.h"
 #include "PBKDF2_HMAC_SHA1.h"
 
@@ -38,14 +39,16 @@ void PBKDF2_HMAC_SHA1(const uint8_t* pw, size_t pw_len, const uint8_t* salt, siz
 
 //		HMAC_SHA1_dd(pw, pw_len, s, salt_len + 4, u);
 		size_t u_len = sizeof(u);
-		hmac_sha1(pw, pw_len, s, salt_len + 4, u, &u_len);
+//		hmac_sha1(pw, pw_len, s, salt_len + 4, u, &u_len);
+		hmac_sha(HMAC_SHA1, pw, pw_len, s, salt_len + 4, u, sizeof(u));
 		memcpy(t, u, sizeof(t));
 
 		for (j = 1; j < iterations; j++)
 		{
 //			HMAC_SHA1_dd(pw, pw_len, u, sizeof(u), u);
 			u_len = sizeof(u);
-			hmac_sha1(pw, pw_len, u, sizeof(u), u, &u_len);
+//			hmac_sha1(pw, pw_len, u, sizeof(u), u, &u_len);
+			hmac_sha(HMAC_SHA1, pw, pw_len, u, sizeof(u), u, sizeof(u));
 			for (n = 0; n < h_len; n++)
 				t[n] ^= u[n];
 		}
