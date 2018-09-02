@@ -6,6 +6,8 @@
 #include "../apfs-fuse/ApfsLib/ApfsDir.h"
 #include "../apfs-fuse/ApfsLib/Decmpfs.h"
 
+#include "Utils.hpp"
+
 #include <inttypes.h>
 #include <strings.h>
 
@@ -45,7 +47,7 @@ struct File
 	File() {}
 	~File() {}
 
-	bool IsCompressed() const { return (ino.ino.flags & 0x20) != 0; }
+	bool IsCompressed() const { return ino.ino.isCompressed(); }
 
 	ApfsDir::Inode ino;
 	std::vector<uint8_t> decomp_data;
@@ -105,16 +107,16 @@ bool ApfsFuseVolume::apfs_stat_internal(uint64_t ino, struct stat* stPtr)
 	st.st_rdev = 0;	// st_rdev?
 	st.st_ino = ino;
 	st.st_mode = rec.ino.mode;
-	st.st_nlink = rec.ino.refcnt;
+	st.st_nlink = rec.ino.nchildren;
 	st.st_uid = rec.ino.uid;
 	st.st_gid = rec.ino.gid;
 	st.st_blksize = apfsVolume->getContainer().GetBlocksize();
 	assert(st.st_blksize == 4096); // TODO : one day, we will have to support bigger block ?
-	st.st_blocks = rec.sizes.size_on_disk / 512; // number of 512 bytes blocks
+	st.st_blocks = rec.sizes.alloced_size / 512; // number of 512 bytes blocks
 
 	if (S_ISREG(st.st_mode))
 	{
-		if (rec.ino.flags & 0x20) // Compressed
+		if (rec.ino.isCompressed())
 		{
 			std::vector<uint8_t> data;
 			rc = dir.GetAttribute(data, ino, "com.apple.decmpfs");
@@ -160,7 +162,7 @@ bool ApfsFuseVolume::apfs_stat_internal(uint64_t ino, struct stat* stPtr)
 	}
 	else if (S_ISDIR(st.st_mode))
 	{
-		st.st_size = rec.ino.refcnt;
+		st.st_size = rec.ino.nchildren;
 	}
 	else if (S_ISLNK(st.st_mode))
 	{
@@ -286,7 +288,7 @@ int ApfsFuseVolume::open(const char* path, struct fuse_file_info* fi)
 			if (g_debug & Dbg_Info)
 			{
 				std::cout << "Inode info: size=" << f->ino.sizes.size
-				          << ", size_on_disk=" << f->ino.sizes.size_on_disk << std::endl;
+				          << ", size_on_disk=" << f->ino.sizes.alloced_size << std::endl;
 			}
 			rc = DecompressFile(dir, f->ino.id, f->decomp_data, attr);
 			// In strict mode, do not return uncompressed data.
@@ -328,7 +330,7 @@ printf("break\n");
         size2 = ( (size2-1) | 0xFFF) + 1; // make size2 a multiple of block size by extending it to the next block boundary.
 		
         char* bufTmp[size2];
-        bool rc = dir.ReadFile(bufTmp, file->ino.ino.object_id, offset-offsetInBlock, size2);
+        bool rc = dir.ReadFile(bufTmp, file->ino.ino.private_id, offset-offsetInBlock, size2);
         memcpy(buf, bufTmp+offsetInBlock, size);
         if ( !rc ) return -EIO;
 		assert(size < INT_MAX);

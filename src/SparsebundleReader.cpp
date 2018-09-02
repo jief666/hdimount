@@ -1,21 +1,12 @@
 /*
-This file is part of apfs-fuse, a read-only implementation of APFS
-(Apple File System) for FUSE.
-Copyright (C) 2018 Jief Luce, base on the work of Tor Arne Vestbø.
+Copyright (C) 2018 Jief Luce
 
-Apfs-fuse is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-Apfs-fuse is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+This file is originally based on the work of Tor Arne Vestbø (https://github.com/torarnv/sparsebundlefs).
 
 You should have received a copy of the GNU General Public License
-along with apfs-fuse.  If not, see <http://www.gnu.org/licenses/>.
+along with hdimount.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 #include "SparsebundleReader.h"
 
 #include <cstring>
@@ -31,6 +22,8 @@ along with apfs-fuse.  If not, see <http://www.gnu.org/licenses/>.
 #include "Utils.hpp"
 #include "../darling-dmg/src/exceptions.h"
 #include "../darling-dmg/src/FileReader.h"
+
+#include "../darling-dmg/src/SubReader.h"
 
 static uint64_t xml_get_integer(const char* filename, const char* elem)
 {
@@ -121,9 +114,19 @@ SparsebundleReader::SparsebundleReader(const std::string& path)
 printf("Initialized %s, band size %zu, total size %" PRId64 "\n", m_path, m_band_size, m_size);
 
 	std::string tokenFilename = stprintf("%s/token", m_path);
-	tokenReader = std::make_shared<FileReader>(tokenFilename);
+	m_tokenReader = std::make_shared<FileReader>(tokenFilename);
+//
+//	DmgCryptHeaderV2 hdr;
+//	int32_t bytesRead = tokenReader->read((void*)&hdr, sizeof(hdr), 0);
+//	if (bytesRead >=sizeof(hdr)) {
+//		if (memcmp(hdr.signature, "encrcdsa", 8) == 0) {
+//			m_tokenReader = std::make_shared<SubReader>(tokenReader, 0, hdr.encrypted_data_offset);
+//		}
+//	}
+
+//	m_size += tokenReader->length();
 	
-	m_size += tokenReader->length();
+	
 //	std::ifstream tokenStream;
 //	tokenStream.open(token_filename, std::ios::binary);
 //	if ( tokenStream.is_open() )
@@ -190,15 +193,15 @@ int32_t SparsebundleReader::read(void* buffer, int32_t nbytes, uint64_t offset)
 
     int32_t bytes_read = 0;
 
-	if ( offset < tokenReader->length() )
+	if ( offset < m_tokenReader->length() )
 	{
-		int32_t bytes_to_read = std::min(uint64_t(nbytes), tokenReader->length() - offset);
-        bytes_read = tokenReader->read((uint8_t*)buffer, bytes_to_read, offset);
+		int32_t bytes_to_read = std::min(uint64_t(nbytes), m_tokenReader->length() - offset);
+        bytes_read = m_tokenReader->read((uint8_t*)buffer, bytes_to_read, offset);
         if (bytes_read != bytes_to_read)
             throw io_error(stprintf("SparsebundleReader::read Cannot read %d bytes in token file at '%s', read %d bytes", bytes_to_read, m_path, bytes_read));
-		offset = tokenReader->length();
+		offset = m_tokenReader->length();
 	}
-	uint64_t offsetInBands = offset - tokenReader->length();
+	uint64_t offsetInBands = offset - m_tokenReader->length();
     while (bytes_read < nbytes) {
         off_t band_number = (offsetInBands + bytes_read) / m_band_size;
         off_t band_offset = (offsetInBands + bytes_read) % m_band_size;
@@ -245,3 +248,21 @@ uint64_t SparsebundleReader::length()
 {
 	return m_size;
 }
+//
+//int32_t SparsebundleReader::getTokenLength()
+//{
+//	if (!m_tokenReader) return 0;
+//	return m_tokenReader->length();
+//}
+//
+//uint64_t SparsebundleReader::getTokenOffset()
+//{
+//	return 0;
+//}
+//
+//void SparsebundleReader::getToken(uint8_t* token)
+//{
+//	int32_t bytesRead = m_tokenReader->read(token, m_tokenReader->length(), 0);
+//	if (bytesRead != m_tokenReader->length()) // *len is 0x1000 max, so cast is safe.
+//		throw io_error("Can't read");
+//}

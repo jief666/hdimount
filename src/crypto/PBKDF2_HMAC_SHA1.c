@@ -2,12 +2,13 @@
 #include <memory.h>
 #include <assert.h>
 
-#include "hmac-sha1/hmac/hmac.h"
+//#include "hmac-sha1/hmac/hmac.h"
+#include "gladman-sha/sha1.h"
 #include "gladman-sha/hmac.h"
 //#include "Crypto.h"
 #include "PBKDF2_HMAC_SHA1.h"
 
-void PBKDF2_HMAC_SHA1(const uint8_t* pw, size_t pw_len, const uint8_t* salt, size_t salt_len, int iterations, uint8_t* derived_key, size_t dk_len)
+void Password_Based_Key_Derivation_Function_2_SHA1(const uint8_t* pw, int pw_len, const uint8_t* salt, int salt_len, int iterations, uint8_t* derived_key, int dk_len)
 {
 	assert(salt_len <= 0x20);
 	assert(dk_len <= 0x20);

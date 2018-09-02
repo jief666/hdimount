@@ -9,124 +9,120 @@
 #include <iostream>
 #include <iomanip>
 
-#include "../../apfs-fuse/ApfsLib/ApfsEndian.h"
-#include "aes-rijndael/rijndael-aes.h"
-//#include "gladman-sha/sha1.h"
+//#include "../../apfs-fuse/ApfsLib/ApfsEndian.h"
+#include "gladman-aes/aes.h"
+//#include "aes-rijndael/rijndael-aes.h"
+
 #include "gladman-sha/sha2.h"
 #include "gladman-sha/hmac.h"
 
-union Rfc3394_Unit {
-	uint64_t u64[2];
-	uint8_t u8[16];
+
+#ifdef __FreeBSD__
+#include <sys/endian.h>
+#elif defined(__APPLE__)
+#include <libkern/OSByteOrder.h>
+#include <TargetConditionals.h>
+
+	#if TARGET_RT_LITTLE_ENDIAN
+	#define __BYTE_ORDER __LITTLE_ENDIAN
+
+		#define be64toh(x) OSSwapInt64(x)
+
+	#else
+	#define __BYTE_ORDER __BIG_ENDIAN
+
+		#define be64toh(x) (x)
+
+	#endif
+
+#elif defined(_WIN32)
+
+	static uint64_t htobe64(uint64_t x) {
+		union { uint64_t u64; uint8_t v[8]; } ret;
+		ret.v[0] = (uint8_t)(x >> 56);
+		ret.v[1] = (uint8_t)(x >> 48);
+		ret.v[2] = (uint8_t)(x >> 40);
+		ret.v[3] = (uint8_t)(x >> 32);
+		ret.v[4] = (uint8_t)(x >> 24);
+		ret.v[5] = (uint8_t)(x >> 16);
+		ret.v[6] = (uint8_t)(x >> 8);
+		ret.v[7] = (uint8_t)x;
+		return ret.u64;
+	}
+
+	// windows can be only LE
+	#define __BYTE_ORDER __LITTLE_ENDIAN // this define is required in HFSCatalogBTree.cpp
+
+	#define be64toh(x)	htobe64(x)
+
+#else
+#include <endian.h>
+#endif
+
+
+//static void printBuf(uint8_t* buf, size_t count, int line_length = 16)
+//{
+//	for (size_t i = 0; i < count;) {
+//		for (int j = 0; j < line_length; j++)
+//			printf("%02x ", (uint8_t) (buf[i + j]));
+//		i += line_length;
+//		printf("\n");
+//	}
+//}
+
+static const unsigned char default_iv[] = {
+  0xA6, 0xA6, 0xA6, 0xA6, 0xA6, 0xA6, 0xA6, 0xA6,
 };
 
 constexpr uint64_t rfc_3394_default_iv = 0xA6A6A6A6A6A6A6A6ULL;
 
-// TODO: Not tested on big-endian machines ...
-int Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, int size, const uint8_t *key, int aes_mode, uint64_t *iv)
-{
-	Rfc3394_Unit u;
-	uint64_t a;
-	uint64_t r[6];
-	int i;
-	int j;
-	int n = size / sizeof(uint64_t);
-	uint64_t t;
-	const uint64_t *c = reinterpret_cast<const uint64_t *>(crypto);
-	uint64_t *p = reinterpret_cast<uint64_t *>(plain);
-
-//	AES aes;
-//	aes.SetKey(key, aes_mode);
-
+int AES_unwrap_key_2(unsigned char *out, const unsigned char *in, int inlen, const uint8_t *key, int aes_mode, uint64_t *iv) {
 	aes_decrypt_ctx rijndael_ctx;
-	if ( aes_mode == 128 ) aes_decrypt_key128((const unsigned char *)key, &rijndael_ctx);
-	if ( aes_mode == 256 ) aes_decrypt_key256((const unsigned char *)key, &rijndael_ctx);
+	if (aes_mode == 128)
+		aes_decrypt_key128((const unsigned char *) key, &rijndael_ctx);
+	if (aes_mode == 256)
+		aes_decrypt_key256((const unsigned char *) key, &rijndael_ctx);
 
-	
-	t = 6 * n;
-
-	a = c[0];
-	for (i = 0; i < n; i++)
-		r[i] = c[i + 1];
-
-	for (j = 5; j >= 0; j--)
-	{
-		for (i = n - 1; i >= 0; i--)
-		{
-			u.u64[0] = a ^ bswap_be(t);
-			u.u64[1] = r[i];
-//			aes.Decrypt(u.u8, u.u8);
-			aes_decrypt((const unsigned char *)u.u8, (unsigned char *)u.u8, &rijndael_ctx);
-			a = u.u64[0];
-			r[i] = u.u64[1];
-			t--;
+	unsigned char *A, B[16], *R;
+	unsigned int i, j, t;
+	inlen -= 8;
+	if (inlen & 0x7)
+		return -1;
+	if (inlen < 8)
+		return -1;
+	A = B;
+	t = 6 * (inlen >> 3);
+	memcpy(A, in, 8);
+	memcpy(out, in + 8, inlen);
+	for (j = 0; j < 6; j++) {
+		R = out + inlen - 8;
+		for (i = 0; i < inlen; i += 8, t--, R -= 8) {
+			A[7] ^= (unsigned char) (t & 0xff);
+			if (t > 0xff) {
+				A[6] ^= (unsigned char) ((t & 0xff) >> 8);
+				A[5] ^= (unsigned char) ((t & 0xff) >> 16);
+				A[4] ^= (unsigned char) ((t & 0xff) >> 24);
+			}
+			memcpy(B + 8, R, 8);
+//printBuf(B, 16);
+			aes_decrypt((const unsigned char *) B, (unsigned char *) B, &rijndael_ctx);
+//			AES_decrypt(B, B, key);
+			memcpy(R, B + 8, 8);
+//printBuf(out, 32, 32);
 		}
 	}
-
-	for (i = 0; i < n; i++)
-		p[i] = r[i];
+	uint64_t my_iv = rfc_3394_default_iv;
 	if (iv)
-		*iv = a;
-
-	return a == rfc_3394_default_iv;
+		my_iv = *iv;
+	if (memcmp(A, &my_iv, 8)) {
+		memset(out, 0, inlen);
+		return 0;
+	}
+	return inlen;
 }
-//
-//void myHMAC_SHA256(const uint8_t *key, size_t key_len, const uint8_t *data, size_t data_len, uint8_t *mac)
-//{
-//	uint8_t kdata[0x40];
-//	uint8_t digest[0x20];
-//	constexpr uint8_t ipad = 0x36;
-//	constexpr uint8_t opad = 0x5C;
-////	SHA256 sha256;
-//	sha256_ctx sha256Ctx;
-//
-//	if (key_len > sizeof(kdata))
-//	{
-////		sha256.Init();
-////		sha256.Update(key, key_len);
-////		sha256.Final(digest);
-//		sha256_begin(&sha256Ctx);
-//		sha256_hash(key, key_len, &sha256Ctx);
-//		sha_end1(digest, &sha256Ctx, sizeof(digest));
-//
-//		memcpy(kdata, digest, sizeof(digest));
-//		key_len = sizeof(digest);
-//	}
-//	else
-//	{
-//		memcpy(kdata, key, key_len);
-//	}
-//	if (key_len < sizeof(kdata))
-//		memset(kdata + key_len, 0, sizeof(kdata) - key_len);
-//
-//	for (size_t k = 0; k < sizeof(kdata); k++)
-//		kdata[k] ^= ipad;
-//
-////	sha256.Init();
-////	sha256.Update(kdata, sizeof(kdata));
-////	sha256.Update(data, data_len);
-////	sha256.Final(digest);
-//	sha256_begin(&sha256Ctx);
-//	sha256_hash(kdata, sizeof(kdata), &sha256Ctx);
-//	sha256_hash(data, data_len, &sha256Ctx);
-//	sha_end1(digest, &sha256Ctx, sizeof(digest));
-//
-//	for (size_t k = 0; k < sizeof(kdata); k++)
-//		kdata[k] ^= (ipad ^ opad);
-//
-////	sha256.Init();
-////	sha256.Update(kdata, sizeof(kdata));
-////	sha256.Update(digest, sizeof(digest));
-////	sha256.Final(mac);
-//	sha256_begin(&sha256Ctx);
-//	sha256_hash(kdata, sizeof(kdata), &sha256Ctx);
-//	sha256_hash(digest, sizeof(digest), &sha256Ctx);
-//	sha_end1(mac, &sha256Ctx, 0x20);
-//
-//	memset(digest, 0, sizeof(digest));
-//}
 
-void PBKDF2_HMAC_SHA256(const uint8_t* pw, size_t pw_len, const uint8_t* salt, size_t salt_len, uint64_t iterations, uint8_t* derived_key, size_t dk_len)
+
+void Password_Based_Key_Derivation_Function_2_SHA256(const uint8_t* pw, size_t pw_len, const uint8_t* salt, size_t salt_len, uint64_t iterations, uint8_t* derived_key, size_t dk_len)
 {
 	// HMAC_SHA256(pw, key_len, salt, salt_len, mac)
 

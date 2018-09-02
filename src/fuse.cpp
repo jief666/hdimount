@@ -1,5 +1,9 @@
 #include "fuse.h"
 
+#include <errno.h>
+#include <pwd.h> // for getpass()
+#include <unistd.h> // for getpass()
+
 #include <memory>
 #include <cstring>
 #include <iostream>
@@ -7,8 +11,6 @@
 #include <stdexcept>
 #include <limits>
 #include <functional>
-
-#include <errno.h>
 
 #include "../darling-dmg/src/be.h"
 #include "../darling-dmg/src/HFSVolume.h"
@@ -20,21 +22,29 @@
 #include "../darling-dmg/src/CachedReader.h"
 #include "../darling-dmg/src/exceptions.h"
 #include "../darling-dmg/src/HFSHighLevelVolume.h"
+#include "../darling-dmg/src/EncryptReader.h"
 //#include "SparsefsReader.h"
 #include <random>
 #include <stdint.h>
 #include <inttypes.h>
-#include "../apfs-fuse/ApfsLib/ApfsContainer.h"
 #include "FuseVolume.h"
 #include "HfsFuseVolume.h"
-#include "ApfsFuseOps.h"
-#include "ApfsFuseVolume.h"
 #include "SparsebundleReader.h"
 #include "Test.h"
 
-std::unique_ptr<FuseVolume> g_volumePtr; // must be global. Will be called bu fuse methods.
-
+namespace apfs {
+#include "../apfs-fuse/ApfsLib/Endian.h"
+}
+using namespace ::apfs;
 #include "../apfs-fuse/ApfsLib/ApfsContainer.h"
+#include "ApfsFuseOps.h"
+#include "ApfsFuseVolume.h"
+// apfs bridge
+#include "Device.h"
+
+
+std::unique_ptr<FuseVolume> g_volumePtr = nullptr; // must be global. Will be called by fuse methods.
+
 
 
 int m_debuglog = 0;
@@ -67,10 +77,13 @@ int main(int argc, const char** argv)
 		char* path = realpath(argv[1], NULL);
 		if (!path)
 			throw file_not_found_error(std::string("File '")+argv[1]+"' is not found");
+
 		openDisk(path);
+		if ( !g_volumePtr )
+			throw io_error("g_volumePtr is null");
 
 #ifdef DEBUG
-//TestTmp(g_volumePtr);
+TestTmp(g_volumePtr);
 system((std::string("umount ")+argv[2]).c_str());
 #endif
 	
@@ -135,49 +148,81 @@ void showHelp(const char* argv0)
 	std::cerr << argv0 << " automatically selects the first HFS+/HFSX partition.\n";
 }
 
+#define APFS_SIGNATURE 0x4253584E
+
+bool isAPFS(std::shared_ptr<Reader> reader)
+{
+	APFS_Superblock_APSB header;
+	if (reader->read(&header, sizeof(header), 0) != sizeof(header))
+		return false;
+
+	return header.apfs_magic == APFS_SIGNATURE;
+}
+
+Device* g_DevicePtr;
+
 void openDisk(const char* path)
 {
-	std::shared_ptr<Reader> g_fileReader;
+	std::shared_ptr<Reader> fileReader;
 	std::shared_ptr<HFSVolume> volume;
-	std::unique_ptr<PartitionedDisk> g_partitionsPtr;
+	std::unique_ptr<PartitionedDisk> partitions;
 
-    g_fileReader = FileReader::getReaderForPath(path);
+	std::shared_ptr<Reader> fileReaderToCheckEncryption;
+    if ( strstr(path, ".sparsebundle") == path + strlen(path) - strlen(".sparsebundle") ) {
+   		fileReaderToCheckEncryption = std::make_shared<SparsebundleReader>(path);
+	}else{
+    	fileReaderToCheckEncryption = std::make_shared<FileReader>(path);
+	}
+    if (EncryptReader::isEncrypted(fileReaderToCheckEncryption)) {
+    	#ifdef DEBUG
+    		char password[_PASSWORD_LEN] = "foo";
+		#else
+        	char *password = getpass("Password: ");
+		#endif
+        std::shared_ptr<EncryptReader> encReader = std::make_shared<EncryptReader>(fileReaderToCheckEncryption, password);
+        for ( size_t i = 0 ; i < strlen(password) ; i++ )
+            password[i] = ' ';
+        fileReader = encReader;
+    }else{
+        fileReader = fileReaderToCheckEncryption;
+    }
 
-	if (DMGDisk::isDMG(g_fileReader)) {
+	if (DMGDisk::isDMG(fileReader)) {
 		std::cerr << "Detected an image from device." << std::endl;
-		g_partitionsPtr.reset(new DMGDisk(g_fileReader));
-	}else if (GPTDisk::isGPTDisk(g_fileReader)) {
+		partitions.reset(new DMGDisk(fileReader));
+	}else if (GPTDisk::isGPTDisk(fileReader)) {
 		std::cerr << "Detected a GPT partionned disk." << std::endl;
-		g_partitionsPtr.reset(new GPTDisk(g_fileReader));
-	}else if (AppleDisk::isAppleDisk(g_fileReader)) {
+		partitions.reset(new GPTDisk(fileReader));
+	}else if (AppleDisk::isAppleDisk(fileReader)) {
 		std::cerr << "Detected a Apple map partionned disk." << std::endl;
-		g_partitionsPtr.reset(new AppleDisk(g_fileReader));
+		partitions.reset(new AppleDisk(fileReader));
 	}else{
 		std::cerr << "Fallback to raw disk." << std::endl;
-		g_partitionsPtr.reset(new RawDisk(g_fileReader));
+		partitions.reset(new RawDisk(fileReader));
 	}
 
 	std::shared_ptr<Reader> partitionsReaderPtr;
-	const std::vector<PartitionedDisk::Partition>& parts = g_partitionsPtr->partitions();
+	const std::vector<PartitionedDisk::Partition>& parts = partitions->partitions();
 
-	for (int i = 0; size_t(i) < parts.size(); i++)
+	for (int i = 0; size_t(i) < parts.size(); i++) //*************************************************************************
 	{
-		partitionsReaderPtr = g_partitionsPtr->readerForPartition(i);
+		partitionsReaderPtr = partitions->readerForPartition(i);
 		if (HFSVolume::isHFSPlus(partitionsReaderPtr))
 		{
-			std::cerr << "Using HFS partition #" << i << " of type " << parts[i].type << std::endl;
-//			extern std::unique_ptr<HFSHighLevelVolume> g_volume; // ugly because I don't want to modify darling main-fuse.cpp too much. I hope we'll work together for a better integration.
-			std::unique_ptr<HFSHighLevelVolume> volume = std::unique_ptr<HFSHighLevelVolume>(new HFSHighLevelVolume(std::make_shared<HFSVolume>(partitionsReaderPtr)));
-			g_volumePtr = std::unique_ptr<HfsFuseVolume>(new HfsFuseVolume(std::move(volume)));
+			std::cout << "Using HFS partition #" << i << " of type " << parts[i].type << std::endl;
+			g_volumePtr = std::unique_ptr<HfsFuseVolume>(new HfsFuseVolume(std::unique_ptr<HFSHighLevelVolume>(new HFSHighLevelVolume(std::make_shared<HFSVolume>(partitionsReaderPtr)))));
 			return;
 		}
-		else if (ApfsContainer::isAPFS(partitionsReaderPtr)) {
-			std::cerr << "Using APFS partition #" << i << " of type " << parts[i].type << std::endl;
-			ApfsContainer* apfsContainer = new ApfsContainer(partitionsReaderPtr);
-			apfsContainer->Init();
-			unsigned int volume_id = 0;
-			ApfsVolume* volume = apfsContainer->GetVolume(volume_id, "foo"); // TODO password
-			g_volumePtr = std::unique_ptr<ApfsFuseVolume>(new ApfsFuseVolume(std::unique_ptr<ApfsVolume>(volume)));
+		else if (isAPFS(partitionsReaderPtr)) {
+			std::cout << "Using APFS partition #" << i << " of type " << parts[i].type << std::endl;
+			g_DevicePtr = new Device(partitionsReaderPtr);
+			ApfsContainer* apfsContainer = new ApfsContainer(*g_DevicePtr, 0);
+			if ( apfsContainer->Init() ) {
+				unsigned int volume_id = 0;
+				ApfsVolume* apfsVolume = apfsContainer->GetVolume(volume_id, "foo"); // TODO password
+				if ( apfsVolume )
+					g_volumePtr = std::unique_ptr<ApfsFuseVolume>(new ApfsFuseVolume(std::unique_ptr<ApfsVolume>(apfsVolume)));
+			}
 			return;
 		}
 	}
@@ -197,7 +242,7 @@ static void trace_fuse_op(const char* path, const char* format, ...)
 	
 	char buf[2000];
 	vsnprintf(buf, sizeof(buf)-1, format, valist);
-	fprintf(stderr, "%s", buf);
+	printf("%s", buf);
 }
 #else
 	#define trace_fuse_op(path, format, ...)

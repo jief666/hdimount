@@ -162,6 +162,8 @@ int DarlingFuseVolume::getxattr(const char* path, const char* name, char* value,
 		std::vector<uint8_t> data;
 
 		data = hfsHighLevelVolume->getXattr(path, name);
+		if (data.size() == 0)
+			return 0;
 		if (data.size() > INT32_MAX)
 			return -EIO;
 

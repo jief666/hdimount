@@ -3,10 +3,9 @@
 #include "../darling-dmg/src/be.h"
 #include <iostream>
 #include <cstring>
-#include <openssl/bio.h>
-#include <openssl/evp.h>
 #include <memory>
 #include <sstream>
+
 #include "RawDisk.h"
 #include "../darling-dmg/src/CachedReader.h"
 

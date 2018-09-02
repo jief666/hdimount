@@ -24,10 +24,17 @@
 
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #pragma GCC diagnostic ignored "-Wunused-variable"
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
-#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
 
 #define min(x, y) ((x) < (y) ? (x) : (y))
+
+static int myFiller (void *buf, const char *name, const struct stat *stbuf, off_t off)
+{
+	printf("myFiller : name=%s\n", name);
+	return 0;
+}
 
 void TestTmp(std::unique_ptr<FuseVolume>& g_volumePtr)
 {
@@ -36,6 +43,7 @@ void TestTmp(std::unique_ptr<FuseVolume>& g_volumePtr)
 	path = "/root/testfile_compressed.txt";
 //	path = "/file+quarantine";
 	//path = "/";
+	path = "/ATI Driver.txt";
 	try
   	{
 		size_t rv1;
@@ -44,9 +52,11 @@ void TestTmp(std::unique_ptr<FuseVolume>& g_volumePtr)
 		struct stat st_stat2;
 		char buf[1000000];
 
+		if ( !g_volumePtr )
+			throw io_error("g_volumePtr is null");
 
-		rv1 = g_volumePtr->getattr(path, &st_stat1);
-		TestFile(g_volumePtr, path);
+//		rv1 = g_volumePtr->getattr(path, &st_stat1);
+//		TestFile(g_volumePtr, path);
 
 		//uint8_t* buf2 = &buf[192513];
 
@@ -61,8 +71,8 @@ void TestTmp(std::unique_ptr<FuseVolume>& g_volumePtr)
 
 		//rv1 = stat("/JiefLand/5.Devel/Syno/Fuse/mnt_apfs-fuse/root/HardLink1", &st_stat1);
 		//rv2 = stat("/JiefLand/5.Devel/Syno/Fuse/mnt_apfs-fuse/root/HardLink2", &st_stat2);
-		rv1 = stat("/Volumes/bughardlink2APFS/HardLink1", &st_stat1);
-		rv2 = stat("/Volumes/bughardlink2APFS/HardLink2", &st_stat2);
+//		rv1 = stat("/Volumes/bughardlink2APFS/HardLink1", &st_stat1);
+//		rv2 = stat("/Volumes/bughardlink2APFS/HardLink2", &st_stat2);
 		//rv2 = fuse_getattr("PkgInfo", &st_stat2);
 		//printf("rv=%zd, errno=%d\n", rv, errno);
 		//rv = fuse_listxattr("/HardLink1", (char*)buf, sizeof(buf));
@@ -79,7 +89,9 @@ void TestTmp(std::unique_ptr<FuseVolume>& g_volumePtr)
 		//std::map<std::string, struct stat> contents;
 		//contents = g_volumePtr->listDirectory(str);
 
-		//fuse_readdir("/", buf, myFiller, 0, NULL);
+		g_volumePtr->readdir("/", buf, myFiller, 0, NULL);
+//		g_volumePtr->readdir("/", buf, myFiller, 0, NULL);
+//		g_volumePtr->readdir("/", buf, myFiller, 0, NULL);
 
 		printf("done\n");
 	}
