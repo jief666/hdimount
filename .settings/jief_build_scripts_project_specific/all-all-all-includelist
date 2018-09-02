@@ -1,9 +1,12 @@
 
 echo "
 
+../src/apfs-lib_stubs
 ../darling/src
 ../apfs-fuse
 ../apfs-fuse/3rdparty/lzfse/src
+../../../lib_osx/icu4c/62.1/include
+../../../lib_osx/openssl/1.0.2o_2/include
 
 " | awk '$0!=""{ printf " -I%s", $0; }'
 
