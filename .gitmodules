@@ -1,0 +1,18 @@
+[submodule "apfs-fuse"]
+	path = src/apfs-fuse
+	url = https://github.com/jief666/apfs-fuse.git
+[submodule "darling-dmg"]
+	path = src/darling-dmg
+	url = https://github.com/jief666/darling-dmg.git
+[submodule "src/crypto/gladman-aes-modes"]
+	path = src/crypto/gladman-aes-modes
+	url = https://github.com/jief666/gladman-aes-modes.git
+[submodule "src/crypto/gladman-aes"]
+	path = src/crypto/gladman-aes
+	url = https://github.com/jief666/gladman-aes.git
+[submodule "src/crypto/gladman-sha"]
+	path = src/crypto/gladman-sha
+	url = https://github.com/jief666/gladman-sha.git
+[submodule "src/compression/lzfse"]
+	path = src/compression/lzfse
+	url = https://github.com/jief666/lzfse.git
