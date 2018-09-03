@@ -1,0 +1,7 @@
+
+echo "
+
+../src_sparsebundlefs-lib/sparsebundlefs
+
+" | awk '$0!=""{ printf " -I%s", $0; }'
+

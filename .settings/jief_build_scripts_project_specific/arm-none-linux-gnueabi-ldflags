@@ -1,0 +1,6 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`LC_ALL=en_US.ISO8859-1 perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+echo -L/JiefLand/5.Devel/Syno/DSM6.1/ds.armada370-6.1.dev/usr/local/arm-unknown-linux-gnueabi/arm-unknown-linux-gnueabi/sysroot/usr/lib \
+-lz -lcrypto -licuuc -lbz2 -lxml2 -lfuse -llzma -licudata

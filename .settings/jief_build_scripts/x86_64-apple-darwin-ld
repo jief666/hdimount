@@ -1,0 +1,45 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`LC_ALL=en_US.ISO8859-1 perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+#echo `pwd`
+
+me=`basename "$0"`
+#echo me=$me
+
+name="${me##*-}"
+#echo name=$name
+
+prefix=${me%-$name}
+#echo prefix=$prefix
+
+
+while getopts ":o:" o; do
+    case "${o}" in
+        o)
+            exe="${OPTARG}"
+            ;;
+        *)
+            ;;
+    esac
+done
+#echo exe=$exe
+
+source "$SCRIPT_DIR"/"$prefix"-path "g++" #we use g++ as a linker, so let's ignore $name
+ps_dir="$SCRIPT_DIR"/../jief_build_scripts_project_specific
+
+cmdArgs=()
+cmdArgs=( "$bin_path" $("$ps_dir"/"$prefix"-ldflags) "$@" )
+
+echo "${cmdArgs[@]}"
+
+"${cmdArgs[@]}"
+
+#fix for stdc++
+if [ $? -eq 0 ]
+then
+	cmdArgs=()
+	cmdArgs=( install_name_tool -change libstdc++.6.dylib "$gcc_path"/lib/libstdc++.6.dylib "$exe" )
+	echo "${cmdArgs[@]}"
+	"${cmdArgs[@]}"
+fi
