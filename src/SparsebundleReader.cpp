@@ -1,7 +1,32 @@
 /*
+ * This file is originally based on the work of Tor Arne Vestbø (https://github.com/torarnv/sparsebundlefs).
+ *
+ */
+/*
+ * Copyright (c) 2012-2016 Tor Arne Vestbø. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+/*
 Copyright (C) 2018 Jief Luce
-
-This file is originally based on the work of Tor Arne Vestbø (https://github.com/torarnv/sparsebundlefs).
 
 You should have received a copy of the GNU General Public License
 along with hdimount.  If not, see <http://www.gnu.org/licenses/>.
@@ -205,6 +230,9 @@ int32_t SparsebundleReader::read(void* buffer, int32_t nbytes, uint64_t offset)
     while (bytes_read < nbytes) {
         off_t band_number = (offsetInBands + bytes_read) / m_band_size;
         off_t band_offset = (offsetInBands + bytes_read) % m_band_size;
+//if ( band_number == 0x24F6  &&  band_offset/512 >= 0xFF8  &&  band_offset/512 < 0x1000) {
+//	printf("Reading band 24f6, block %llx\n", band_offset/512);
+//}
 
         size_t to_read = nbytes - bytes_read;
         if ( to_read > m_band_size - band_offset )  to_read = m_band_size - band_offset;
@@ -217,7 +245,7 @@ int32_t SparsebundleReader::read(void* buffer, int32_t nbytes, uint64_t offset)
         	m_opened_file_fd = open(m_band_path, O_RDONLY);
         	if ( m_opened_file_fd == -1 ) {
         		m_opened_file_band_number = -1;
-        		throw io_error(stprintf("SparsebundleReader::read cannot open band %lld (at '%s')", band_number, m_band_path));
+        		throw io_error(stprintf("SparsebundleReader::read cannot open band %lld (block %lld, at '%s')", band_number, band_offset/512, m_band_path));
         	}
         	m_opened_file_band_number = band_number;
         }
