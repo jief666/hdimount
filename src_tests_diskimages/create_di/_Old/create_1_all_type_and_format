@@ -1,0 +1,30 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+cd "$SCRIPT_DIR"
+
+
+
+function create_all_type_and_format
+{
+        ./create_2_hfs_and_apfs Udif UDIF
+        ./create_2_hfs_and_apfs Sprs SPARSE
+        ./create_2_hfs_and_apfs Spbu SPARSEBUNDLE
+        ./create_2_hfs_and_apfs Udro UDRO
+        ./create_2_hfs_and_apfs Udco UDCO
+        ./create_2_hfs_and_apfs Udzo UDZO
+        ./create_2_hfs_and_apfs Udbz UDBZ
+        ./create_2_hfs_and_apfs Ulfo ULFO
+        ./create_2_hfs_and_apfs Ufbi UFBI
+        ./create_2_hfs_and_apfs Ipod IPOD
+        ./create_2_hfs_and_apfs Udrw UDRW
+        ./create_2_hfs_and_apfs Udto UDTO
+#        ./create_2_hfs_and_apfs Dc42 DC42 # diskutil failed
+#        ./create_2_hfs_and_apfs RdWr RdWr # legacy, can't be mounted on high sierra -> hdiutil: attach failed - legacy image should be converted
+#        ./create_2_hfs_and_apfs Rdxx Rdxx # legacy, can't be mounted on high sierra -> hdiutil: attach failed - legacy image should be converted
+#        ./create_2_hfs_and_apfs ROCo ROCo # legacy, can't be mounted on high sierra -> hdiutil: attach failed - legacy image should be converted
+#        ./create_2_hfs_and_apfs Rken Rken # legacy, can't be mounted on high sierra -> hdiutil: attach failed - legacy image should be converted
+}
+
+create_all_type_and_format

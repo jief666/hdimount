@@ -1,4 +1,26 @@
 .DS_Store
-build_*
-/3rdparty jief/
-/travis/
+.vscode
+.vs
+* copy
+* copy 2
+* copy 3
+* copy 4
+* copy 5
+
+/build_*
+
+!/build_release_linux*
+/build_release_linux*/**/*.d
+/build_release_linux*/**/*.o
+/build_release_linux*/hdimount
+/build_release_linux*/test-all_crypto
+/build_release_linux*/test-compare_di_with_constants
+/build_release_linux*/test-compare_di_with_mounted
+
+
+/hdimount_diskimage_test
+/Generated*
+
+
+/git init submodule.txt
+/dist/

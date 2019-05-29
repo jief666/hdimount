@@ -1,0 +1,6 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+#gnu11 for asm in gcc 4.9 for Lion
+echo -std=gnu11

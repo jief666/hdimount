@@ -1,11 +1,9 @@
 #ifndef RAWDISK_H
 #define RAWDISK_H
-#include "../darling-dmg/src/PartitionedDisk.h"
-#include "../darling-dmg/src/Reader.h"
-#include "../darling-dmg/src/dmg.h"
-#include "../darling-dmg/src/CacheZone.h"
-#include <libxml/parser.h>
-#include <libxml/xpath.h>
+#include "darling-dmg/src/PartitionedDisk.h"
+#include "darling-dmg/src/Reader.h"
+#include "darling-dmg/src/dmg.h"
+#include "darling-dmg/src/CacheZone.h"
 
 class RawDisk : public PartitionedDisk
 {

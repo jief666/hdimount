@@ -19,10 +19,10 @@
 
 
 
-bool APFSLibCrypto_Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, size_t size, const uint8_t *key, int aes_mode, uint64_t *iv)
+bool APFSLibCrypto_Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, unsigned int size, const uint8_t *key, int aes_mode, uint64_t *iv)
 {
 	AES_KEY aes_key;
-	uint64_t myiv = 0xA6A6A6A6A6A6A6A6ULL;
+//	uint64_t myiv = 0xA6A6A6A6A6A6A6A6ULL;
 
 //uint8_t plain2[256];
 //Rfc3394_KeyUnwrap(plain2, crypto, size, key, aes_mode, iv);
@@ -34,8 +34,10 @@ bool APFSLibCrypto_Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, size
 //int d = AES_unwrap_key(&aes_key, (const uint8_t*)iv, plain3, crypto, (unsigned int)size+8);
 
 	AES_set_decrypt_key(key, aes_mode, &aes_key);
-	int rv = AES_unwrap_key(&aes_key, (const uint8_t*)&myiv, plain, crypto, (unsigned int)size);
-	return rv == size-8;
+	assert(size < INT_MAX);
+//	int rv = AES_unwrap_key(&aes_key, (const uint8_t*)&myiv, plain, crypto, size);
+	int rv = AES_unwrap_key(&aes_key, (const uint8_t*)iv, plain, crypto, size);
+	return rv == ((int)size)-8;
 }
 
 void APFSLibCrypto_PBKDF2_HMAC_SHA256(const uint8_t* pw, size_t pw_len, const uint8_t* salt, size_t salt_len, int iterations, uint8_t* derived_key, size_t dk_len)
@@ -73,6 +75,8 @@ void APFSLibCrypto_HMAC_SHA256(const uint8_t *key, size_t key_len, const uint8_t
 /*-----------------------------------------------   AES XTS   -----------------------------------------------*/
 void APFSLibCrypto_aes_xtx_setkey(const uint8_t* key1, int key1_len, const uint8_t* key2, int key2_len, uint8_t* userkey)
 {
+	assert(key1_len == 16);
+	assert(key2_len == 16);
 //	xts_start(0, NULL, key1, key1_len, key2, key2_len, 0, 0, ctx);
 //	uint8_t userkey[key1_len+key2_len];
 //printHexBufAsCDecl(key1, key1_len, "key1");
@@ -112,7 +116,9 @@ static uint8_t xts_userkey[32];
 
 void APFSLibCrypto_aes_xtx_setkey(const uint8_t* key1, int key1_len, const uint8_t* key2, int key2_len)
 {
-	assert(key1_len+key2_len <= sizeof(xts_userkey));
+	assert(key1_len == 16);
+	assert(key2_len == 16);
+	assert((unsigned int)(key1_len+key2_len) <= sizeof(xts_userkey));
 	APFSLibCrypto_aes_xtx_setkey(key1, key1_len, key2, key2_len, xts_userkey);
 }
 
@@ -136,22 +142,6 @@ void APFSLibCrypto_aes_xtx_decrypt(const uint8_t* encrypted_text, int len, uint8
 /*-----------------------------------------------   Crc32   -----------------------------------------------*/
 uint32_t APFSLibCrypto_calculate_crc32c(uint32_t crc32c, const unsigned char *buffer, unsigned int length)
 {
-	return calculate_crc32c(crc32c, buffer, length);
+	return crypto_openssl_crc32c(crc32c, buffer, length);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

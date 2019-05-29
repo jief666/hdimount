@@ -1,0 +1,111 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+cd "$SCRIPT_DIR"
+
+function print_array
+{
+    local -a 'arraykeys=("${!'"$1"'[@]}")'
+    arraykeysString=${arraykeys[*]}
+
+    needspace=false
+    for index in $arraykeysString
+    do
+        if [ $needspace = true ]
+        then
+            printf " "
+        else
+            needspace=true 
+        fi
+        current=$1"[$index]"
+        val=${!current}
+        if [ -z "$val" ]
+        then
+            printf "''"
+        else
+            re='.* .*'
+            if [[ "$val" =~ $re ]]
+            then
+                prefix=${val%%'='*}
+                if [[ "$prefix" = "$val" ]]
+                then
+                    printf "'%s'" "$val"
+                else
+                    idx=${#prefix}
+                    printf "%s'%s'" "${val:0:$((idx+1))}" "${val:$((idx+1))}"
+                fi
+            else
+                printf "%s" "$val"
+            fi
+        fi
+    done
+    printf "\n"
+}
+
+function runCommand
+{
+    printf "%s" '----> '
+    print_array $1
+    local -a 'arraykeys=("${!'"$1"'[@]}")' copy
+
+    arraykeysString=${arraykeys[*]}
+    for index in $arraykeysString;
+    do
+        current=$1"[$index]"
+        copy[$index]=${!current}
+    done
+    "${copy[@]}"
+}
+
+
+
+
+
+path=$1
+
+#set -x
+
+
+dir=mnt_fuse
+if [ -d mnt_fuse/root ]
+then
+  dir=mnt_fuse/root
+fi
+
+if ! [ -f "$dir"/SmallFile0 ]
+then
+  echo SmallFile0 doesn\'t exist in "$path"
+  exit 1
+fi
+
+# -H would mistakenly report creation time problem on hard link (at least one
+rsync_cmd=("$SCRIPT_DIR"/rsync-v3.1.3+crtimes \
+  -aX --crtimes \
+  --exclude=/.Trashes
+  --out-format='%i  - %n  - %M' \
+  -n \
+  "$dir"/ mnt_hdiutil/)
+
+runCommand rsync_cmd
+if ! [ $? -eq 0 ]
+then
+  echo rsync return error "$path"
+  exit 1
+fi
+
+nblines=$("${rsync_cmd[@]}" | wc -l)
+
+if [ $nblines -eq 0 ]
+then
+  echo '------------------------------------------------------------->' Test OK
+  ret=0
+else
+  echo '------------------------------------------------------------->' Test failed
+  ret=1
+fi
+
+#diskutil eject mnt_hdiutil >/dev/null
+#umount mnt_fuse >/dev/null
+
+exit $ret

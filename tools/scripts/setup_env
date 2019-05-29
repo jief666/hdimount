@@ -1,0 +1,43 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+
+
+alias h='history'
+alias ll='ls -la'
+export PATH="$SCRIPT_DIR":"$SCRIPT_DIR"/../xcpretty-0.3.0/bin:$PATH
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+#echo $sourced
+
+
+function do_it
+{
+		
+	if [ $sourced -eq 0 ]
+	then
+	    echo Please, source this script.
+	    return 1
+	fi
+	
+	if [ "$(uname)" = "Darwin" ]
+	then
+	    alias dl='diskutil list '
+	    alias de='diskutil eject '
+	fi  
+	
+	
+	
+	# "$(expr substr $(uname -s) 1 5)" doesn't work in macOs, that's why there is '! [ "$(uname)" = "Darwin" ]' before.
+	
+	if ! [ "$(uname)" = "Darwin" ]  &&  [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]
+	then
+		:
+	fi
+	
+
+	
+}
+
+do_it "$@"

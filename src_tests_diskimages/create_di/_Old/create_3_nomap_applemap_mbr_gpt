@@ -1,0 +1,22 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+cd "$SCRIPT_DIR"
+
+
+function create_all_layout
+{
+        local name=$1
+        local type=$2
+        local size=$3
+        local fs=$4
+        shift; shift; shift; shift;
+
+        ./create_4_plain_and_encrypted ${name}NoMap     $type $size $fs NONE
+        ./create_4_plain_and_encrypted ${name}AppleMap  $type $size $fs SPUD
+        ./create_4_plain_and_encrypted ${name}Mbr       $type $size $fs MBRSPUD
+        ./create_4_plain_and_encrypted ${name}Gpt       $type $size $fs GPTSPUD
+}
+
+create_all_layout "$@"

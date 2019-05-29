@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6DE6C4E9-6699-4B0D-9776-149FAB762510}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="all_projects-all_configuration.props" />
+    <Import Project="all_project-debug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="all_projects-all_configuration.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemGroup>
+    <ClInclude Include="..\src\crypto++\Aes++.h" />
+    <ClInclude Include="..\src\crypto++\AesXts.h" />
+    <ClInclude Include="..\src\crypto++\Crc32++.h" />
+    <ClInclude Include="..\src\crypto++\Crypto.h" />
+    <ClInclude Include="..\src\crypto++\Des++.h" />
+    <ClInclude Include="..\src\crypto++\Sha1++.h" />
+    <ClInclude Include="..\src\crypto++\Sha256.h" />
+    <ClInclude Include="..\src\crypto++\TripleDes++.h" />
+    <ClInclude Include="..\src\crypto\crc32c.h" />
+    <ClInclude Include="..\src\crypto\Des.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes-modes\mode_hdr.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes-modes\xts.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aes.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aesopt.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aestab.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aes_ni.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aes_via_ace.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\brg_endian.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\brg_types.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\brg_endian.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\brg_types.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\hmac.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\sha1.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\sha2.h" />
+    <ClInclude Include="..\src\crypto\PBKDF2_HMAC_SHA1.h" />
+    <ClInclude Include="..\src\crypto\PBKDF2_HMAC_SHA256.h" />
+    <ClInclude Include="..\src\crypto\Rfc3394.h" />
+    <ClInclude Include="..\src\crypto\TripleDes.h" />
+    <ClInclude Include="..\src\Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\crypto++\Aes++.cpp" />
+    <ClCompile Include="..\src\crypto++\AesXts.cpp" />
+    <ClCompile Include="..\src\crypto++\APFSLibCrypto++.cpp" />
+    <ClCompile Include="..\src\crypto++\Crc32++.cpp" />
+    <ClCompile Include="..\src\crypto++\Crypto.cpp" />
+    <ClCompile Include="..\src\crypto++\DarlingDMGCrypto++.cpp" />
+    <ClCompile Include="..\src\crypto++\Des++.cpp" />
+    <ClCompile Include="..\src\crypto++\Sha1++.cpp" />
+    <ClCompile Include="..\src\crypto++\Sha256.cpp" />
+    <ClCompile Include="..\src\crypto++\TripleDes++.cpp" />
+    <ClCompile Include="..\src\crypto\crc32c.c" />
+    <ClCompile Include="..\src\crypto\Des.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes-modes\xts.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aescrypt.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aeskey.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aestab.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aes_modes.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aes_ni.c" />
+    <ClCompile Include="..\src\crypto\gladman-sha\hmac.c" />
+    <ClCompile Include="..\src\crypto\gladman-sha\sha1.c" />
+    <ClCompile Include="..\src\crypto\gladman-sha\sha2.c" />
+    <ClCompile Include="..\src\crypto\PBKDF2_HMAC_SHA1.c" />
+    <ClCompile Include="..\src\crypto\PBKDF2_HMAC_SHA256.c" />
+    <ClCompile Include="..\src\crypto\Rfc3394.cpp" />
+    <ClCompile Include="..\src\crypto\TripleDes.c" />
+    <ClCompile Include="..\src\Utils.cpp" />
+    <ClCompile Include="..\src_tests_encryption\cryptoplusplus\test_AES_CBC_cplusplus.cpp" />
+    <ClCompile Include="..\src_tests_encryption\cryptoplusplus\test_aes_unwrap_key_cplusplus.cpp" />
+    <ClCompile Include="..\src_tests_encryption\cryptoplusplus\test_AES_XTS_cplusplus.cpp" />
+    <ClCompile Include="..\src_tests_encryption\cryptoplusplus\test_DES_CBC_cplusplus.cpp" />
+    <ClCompile Include="..\src_tests_encryption\cryptoplusplus\test_HMAC_SHA1_cplusplus.cpp" />
+    <ClCompile Include="..\src_tests_encryption\cryptoplusplus\test_HMAC_SHA256_cplusplus.cpp" />
+    <ClCompile Include="..\src_tests_encryption\cryptoplusplus\test_PBKDF2_HMAC_SHA1_cplusplus.cpp" />
+    <ClCompile Include="..\src_tests_encryption\cryptoplusplus\test_PBKDF2_HMAC_SHA256_cplusplus.cpp" />
+    <ClCompile Include="..\src_tests_encryption\crypto\test_AES_CBC_crypto_c.cpp" />
+    <ClCompile Include="..\src_tests_encryption\crypto\test_aes_unwrap_key_crypto_c.cpp" />
+    <ClCompile Include="..\src_tests_encryption\crypto\test_AES_XTS_crypto_c.cpp" />
+    <ClCompile Include="..\src_tests_encryption\crypto\test_DES_CBC_crypto_c.cpp" />
+    <ClCompile Include="..\src_tests_encryption\crypto\test_HMAC_SHA1_crypto_c.cpp" />
+    <ClCompile Include="..\src_tests_encryption\crypto\test_HMAC_SHA256_crypto_c.cpp" />
+    <ClCompile Include="..\src_tests_encryption\crypto\test_PBKDF2_HMAC_SHA1_crypto_c.cpp" />
+    <ClCompile Include="..\src_tests_encryption\crypto\test_PBKDF2_HMAC_SHA256_crypto_c.cpp" />
+    <ClCompile Include="..\src_tests_encryption\test_crypto.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\src\crypto\gladman-aes\aes.txt" />
+    <Text Include="..\src\crypto\gladman-aes\license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\crypto\README.md" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

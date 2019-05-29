@@ -1,0 +1,78 @@
+#!/bin/bash
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  TARGET="$(readlink "$SOURCE")"
+  if [[ $TARGET == /* ]]; then
+    #echo "SOURCE '$SOURCE' is an absolute symlink to '$TARGET'"
+    SOURCE="$TARGET"
+  else
+    DIR="$( dirname "$SOURCE" )"
+    #echo "SOURCE '$SOURCE' is a relative symlink to '$TARGET' (relative to '$DIR')"
+    SOURCE="$DIR/$TARGET" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  fi
+done
+#echo "SOURCE is '$SOURCE'"
+RDIR="$( dirname "$SOURCE" )"
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+if [ "$DIR" != "$RDIR" ]; then
+  #echo "DIR '$RDIR' resolves to '$DIR'"
+  :
+fi
+SCRIPT_DIR="$DIR"
+
+set +e
+
+if [ x"$1" = xdebug ]
+then
+    Conf=Debug
+    conf=debug
+else
+    Conf=Release
+    conf=release
+fi
+
+
+set -x
+
+function do_it
+{
+
+    if [ -z "$DIST_ARTIFACT_NAME" ]
+    then
+       return 1
+    fi
+
+	cd "$SCRIPT_DIR"/../.. # for git
+
+    FILE="$SCRIPT_DIR"/../../dist/"$DIST_ARTIFACT_NAME"
+
+    if ! [ -f "$FILE" ]
+    then
+       echo $FILE doesn\'t exist, cannot upload
+       return 1
+    fi
+
+    TAG_NAME="$(cat "$SCRIPT_DIR"/../../version.txt)__$(git rev-parse --short  HEAD)"
+   
+    echo pushing $FILE to github release under name $TAG_NAME for branch $TRAVIS_BRANCH
+
+
+    if [ "$(uname)" = "Darwin" ]
+    then
+        github_release_bin="$SCRIPT_DIR/../bin/github-release-osx"
+    else
+        github_release_bin=github-release
+    fi  
+
+	
+    "$github_release_bin" release  --user "$GITHUB_USER"  --repo "$GITHUB_REPO"  --target "$TRAVIS_BRANCH"  --tag "$TAG_NAME"  --pre-release
+    "$github_release_bin" upload   --user "$GITHUB_USER"  --repo "$GITHUB_REPO"  --tag "$TAG_NAME"  --name "$DIST_ARTIFACT_NAME"  --file "$FILE" --replace
+    if ! [ $? -eq 0 ]
+    then
+       "$github_release_bin" upload   --user "$GITHUB_USER"  --repo "$GITHUB_REPO"  --tag "$TAG_NAME"  --name "$DIST_ARTIFACT_NAME"  --file "$FILE"  --replace
+    fi
+    
+
+}
+
+do_it "$@"

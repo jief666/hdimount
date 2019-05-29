@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E974A846-9C94-41EE-877D-A5951C42A202}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>hdimount</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="all_projects-all_configuration.props" />
+    <Import Project="libz-libbz-libdokan.props" />
+    <Import Project="all_project-debug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="all_projects-all_configuration.props" />
+    <Import Project="libz-libbz-libdokan.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsContainer.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsDir.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\APFSLibCrypto.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsNodeMapper.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsNodeMapperBTree.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsVolume.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\BlockDumper.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\BTree.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\CheckPointMap.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Decmpfs.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\DiskStruct.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Endian.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Global.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\KeyMgmt.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Unicode.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\UnicodeTables_v10.h" />
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Util.h" />
+    <ClInclude Include="..\src\apfs-lib_stubs\Device.h" />
+    <ClInclude Include="..\src\ApfsFuseOps.h" />
+    <ClInclude Include="..\src\ApfsFuseVolume.h" />
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse.h" />
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse_encode_tables.h" />
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse_fse.h" />
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse_internal.h" />
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse_tunables.h" />
+    <ClInclude Include="..\src\compression\lzfse\src\lzvn_decode_base.h" />
+    <ClInclude Include="..\src\compression\lzfse\src\lzvn_encode_base.h" />
+    <ClInclude Include="..\src\conversion\fast_unicode_compare_apple.h" />
+    <ClInclude Include="..\src\conversion\utf16Tables.h" />
+    <ClInclude Include="..\src\conversion\utf816Conversion.h" />
+    <ClInclude Include="..\src\CrossPlatform.h" />
+    <ClInclude Include="..\src\crypto\crc32c.h" />
+    <ClInclude Include="..\src\crypto\Des.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes-modes\mode_hdr.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes-modes\xts.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aes.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aesopt.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aestab.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aes_ni.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\aes_via_ace.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\brg_endian.h" />
+    <ClInclude Include="..\src\crypto\gladman-aes\brg_types.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\brg_endian.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\brg_types.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\hmac.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\sha1.h" />
+    <ClInclude Include="..\src\crypto\gladman-sha\sha2.h" />
+    <ClInclude Include="..\src\crypto\PBKDF2_HMAC_SHA1.h" />
+    <ClInclude Include="..\src\crypto\PBKDF2_HMAC_SHA256.h" />
+    <ClInclude Include="..\src\crypto\Rfc3394.h" />
+    <ClInclude Include="..\src\crypto\TripleDes.h" />
+    <ClInclude Include="..\src\darling-dmg\src\adc.h" />
+    <ClInclude Include="..\src\darling-dmg\src\apm.h" />
+    <ClInclude Include="..\src\darling-dmg\src\AppleDisk.h" />
+    <ClInclude Include="..\src\darling-dmg\src\be.h" />
+    <ClInclude Include="..\src\darling-dmg\src\CachedReader.h" />
+    <ClInclude Include="..\src\darling-dmg\src\CacheZone.h" />
+    <ClInclude Include="..\src\darling-dmg\src\DarlingDMGCrypto.h" />
+    <ClInclude Include="..\src\darling-dmg\src\decmpfs.h" />
+    <ClInclude Include="..\src\darling-dmg\src\dmg.h" />
+    <ClInclude Include="..\src\darling-dmg\src\DMGDecompressor.h" />
+    <ClInclude Include="..\src\darling-dmg\src\DMGDisk.h" />
+    <ClInclude Include="..\src\darling-dmg\src\DMGPartition.h" />
+    <ClInclude Include="..\src\darling-dmg\src\EncryptReader.h" />
+    <ClInclude Include="..\src\darling-dmg\src\exceptions.h" />
+    <ClInclude Include="..\src\darling-dmg\src\FileReader.h" />
+    <ClInclude Include="..\src\darling-dmg\src\gpt.h" />
+    <ClInclude Include="..\src\darling-dmg\src\GPTDisk.h" />
+    <ClInclude Include="..\src\darling-dmg\src\hfs.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSAttributeBTree.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSBTree.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSBTreeNode.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSCatalogBTree.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSExtentsOverflowBTree.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSFork.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSHighLevelVolume.h" />
+    <ClInclude Include="..\src\darling-dmg\src\hfsplus.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSVolume.h" />
+    <ClInclude Include="..\src\darling-dmg\src\HFSZlibReader.h" />
+    <ClInclude Include="..\src\darling-dmg\src\MacBinary.h" />
+    <ClInclude Include="..\src\darling-dmg\src\MemoryReader.h" />
+    <ClInclude Include="..\src\darling-dmg\src\PartitionedDisk.h" />
+    <ClInclude Include="..\src\darling-dmg\src\Reader.h" />
+    <ClInclude Include="..\src\darling-dmg\src\ResourceFork.h" />
+    <ClInclude Include="..\src\darling-dmg\src\rsrc.h" />
+    <ClInclude Include="..\src\darling-dmg\src\stat_xlate.h" />
+    <ClInclude Include="..\src\darling-dmg\src\SubReader.h" />
+    <ClInclude Include="..\src\FuseVolume.h" />
+    <ClInclude Include="..\src\HfsFuseVolume.h" />
+    <ClInclude Include="..\src\Main.h" />
+    <ClInclude Include="..\src\MBRDisk.h" />
+    <ClInclude Include="..\src\OpenDisk.h" />
+    <ClInclude Include="..\src\RawDisk.h" />
+    <ClInclude Include="..\src\SparsebundleReader.h" />
+    <ClInclude Include="..\src\SparseimageDisk.h" />
+    <ClInclude Include="..\src\tinyxml2\tinyxml2.h" />
+    <ClInclude Include="..\src\utf8proc\utf8proc.h" />
+    <ClInclude Include="..\src\Utils.h" />
+    <ClInclude Include="..\src\Volume.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsContainer.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsDir.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsNodeMapper.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsNodeMapperBTree.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsVolume.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\BlockDumper.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\BTree.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\CheckPointMap.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\Decmpfs.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\KeyMgmt.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\Unicode.cpp" />
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\Util.cpp" />
+    <ClCompile Include="..\src\ApfsFuseVolume.cpp" />
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_decode.c" />
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_decode_base.c" />
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_encode.c" />
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_encode_base.c" />
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_fse.c" />
+    <ClCompile Include="..\src\compression\lzfse\src\lzvn_decode_base.c" />
+    <ClCompile Include="..\src\compression\lzfse\src\lzvn_encode_base.c" />
+    <ClCompile Include="..\src\conversion\fast_unicode_compare_apple.cpp" />
+    <ClCompile Include="..\src\conversion\utf16Tables.cpp" />
+    <ClCompile Include="..\src\conversion\utf816Conversion.cpp" />
+    <ClCompile Include="..\src\CrossPlatform.cpp" />
+    <ClCompile Include="..\src\crypto\APFSLibCryptoEmbedded.cpp" />
+    <ClCompile Include="..\src\crypto\crc32c.c" />
+    <ClCompile Include="..\src\crypto\DarlingDMGCryptoEmbedded.cpp" />
+    <ClCompile Include="..\src\crypto\Des.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes-modes\xts.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aescrypt.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aeskey.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aestab.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aes_modes.c" />
+    <ClCompile Include="..\src\crypto\gladman-aes\aes_ni.c" />
+    <ClCompile Include="..\src\crypto\gladman-sha\hmac.c" />
+    <ClCompile Include="..\src\crypto\gladman-sha\sha1.c" />
+    <ClCompile Include="..\src\crypto\gladman-sha\sha2.c" />
+    <ClCompile Include="..\src\crypto\PBKDF2_HMAC_SHA1.c" />
+    <ClCompile Include="..\src\crypto\PBKDF2_HMAC_SHA256.c" />
+    <ClCompile Include="..\src\crypto\Rfc3394.cpp" />
+    <ClCompile Include="..\src\crypto\TripleDes.c" />
+    <ClCompile Include="..\src\darling-dmg\src\adc.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\AppleDisk.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\CachedReader.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\CacheZone.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\DMGDecompressor.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\DMGDisk.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\DMGPartition.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\EncryptReader.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\FileReader.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\GPTDisk.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\HFSAttributeBTree.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\HFSBTree.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\HFSCatalogBTree.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\HFSExtentsOverflowBTree.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\HFSFork.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\HFSHighLevelVolume.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\HFSVolume.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\HFSZlibReader.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\MacBinary.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\MemoryReader.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\Reader.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\ResourceFork.cpp" />
+    <ClCompile Include="..\src\darling-dmg\src\SubReader.cpp" />
+    <ClCompile Include="..\src\FuseVolume.cpp" />
+    <ClCompile Include="..\src\HfsFuseVolume.cpp" />
+    <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\MBRDisk.cpp" />
+    <ClCompile Include="..\src\OpenDisk.cpp" />
+    <ClCompile Include="..\src\RawDisk.cpp" />
+    <ClCompile Include="..\src\SparsebundleReader.cpp" />
+    <ClCompile Include="..\src\SparseimageDisk.cpp" />
+    <ClCompile Include="..\src\tinyxml2\tinyxml2.cpp" />
+    <ClCompile Include="..\src\utf8proc\utf8proc.c" />
+    <ClCompile Include="..\src\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\src\crypto\gladman-aes\aes.txt" />
+    <Text Include="..\src\crypto\gladman-aes\license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\crypto\README.md" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

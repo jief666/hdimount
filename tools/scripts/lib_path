@@ -1,0 +1,63 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+  echo "Usage: $SCRIPT_ABS_FILENAME dir lib_basename" >&2
+  exit 1
+fi
+if [ -z "$2" ]
+then
+  echo "Usage: $SCRIPT_ABS_FILENAME dir lib_basename" >&2
+  exit 1
+fi
+
+#echo '------------> $1 =' $1
+
+dir="$1"
+libname="$2"
+extension="${libname##*.}"
+
+#echo dir=$dir
+#echo pwd = `pwd`
+
+
+#absfile="$(echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")")"
+#echo $absfile
+
+# Param $1=libname $2=libpath  libpath must finish with /
+function find_lib
+{
+	libname="$1"
+	libpath="$2"
+	
+	if [[ -e "$libpath""$libname" ]]
+ 	then
+ 		echo "$libpath""$libname"
+ 	else
+ 		count=0
+		while [ ! -f "$libpath""$libname" ]
+		do
+        	libpath=".."/"$libpath"
+        	(( count++ ))
+        	if [[ $count -gt 100 ]]; then
+        		break
+        	fi
+        done
+        if [ -f "$libpath""$libname" ]
+        then
+        	echo "$libpath""$libname"
+        fi
+ 	fi
+}
+
+cd "$dir"
+result=$(find_lib "$libname" "")
+[ -z $result ] && result=$(find_lib "$libname" "dylib/")
+[ -z $result ] && result=$(find_lib "$libname" "lib/")
+
+if [ -z $result ]
+then
+	[ -e "/usr/lib"/"$libname" ] && echo "/usr/lib/""$libname"
+fi
+
+echo $result

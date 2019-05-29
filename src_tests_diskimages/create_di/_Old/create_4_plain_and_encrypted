@@ -1,0 +1,22 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+cd "$SCRIPT_DIR"
+
+
+function create_plain_and_encrypted
+{
+        local name=$1
+        local type=$2
+        local size=$3
+        local fs=$4
+        local layout=$5
+        shift; shift; shift; shift; shift;
+
+        ./create_5_image $name $type $size $fs $layout NONE
+        ./create_5_image ${name}Aes128 $type $size $fs $layout AES-128
+        ./create_5_image ${name}Aes256 $type $size $fs $layout AES-256
+}
+
+create_plain_and_encrypted "$@"

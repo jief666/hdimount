@@ -9,8 +9,9 @@
 #ifndef Utils_hpp
 #define Utils_hpp
 
+#include <stdarg.h>
+#include <stdint.h>
 #include <string>
-
 
 // useful to resolve signed / unsigned warning when it's sure that offset is > 0.
 // if off_t isn't long long int on some plateform, might have to #ifdef.
@@ -20,22 +21,69 @@
 #include <stdio.h>
 #include <sys/types.h>
 
-# ifdef __USE_FILE_OFFSET64
-typedef uint64_t uoff_t;
-#else
-typedef unsigned long int uoff_t;
+#include "apfs-fuse/ApfsLib/Global.h"
+
+
+
+
+//#define TRACE_FUSE_OP
+
+
+
+
+
+
+
+
+
+
+
+
+#ifndef MIN
+#define MIN(a,b)    ((a) < (b) ? (a) : (b))
+#endif
+#ifndef MAX
+#define MAX(a,b)    ((a) > (b) ? (a) : (b))
 #endif
 
-#if defined(__cpp_static_assert)
-	static_assert(sizeof(off_t) == sizeof(uoff_t), "sizeof(off_t) == sizeof(uoff_t)");
-#else
-	#warning Make sure of sizeof(off_t) == sizeof(uoff_t)
-#endif
+class __ap
+{
+public:
+    va_list* m_apPtr;
+    __ap(va_list* apPtr) : m_apPtr(apPtr) {};
+    __ap() { va_end(*m_apPtr); }
+};
 
+#define declare_ap(arg) \
+    va_list ap; \
+    va_start(ap, arg); \
+    __ap ap2(&ap);
+
+std::string stringPrintf(const char* fmt, ...)
+#ifndef _MSC_VER
+                  __attribute__((format(printf, 1, 2))) // __attribute__ format printf
+#endif
+                  ;
 
 void printHexBufAsCDecl(const uint8_t* buf, size_t count, const char* name, int line_length = 8);
-std::string stprintf(const char* format, ...);
-bool GetPassword(std::string* pwPtr);
+//std::string stringPrintf(const char* format, ...);
+//bool GetPassword(std::string* pwPtr);
+
+std::string basename( std::string const& pathname );
+
+#if defined(DEBUG) && defined(TRACE_FUSE_OP)
+
+#ifndef _MSC_VER
+void trace_fuse_op(const char* path, const char* format, ...) __attribute__((__format__(printf, 2, 3)));
+#else
+void trace_fuse_op(const char* path, const char* format, ...);
+#endif
+
+#else
+
+#define trace_fuse_op(path, format, ...)
+
+#endif
 
 
 

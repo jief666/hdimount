@@ -1,0 +1,65 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "486A18BB44F6C362A190F4B557B565A9BC312D2F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AA35398BAAAF9454C4046217DDA17B61B1CBB26B" : 9223372036854775807,
+    "B0585C45990A7D49B42DB681BA89155DCF9661BA" : 9223372036854775807,
+    "486A18BB44F6C362A190F4B557B565A9BC312D2F" : 9223372036854775807,
+    "AC53046F39CF17255C2A1350BB08AE08CB3676E7" : 9223372036854775807,
+    "A3579A0F2ECF2E54A49CD605FF8B49D1B0D75C7A" : 9223372036854775807,
+    "E5A004058BC19ABA4770677771A5B1C4260EBA69" : 9223372036854775807,
+    "A7F95E2334E45D851EC764F01310840F2499CFAA" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5A6E4DD4-E5AC-48AF-A42A-305B42106290",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AA35398BAAAF9454C4046217DDA17B61B1CBB26B" : "hdimount--jief666--travis_test\/src\/compression\/lzfse\/",
+    "B0585C45990A7D49B42DB681BA89155DCF9661BA" : "hdimount--jief666--travis_test\/src\/darling-dmg\/",
+    "486A18BB44F6C362A190F4B557B565A9BC312D2F" : "hdimount--jief666--travis_test\/",
+    "AC53046F39CF17255C2A1350BB08AE08CB3676E7" : "hdimount--jief666--travis_test\/src\/crypto\/gladman-sha\/",
+    "A3579A0F2ECF2E54A49CD605FF8B49D1B0D75C7A" : "hdimount--jief666--travis_test\/src\/apfs-fuse\/",
+    "E5A004058BC19ABA4770677771A5B1C4260EBA69" : "hdimount--jief666--travis_test\/src\/crypto\/gladman-aes\/",
+    "A7F95E2334E45D851EC764F01310840F2499CFAA" : "hdimount--jief666--travis_test\/src\/crypto\/gladman-aes-modes\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "hdimount-xcode8",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CI\/hdimount-xcode8.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jief666\/hdimount.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "486A18BB44F6C362A190F4B557B565A9BC312D2F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jief666\/apfs-fuse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A3579A0F2ECF2E54A49CD605FF8B49D1B0D75C7A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jief666\/gladman-aes-modes.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A7F95E2334E45D851EC764F01310840F2499CFAA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jief666\/lzfse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AA35398BAAAF9454C4046217DDA17B61B1CBB26B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jief666\/gladman-sha.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AC53046F39CF17255C2A1350BB08AE08CB3676E7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jief666\/darling-dmg.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B0585C45990A7D49B42DB681BA89155DCF9661BA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jief666\/gladman-aes.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E5A004058BC19ABA4770677771A5B1C4260EBA69"
+    }
+  ]
+}

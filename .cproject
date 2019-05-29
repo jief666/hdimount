@@ -3,133 +3,9 @@
     	
     <storageModule moduleId="org.eclipse.cdt.core.settings">
         		
-        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328">
-            			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328" moduleId="org.eclipse.cdt.core.settings" name="build_DebugOsx-gcc-openssl">
-                				
-                <externalSettings/>
-                				
-                <extensions>
-                    					
-                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-                    				
-                </extensions>
-                			
-            </storageModule>
-            			
-            <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-                				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328" name="build_DebugOsx-gcc-openssl" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
-                    					
-                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328." name="/" resourcePath="">
-                        						
-                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.1594770620" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
-                            							
-                            <option id="cdt.managedbuild.option.gnu.cross.prefix.336568626" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="x86_64-apple-darwin-" valueType="string"/>
-                            							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.1272647489" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
-                            							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.MachO64" id="cdt.managedbuild.targetPlatform.gnu.cross.523546607" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
-                            							
-                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugOsx" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.995715639" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
-                            							
-                            <tool command="gcc" id="cdt.managedbuild.tool.gnu.cross.c.compiler.1506642277" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
-                                								
-                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1646895797" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
-                                								
-                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.612798466" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
-                                								
-                                <option id="gnu.c.compiler.option.debugging.level.1140432663" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1082146874" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-                                							
-                            </tool>
-                            							
-                            <tool command="g++" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.465032905" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
-                                								
-                                <option id="gnu.cpp.compiler.option.include.paths.1407207566" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false"/>
-                                								
-                                <option id="gnu.cpp.compiler.option.preprocessor.def.42207524" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
-                                								
-                                <option id="gnu.cpp.compiler.option.optimization.level.211261966" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
-                                								
-                                <option id="gnu.cpp.compiler.option.debugging.level.723129970" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
-                                								
-                                <option id="gnu.cpp.compiler.option.other.other.1867669624" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-Wno-unused-variable -Wno-unused-const-variable -c" valueType="string"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1766293433" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
-                                							
-                            </tool>
-                            							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1040113877" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
-                            							
-                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.895612424" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
-                                								
-                                <option id="gnu.cpp.link.option.libs.1038401108" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false"/>
-                                								
-                                <option id="gnu.cpp.link.option.paths.398781944" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.461825075" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
-                                    									
-                                    <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
-                                    									
-                                    <additionalInput kind="additionalinput" paths="$(LIBS)"/>
-                                    								
-                                </inputType>
-                                							
-                            </tool>
-                            							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.822714102" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
-                            							
-                            <tool command="as" id="cdt.managedbuild.tool.gnu.cross.assembler.1101516884" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1465993007" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-                                							
-                            </tool>
-                            						
-                        </toolChain>
-                        					
-                    </folderInfo>
-                    					
-                    <sourceEntries>
-                        						
-                        <entry excluding="apfsfuse|ApfsDumpQuick|ApfsDump|3rdparty/lzfse/tests|3rdparty/lzfse/src/lzfse_main.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="apfs-fuse"/>
-                        						
-                        <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
-                        						
-                        <entry excluding="apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto++|crypto|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
-                        					
-                    </sourceEntries>
-                    				
-                </configuration>
-                			
-            </storageModule>
-            			
-            <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-            		
-        </cconfiguration>
-        		
         <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363">
             			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363" moduleId="org.eclipse.cdt.core.settings" name="build_DebugArm-gcc-openssl">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363" moduleId="org.eclipse.cdt.core.settings" name="build_debug_osx-gcc-openssl_hdimount">
                 				
                 <externalSettings/>
                 				
@@ -153,15 +29,15 @@
             			
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363" name="build_DebugArm-gcc-openssl" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                <configuration artifactName="hdimount" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363" name="build_debug_osx-gcc-openssl_hdimount" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
                     					
                     <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363." name="/" resourcePath="">
                         						
                         <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.1117694869" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1477987953" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="arm-none-linux-gnueabi-" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1477987953" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="x86_64-apple-darwin-" valueType="string"/>
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.1236923462" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.path.1236923462" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
                             							
                             <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.1475660134" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
                             							
@@ -172,12 +48,18 @@
                                 <option id="gnu.c.compiler.option.preprocessor.def.symbols.1642659749" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
                                     									
                                     <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="DEBUG"/>
                                     								
                                 </option>
                                 								
                                 <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.759167094" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
                                 								
                                 <option id="gnu.c.compiler.option.debugging.level.1916074855" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.dialect.std.895095492" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.2124789933" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1654683470" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
@@ -188,6 +70,8 @@
                                 <option id="gnu.cpp.compiler.option.preprocessor.def.918428805" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
                                     									
                                     <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="DEBUG"/>
                                     								
                                 </option>
                                 								
@@ -196,6 +80,8 @@
                                 <option id="gnu.cpp.compiler.option.debugging.level.730319698" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
                                 								
                                 <option id="gnu.cpp.compiler.option.other.other.2077858065" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -Wno-unused-variable" valueType="string"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.638390259" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.617020331" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
@@ -229,133 +115,7 @@
                     					
                     <sourceEntries>
                         						
-                        <entry excluding="apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto++|crypto|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
-                        					
-                    </sourceEntries>
-                    				
-                </configuration>
-                			
-            </storageModule>
-            			
-            <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-            		
-        </cconfiguration>
-        		
-        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1233822835">
-            			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1233822835" moduleId="org.eclipse.cdt.core.settings" name="build_ReleaseOsx-gcc-openssl">
-                				
-                <externalSettings/>
-                				
-                <extensions>
-                    					
-                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
-                    					
-                    <extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-                    				
-                </extensions>
-                			
-            </storageModule>
-            			
-            <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-                				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1233822835" name="build_ReleaseOsx-gcc-openssl" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
-                    					
-                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1233822835." name="/" resourcePath="">
-                        						
-                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.795271321" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
-                            							
-                            <option id="cdt.managedbuild.option.gnu.cross.prefix.914405222" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="x86_64-apple-darwin-" valueType="string"/>
-                            							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.686292255" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
-                            							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.MachO64" id="cdt.managedbuild.targetPlatform.gnu.cross.304930662" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
-                            							
-                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugOsx" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.1962114009" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
-                            							
-                            <tool command="gcc" id="cdt.managedbuild.tool.gnu.cross.c.compiler.662718984" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
-                                								
-                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.346643562" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
-                                								
-                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.638150922" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
-                                								
-                                <option id="gnu.c.compiler.option.debugging.level.678146236" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-                                								
-                                <option id="gnu.c.compiler.option.misc.other.979825544" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c" valueType="string"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.45839319" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-                                							
-                            </tool>
-                            							
-                            <tool command="g++" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.194979690" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
-                                								
-                                <option id="gnu.cpp.compiler.option.include.paths.766248226" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false"/>
-                                								
-                                <option id="gnu.cpp.compiler.option.preprocessor.def.487713474" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
-                                								
-                                <option id="gnu.cpp.compiler.option.optimization.level.1481188523" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
-                                								
-                                <option id="gnu.cpp.compiler.option.debugging.level.2124203121" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
-                                								
-                                <option id="gnu.cpp.compiler.option.other.other.979462320" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c" valueType="string"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.109646450" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
-                                							
-                            </tool>
-                            							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1239004197" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
-                            							
-                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1893022993" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
-                                								
-                                <option id="gnu.cpp.link.option.libs.1657769642" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false"/>
-                                								
-                                <option id="gnu.cpp.link.option.paths.1138654161" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1205871710" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
-                                    									
-                                    <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
-                                    									
-                                    <additionalInput kind="additionalinput" paths="$(LIBS)"/>
-                                    								
-                                </inputType>
-                                							
-                            </tool>
-                            							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.908947299" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
-                            							
-                            <tool command="as" id="cdt.managedbuild.tool.gnu.cross.assembler.1055919729" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.342298267" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-                                							
-                            </tool>
-                            						
-                        </toolChain>
-                        					
-                    </folderInfo>
-                    					
-                    <sourceEntries>
-                        						
-                        <entry excluding="apfsfuse|ApfsDumpQuick|ApfsDump|3rdparty/lzfse/tests|3rdparty/lzfse/src/lzfse_main.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="apfs-fuse"/>
-                        						
-                        <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
-                        						
-                        <entry excluding="crypto++|crypto|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        <entry excluding="apfs-fuse.old|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto++|crypto|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
                         					
                     </sourceEntries>
                     				
@@ -369,7 +129,7 @@
         		
         <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721">
             			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721" moduleId="org.eclipse.cdt.core.settings" name="build_ReleaseArm-gcc-openssl">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721" moduleId="org.eclipse.cdt.core.settings" name="build_release_arm-gcc-openssl_hdimount">
                 				
                 <externalSettings/>
                 				
@@ -393,7 +153,7 @@
             			
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721" name="build_ReleaseArm-gcc-openssl" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                <configuration artifactName="hdimount" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721" name="build_release_arm-gcc-openssl_hdimount" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
                     					
                     <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721." name="/" resourcePath="">
                         						
@@ -401,7 +161,7 @@
                             							
                             <option id="cdt.managedbuild.option.gnu.cross.prefix.1405713646" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="arm-none-linux-gnueabi-" valueType="string"/>
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.1122794002" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.path.1122794002" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
                             							
                             <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.1658952947" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
                             							
@@ -409,15 +169,13 @@
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.1999510142" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
                                 								
-                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1350706690" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1350706690" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false"/>
                                 								
                                 <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.648454420" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
                                 								
                                 <option id="gnu.c.compiler.option.debugging.level.581263953" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.1327262330" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.407940448" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
@@ -425,15 +183,13 @@
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1416060114" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
                                 								
-                                <option id="gnu.cpp.compiler.option.preprocessor.def.2025854614" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.2025854614" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
                                 								
                                 <option id="gnu.cpp.compiler.option.optimization.level.1327084213" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
                                 								
                                 <option id="gnu.cpp.compiler.option.debugging.level.1392676483" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.783958461" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2071292252" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
@@ -471,7 +227,7 @@
                         						
                         <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
                         						
-                        <entry excluding="crypto++|crypto|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        <entry excluding="apfs-fuse.old|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|crypto++|crypto|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
                         					
                     </sourceEntries>
                     				
@@ -485,7 +241,7 @@
         		
         <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384">
             			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384" moduleId="org.eclipse.cdt.core.settings" name="build_DebugOsx-clang-openssl">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384" moduleId="org.eclipse.cdt.core.settings" name="build_debug_osx-clang-openssl_hdimount">
                 				
                 <externalSettings/>
                 				
@@ -509,7 +265,7 @@
             			
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384" name="build_DebugOsx-clang-openssl" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                <configuration artifactName="hdimount" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384" name="build_debug_osx-clang-openssl_hdimount" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
                     					
                     <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384." name="/" resourcePath="">
                         						
@@ -517,7 +273,7 @@
                             							
                             <option id="cdt.managedbuild.option.gnu.cross.prefix.776084244" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="clang-" valueType="string"/>
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.521402434" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.path.521402434" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
                             							
                             <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.MachO64" id="cdt.managedbuild.targetPlatform.gnu.cross.216708454" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
                             							
@@ -528,6 +284,8 @@
                                 <option id="gnu.c.compiler.option.preprocessor.def.symbols.1602913845" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
                                     									
                                     <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="DEBUG"/>
                                     								
                                 </option>
                                 								
@@ -535,17 +293,25 @@
                                 								
                                 <option id="gnu.c.compiler.option.debugging.level.164045012" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
                                 								
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.385761663" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1510544968" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
                             </tool>
                             							
                             <tool command="g++" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1631522943" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
                                 								
-                                <option id="gnu.cpp.compiler.option.include.paths.1701688714" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false"/>
+                                <option id="gnu.cpp.compiler.option.include.paths.1701688714" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="/usr/local/include"/>
+                                    								
+                                </option>
                                 								
                                 <option id="gnu.cpp.compiler.option.preprocessor.def.298374520" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
                                     									
                                     <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="DEBUG"/>
                                     								
                                 </option>
                                 								
@@ -555,6 +321,8 @@
                                 								
                                 <option id="gnu.cpp.compiler.option.other.other.654954373" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-Wno-unused-variable -Wno-unused-const-variable -c" valueType="string"/>
                                 								
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.1275292578" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1337349910" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
@@ -563,9 +331,17 @@
                             							
                             <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1278934890" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
                                 								
-                                <option id="gnu.cpp.link.option.libs.1944352020" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false"/>
+                                <option id="gnu.cpp.link.option.libs.1944352020" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+                                    									
+                                    <listOptionValue builtIn="false" value="osxfuse"/>
+                                    								
+                                </option>
                                 								
-                                <option id="gnu.cpp.link.option.paths.353214400" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
+                                <option id="gnu.cpp.link.option.paths.353214400" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false" valueType="libPaths">
+                                    									
+                                    <listOptionValue builtIn="false" value="/usr/local/lib"/>
+                                    								
+                                </option>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1206274637" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
@@ -595,7 +371,11 @@
                         						
                         <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
                         						
-                        <entry excluding="apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto++|crypto|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        <entry excluding="mk251.c|dlltest.c|bzip2.c|unzcrash.c|spewG.c|bzip2recover.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="lib/bzip2-1.0.6"/>
+                        						
+                        <entry excluding="win32|watcom|test|qnx|os400|old|nintendods|msdos|examples|doc|contrib|amiga" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="lib/zlib-1.2.11"/>
+                        						
+                        <entry excluding="apfs-fuse.old|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto++|crypto|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
                         					
                     </sourceEntries>
                     				
@@ -607,15 +387,15 @@
             		
         </cconfiguration>
         		
-        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.707921197">
+        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328">
             			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.707921197" moduleId="org.eclipse.cdt.core.settings" name="build_ReleaseOsx-clang-openssl">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328" moduleId="org.eclipse.cdt.core.settings" name="build_release_linux-gcc-openssl_test-compare_di_with_constants">
                 				
                 <externalSettings/>
                 				
                 <extensions>
                     					
-                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
                     					
                     <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
                     					
@@ -633,65 +413,53 @@
             			
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.707921197" name="build_ReleaseOsx-clang-openssl" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                <configuration artifactName="test-compare_di_with_constants" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328" name="build_release_linux-gcc-openssl_test-compare_di_with_constants" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
                     					
-                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.707921197." name="/" resourcePath="">
+                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328." name="/" resourcePath="">
                         						
-                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.2140907396" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.1226324636" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1148936143" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="clang-" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1880658909" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="linux-" valueType="string"/>
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.23407019" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.path.1165300959" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
                             							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.MachO64" id="cdt.managedbuild.targetPlatform.gnu.cross.117425782" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.1041363232" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
                             							
-                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugOsx" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.763033382" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugArm" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.853452735" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
                             							
-                            <tool command="gcc" id="cdt.managedbuild.tool.gnu.cross.c.compiler.102594589" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.225152945" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
                                 								
-                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.55477446" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1836862551" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false"/>
                                 								
-                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1260318580" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.996133111" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
                                 								
-                                <option id="gnu.c.compiler.option.debugging.level.1462138543" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                <option id="gnu.c.compiler.option.debugging.level.1265695890" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <option id="gnu.c.compiler.option.warnings.extrawarn.41032674" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.411481195" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1923916298" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.761813230" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool command="g++" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1511543197" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1218154829" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
                                 								
-                                <option id="gnu.cpp.compiler.option.include.paths.742227631" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false"/>
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.1682358191" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.preprocessor.def.783349229" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
+                                <option id="gnu.cpp.compiler.option.optimization.level.1919519404" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.optimization.level.779904873" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+                                <option id="gnu.cpp.compiler.option.debugging.level.1210308504" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.debugging.level.2077906456" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.1172829636" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.other.other.644262895" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c" valueType="string"/>
-                                								
-                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.1859367068" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1629326841" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.918791713" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.989982018" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.990721986" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
                             							
-                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.70640436" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1929809871" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
                                 								
-                                <option id="gnu.cpp.link.option.libs.1430410055" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false"/>
-                                								
-                                <option id="gnu.cpp.link.option.paths.1631060960" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1952185143" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.31555826" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
                                     <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
                                     									
@@ -701,11 +469,11 @@
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.343577407" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.2128087608" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
                             							
-                            <tool command="as" id="cdt.managedbuild.tool.gnu.cross.assembler.2105560390" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.assembler.703472838" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.719356053" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1537824298" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
                                 							
                             </tool>
                             						
@@ -719,7 +487,9 @@
                         						
                         <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
                         						
-                        <entry excluding="crypto++|crypto|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        <entry excluding="apfs-fuse.old|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|Main.cpp|crypto++|crypto|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        						
+                        <entry excluding="os_interaction/Utils.m|os_interaction/Partition.m|os_interaction/NSURL.m|os_interaction/IOObjectT.m|os_interaction/Disk.m|create_and_compare|FolderReferenceCreation_include.cpp|compare_di_with_mounted|create_di|test_disk_images-osx" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src_tests_diskimages"/>
                         					
                     </sourceEntries>
                     				
@@ -731,15 +501,15 @@
             		
         </cconfiguration>
         		
-        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.1465078919">
+        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.567059460">
             			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.1465078919" moduleId="org.eclipse.cdt.core.settings" name="build_DebugOsx-clang-embeddedcrypto">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.567059460" moduleId="org.eclipse.cdt.core.settings" name="build_release_linux-gcc-openssl_hdimount">
                 				
                 <externalSettings/>
                 				
                 <extensions>
                     					
-                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
                     					
                     <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
                     					
@@ -757,65 +527,53 @@
             			
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.1465078919" name="build_DebugOsx-clang-embeddedcrypto" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                <configuration artifactName="hdimount" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.567059460" name="build_release_linux-gcc-openssl_hdimount" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
                     					
-                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.1465078919." name="/" resourcePath="">
+                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.567059460." name="/" resourcePath="">
                         						
-                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.112414687" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.2070909833" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.prefix.2128577797" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="clang-" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.953595295" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="linux-" valueType="string"/>
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.1846571322" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.path.1701439704" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
                             							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.MachO64" id="cdt.managedbuild.targetPlatform.gnu.cross.210841144" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.945099304" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
                             							
-                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugOsx" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.1731839511" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugArm" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.2092665364" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
                             							
-                            <tool command="gcc" id="cdt.managedbuild.tool.gnu.cross.c.compiler.2117521118" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.115900590" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
                                 								
-                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1936125423" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1867813835" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false"/>
                                 								
-                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.44666085" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.953034566" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
                                 								
-                                <option id="gnu.c.compiler.option.debugging.level.706289363" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                <option id="gnu.c.compiler.option.debugging.level.2120878552" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.747068146" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.820548164" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1511948161" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool command="g++" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.963059170" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1520885572" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
                                 								
-                                <option id="gnu.cpp.compiler.option.include.paths.174655890" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false"/>
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.1600826659" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.preprocessor.def.1965201817" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.cpp.compiler.option.optimization.level.852681288" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.optimization.level.6682888" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+                                <option id="gnu.cpp.compiler.option.debugging.level.55094830" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.debugging.level.1031023055" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.1086649601" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.other.other.562299616" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-Wno-unused-variable -Wno-unused-const-variable -c" valueType="string"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1204002895" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2140586796" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.73754632" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.938097796" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
                             							
-                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.70433691" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.58328233" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
                                 								
-                                <option id="gnu.cpp.link.option.libs.1786270628" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false"/>
-                                								
-                                <option id="gnu.cpp.link.option.paths.897777445" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.111578283" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.835498517" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
                                     <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
                                     									
@@ -825,11 +583,11 @@
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.390667316" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.1929221360" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
                             							
-                            <tool command="as" id="cdt.managedbuild.tool.gnu.cross.assembler.445440854" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.assembler.1187782142" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1631032984" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1389138900" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
                                 							
                             </tool>
                             						
@@ -843,7 +601,7 @@
                         						
                         <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
                         						
-                        <entry excluding="apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto++|crypto_openssl|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        <entry excluding="apfs-fuse.old|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|crypto++|crypto|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
                         					
                     </sourceEntries>
                     				
@@ -855,15 +613,15 @@
             		
         </cconfiguration>
         		
-        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.11946682">
+        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.113145955">
             			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.11946682" moduleId="org.eclipse.cdt.core.settings" name="travis_DebugOsx-clang-openssl">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.113145955" moduleId="org.eclipse.cdt.core.settings" name="build_release_arm-gcc-cryptoc_hdimount">
                 				
                 <externalSettings/>
                 				
                 <extensions>
                     					
-                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
                     					
                     <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
                     					
@@ -881,65 +639,53 @@
             			
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.11946682" name="travis_DebugOsx-clang-openssl" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                <configuration artifactName="hdimount" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.113145955" name="build_release_arm-gcc-cryptoc_hdimount" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
                     					
-                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.11946682." name="/" resourcePath="">
+                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.113145955." name="/" resourcePath="">
                         						
-                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.585269255" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.1048658811" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.prefix.524101577" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="travis-linux-" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.829934568" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="arm-none-linux-gnueabi-" valueType="string"/>
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.1244438531" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.path.782149514" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
                             							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.MachO64" id="cdt.managedbuild.targetPlatform.gnu.cross.161874021" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.704620079" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
                             							
-                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugOsx" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.1063405574" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugArm" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.1507428191" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
                             							
-                            <tool command="gcc" id="cdt.managedbuild.tool.gnu.cross.c.compiler.2101108127" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.237540881" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
                                 								
-                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.401273383" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.820287758" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false"/>
                                 								
-                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.41656177" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.200128905" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
                                 								
-                                <option id="gnu.c.compiler.option.debugging.level.771822275" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                <option id="gnu.c.compiler.option.debugging.level.396401770" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.890880386" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.1399318551" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1060708919" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool command="g++" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.428611593" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.2138923049" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
                                 								
-                                <option id="gnu.cpp.compiler.option.include.paths.1198364314" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false"/>
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.1856728022" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.preprocessor.def.385776797" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.cpp.compiler.option.optimization.level.1801221950" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.optimization.level.56589088" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+                                <option id="gnu.cpp.compiler.option.debugging.level.219854685" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.debugging.level.382426378" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.1278571537" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.other.other.1017221390" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-Wno-unused-variable -Wno-unused-const-variable -c" valueType="string"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1339092954" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1752326287" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1644628809" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1237845310" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
                             							
-                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1988902358" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1291360747" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
                                 								
-                                <option id="gnu.cpp.link.option.libs.1573012752" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false"/>
-                                								
-                                <option id="gnu.cpp.link.option.paths.959053089" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.815891433" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1439591292" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
                                     <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
                                     									
@@ -949,11 +695,11 @@
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.481035650" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.1780765607" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
                             							
-                            <tool command="as" id="cdt.managedbuild.tool.gnu.cross.assembler.1292041109" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.assembler.833083750" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.259188378" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1180024502" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
                                 							
                             </tool>
                             						
@@ -967,7 +713,11 @@
                         						
                         <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
                         						
-                        <entry excluding="apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto++|crypto|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        <entry excluding="apfs-fuse.old|compression|apfs-lib_stubs|apfs-fuse|crypto_openssl|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|crypto++|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        						
+                        <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/apfs-fuse/ApfsLib"/>
+                        						
+                        <entry excluding="src/lzfse_main.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/compression/lzfse"/>
                         					
                     </sourceEntries>
                     				
@@ -979,15 +729,15 @@
             		
         </cconfiguration>
         		
-        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.52442157">
+        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1091505994">
             			
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.52442157" moduleId="org.eclipse.cdt.core.settings" name="build_DebugOsx-clang-crypto++">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1091505994" moduleId="org.eclipse.cdt.core.settings" name="build_release_linux-gcc-openssl_test-all_crypto">
                 				
                 <externalSettings/>
                 				
                 <extensions>
                     					
-                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
                     					
                     <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
                     					
@@ -1005,65 +755,53 @@
             			
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 				
-                <configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.52442157" name="build_DebugOsx-clang-crypto++" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                <configuration artifactName="test-all_crypto" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1091505994" name="build_release_linux-gcc-openssl_test-all_crypto" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
                     					
-                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.52442157." name="/" resourcePath="">
+                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1091505994." name="/" resourcePath="">
                         						
-                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.2042986560" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.502388660" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.prefix.2118459117" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="clang-" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1130991030" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="linux-" valueType="string"/>
                             							
-                            <option id="cdt.managedbuild.option.gnu.cross.path.502233413" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/.settings/jief_build_scripts" valueType="string"/>
+                            <option id="cdt.managedbuild.option.gnu.cross.path.1218633085" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
                             							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.MachO64" id="cdt.managedbuild.targetPlatform.gnu.cross.1141878374" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.879705708" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
                             							
-                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugOsx" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.401558894" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugArm" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.1356666520" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
                             							
-                            <tool command="gcc" id="cdt.managedbuild.tool.gnu.cross.c.compiler.653915852" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.1886764097" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
                                 								
-                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1193542806" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1598295704" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false"/>
                                 								
-                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1359056781" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.478739232" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
                                 								
-                                <option id="gnu.c.compiler.option.debugging.level.562798507" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                <option id="gnu.c.compiler.option.debugging.level.847662484" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1296639039" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.993737508" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.94124011" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool command="g++" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.789458736" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.388570476" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
                                 								
-                                <option id="gnu.cpp.compiler.option.include.paths.1845972946" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false"/>
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.1117830279" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.preprocessor.def.576898201" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
-                                    								
-                                </option>
+                                <option id="gnu.cpp.compiler.option.optimization.level.2089085455" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.optimization.level.1400338739" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+                                <option id="gnu.cpp.compiler.option.debugging.level.275709893" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.debugging.level.1279399021" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.843664400" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
-                                <option id="gnu.cpp.compiler.option.other.other.1067516738" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-Wno-unused-variable -Wno-unused-const-variable -c" valueType="string"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.457344128" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1843992439" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.863751226" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1129650205" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
                             							
-                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.162290319" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.2028932131" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
                                 								
-                                <option id="gnu.cpp.link.option.libs.1328870104" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false"/>
-                                								
-                                <option id="gnu.cpp.link.option.paths.393862934" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
-                                								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.109072231" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.299256788" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
                                     <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
                                     									
@@ -1073,11 +811,11 @@
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.1839289119" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.1830663189" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
                             							
-                            <tool command="as" id="cdt.managedbuild.tool.gnu.cross.assembler.1458812648" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                            <tool id="cdt.managedbuild.tool.gnu.cross.assembler.1791556236" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.2130663411" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.119168861" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
                                 							
                             </tool>
                             						
@@ -1091,7 +829,479 @@
                         						
                         <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
                         						
-                        <entry excluding="crypto_openssl|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        <entry excluding="apfs-fuse.old|utf8proc|tinyxml2|darling-dmg|crypto_openssl|conversion|compression|apfs-lib_stubs|apfs-fuse|Utils.cpp|SparseimageDisk.cpp|SparsebundleReader.cpp|RawDisk.cpp|OpenDisk.cpp|MBRDisk.cpp|HfsFuseVolume.cpp|FuseVolume.cpp|CrossPlatform.cpp|ApfsFuseVolume.cpp|crypto++/DarlingDMGCrypto++.cpp|crypto++/APFSLibCrypto++.cpp|crypto/DarlingDMGCryptoEmbedded.cpp|crypto/APFSLibCryptoEmbedded.cpp|crypto_openssl/DarlingDMGCryptoOpenssl.cpp|crypto_openssl/APFSLibCryptoOpenssl.cpp|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|Main.cpp|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        						
+                        <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src_tests_encryption"/>
+                        					
+                    </sourceEntries>
+                    				
+                </configuration>
+                			
+            </storageModule>
+            			
+            <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+            		
+        </cconfiguration>
+        		
+        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1091505994.145590275">
+            			
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1091505994.145590275" moduleId="org.eclipse.cdt.core.settings" name="build_release_osx-gcc-openssl_test-all_crypto">
+                				
+                <externalSettings/>
+                				
+                <extensions>
+                    					
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    				
+                </extensions>
+                			
+            </storageModule>
+            			
+            <storageModule moduleId="cdtBuildSystem" version="4.0.0">
+                				
+                <configuration artifactName="test-all_crypto" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1091505994.145590275" name="build_release_osx-gcc-openssl_test-all_crypto" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                    					
+                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1091505994.145590275." name="/" resourcePath="">
+                        						
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.110483121" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+                            							
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1264894651" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="x86_64-apple-darwin-" valueType="string"/>
+                            							
+                            <option id="cdt.managedbuild.option.gnu.cross.path.109513893" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
+                            							
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.571063297" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+                            							
+                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugArm" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.2080158394" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.130300386" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+                                								
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.625737999" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false"/>
+                                								
+                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1249289658" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.debugging.level.1429827300" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.1354900066" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.378810094" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1245548321" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                                								
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.1310769527" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.optimization.level.924404867" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.debugging.level.1481378559" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.1524776535" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1909752673" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1519683522" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+                            							
+                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.106951057" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1547894509" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                    									
+                                    <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+                                    									
+                                    <additionalInput kind="additionalinput" paths="$(LIBS)"/>
+                                    								
+                                </inputType>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.1926208568" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.assembler.446670412" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.2107067974" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                							
+                            </tool>
+                            						
+                        </toolChain>
+                        					
+                    </folderInfo>
+                    					
+                    <sourceEntries>
+                        						
+                        <entry excluding="apfsfuse|ApfsDumpQuick|ApfsDump|3rdparty/lzfse/tests|3rdparty/lzfse/src/lzfse_main.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="apfs-fuse"/>
+                        						
+                        <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
+                        						
+                        <entry excluding="apfs-fuse.old|utf8proc|tinyxml2|darling-dmg|crypto_openssl|conversion|compression|apfs-lib_stubs|apfs-fuse|Utils.cpp|SparseimageDisk.cpp|SparsebundleReader.cpp|RawDisk.cpp|OpenDisk.cpp|MBRDisk.cpp|HfsFuseVolume.cpp|FuseVolume.cpp|CrossPlatform.cpp|ApfsFuseVolume.cpp|crypto++/DarlingDMGCrypto++.cpp|crypto++/APFSLibCrypto++.cpp|crypto/DarlingDMGCryptoEmbedded.cpp|crypto/APFSLibCryptoEmbedded.cpp|crypto_openssl/DarlingDMGCryptoOpenssl.cpp|crypto_openssl/APFSLibCryptoOpenssl.cpp|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|Main.cpp|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        						
+                        <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src_tests_encryption"/>
+                        					
+                    </sourceEntries>
+                    				
+                </configuration>
+                			
+            </storageModule>
+            			
+            <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+            		
+        </cconfiguration>
+        		
+        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.113145955.832231691">
+            			
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.113145955.832231691" moduleId="org.eclipse.cdt.core.settings" name="build_release_osx-gcc-cryptoc_hdimount">
+                				
+                <externalSettings/>
+                				
+                <extensions>
+                    					
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    				
+                </extensions>
+                			
+            </storageModule>
+            			
+            <storageModule moduleId="cdtBuildSystem" version="4.0.0">
+                				
+                <configuration artifactName="hdimount" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.113145955.832231691" name="build_release_osx-gcc-cryptoc_hdimount" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                    					
+                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.113145955.832231691." name="/" resourcePath="">
+                        						
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.1765880296" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+                            							
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1956096262" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="x86_64-apple-darwin-" valueType="string"/>
+                            							
+                            <option id="cdt.managedbuild.option.gnu.cross.path.2096448433" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
+                            							
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.1788794825" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+                            							
+                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugArm" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.1927042309" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.818280628" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+                                								
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1632583347" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false"/>
+                                								
+                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.411058011" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.debugging.level.354639166" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.2107199601" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.484567629" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.137016953" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                                								
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.217367712" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.optimization.level.918668499" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.debugging.level.649819187" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.365105013" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.673921150" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.2038511405" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+                            							
+                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.733018437" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.715721076" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                    									
+                                    <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+                                    									
+                                    <additionalInput kind="additionalinput" paths="$(LIBS)"/>
+                                    								
+                                </inputType>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.136141170" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.assembler.464086506" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.374931250" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                							
+                            </tool>
+                            						
+                        </toolChain>
+                        					
+                    </folderInfo>
+                    					
+                    <sourceEntries>
+                        						
+                        <entry excluding="apfsfuse|ApfsDumpQuick|ApfsDump|3rdparty/lzfse/tests|3rdparty/lzfse/src/lzfse_main.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="apfs-fuse"/>
+                        						
+                        <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
+                        						
+                        <entry excluding="apfs-fuse.old|compression|apfs-lib_stubs|apfs-fuse|crypto_openssl|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|crypto++|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|apfs-fuse/ApfsDump|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        						
+                        <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/apfs-fuse/ApfsLib"/>
+                        						
+                        <entry excluding="src/lzfse_main.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/compression/lzfse"/>
+                        					
+                    </sourceEntries>
+                    				
+                </configuration>
+                			
+            </storageModule>
+            			
+            <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+            		
+        </cconfiguration>
+        		
+        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.2116351298">
+            			
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.2116351298" moduleId="org.eclipse.cdt.core.settings" name="build_debug_osx-gcc-openssl_test-compare_di_with_mounted">
+                				
+                <externalSettings/>
+                				
+                <extensions>
+                    					
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    				
+                </extensions>
+                			
+            </storageModule>
+            			
+            <storageModule moduleId="cdtBuildSystem" version="4.0.0">
+                				
+                <configuration artifactName="test-compare_di_with_mounted" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.2116351298" name="build_debug_osx-gcc-openssl_test-compare_di_with_mounted" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                    					
+                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.2116351298." name="/" resourcePath="">
+                        						
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.1931889417" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+                            							
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1993814375" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="x86_64-apple-darwin-" valueType="string"/>
+                            							
+                            <option id="cdt.managedbuild.option.gnu.cross.path.598864559" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
+                            							
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.1809847497" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+                            							
+                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugArm" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.1640325050" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.1909551584" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+                                								
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1485641243" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+                                    									
+                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="DEBUG"/>
+                                    								
+                                </option>
+                                								
+                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.281311678" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.debugging.level.1519445143" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.dialect.std.1105772974" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.864572630" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.437296619" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1389757977" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                                								
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.479348205" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
+                                    									
+                                    <listOptionValue builtIn="false" value="DARLING_DMG_DEBUG"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="DEBUG"/>
+                                    								
+                                </option>
+                                								
+                                <option id="gnu.cpp.compiler.option.optimization.level.1765871990" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.debugging.level.618992765" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.other.other.355521276" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -Wno-unused-variable" valueType="string"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.1884462337" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.776711980" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.641125864" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+                            							
+                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1795583853" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.154362814" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                    									
+                                    <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+                                    									
+                                    <additionalInput kind="additionalinput" paths="$(LIBS)"/>
+                                    								
+                                </inputType>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.1422162069" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.assembler.979635031" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.610482534" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                							
+                            </tool>
+                            						
+                        </toolChain>
+                        					
+                    </folderInfo>
+                    					
+                    <sourceEntries>
+                        						
+                        <entry excluding="Main.cpp|apfs-fuse.old|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto++|crypto|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        						
+                        <entry excluding="FolderReferenceCreation_include.cpp|create_di|create_and_compare|compare_di_with_constants" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src_tests_diskimages"/>
+                        					
+                    </sourceEntries>
+                    				
+                </configuration>
+                			
+            </storageModule>
+            			
+            <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+            		
+        </cconfiguration>
+        		
+        <cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1844059907">
+            			
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1844059907" moduleId="org.eclipse.cdt.core.settings" name="build_debug_osx-clang-openssl_test-compare_di_with_mounted">
+                				
+                <externalSettings/>
+                				
+                <extensions>
+                    					
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+                    				
+                </extensions>
+                			
+            </storageModule>
+            			
+            <storageModule moduleId="cdtBuildSystem" version="4.0.0">
+                				
+                <configuration artifactName="test-compare_di_with_constants" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1844059907" name="build_debug_osx-clang-openssl_test-compare_di_with_mounted" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+                    					
+                    <folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.1844059907." name="/" resourcePath="">
+                        						
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.1510348709" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+                            							
+                            <option id="cdt.managedbuild.option.gnu.cross.prefix.1377793105" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" useByScannerDiscovery="false" value="clang-" valueType="string"/>
+                            							
+                            <option id="cdt.managedbuild.option.gnu.cross.path.1786924408" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" useByScannerDiscovery="false" value="${ProjDirPath}/tools/eclipse_compilation" valueType="string"/>
+                            							
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.1100319321" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+                            							
+                            <builder buildPath="${workspace_loc:/hdimount--jief666--wip}/DebugArm" enableCleanBuild="false" id="cdt.managedbuild.builder.gnu.cross.183369666" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.2101149468" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+                                								
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1494655667" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false"/>
+                                								
+                                <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1646117781" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.debugging.level.927293771" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.c.compiler.option.warnings.extrawarn.406388820" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.163576587" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.563612692" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                                								
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.2113875142" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.optimization.level.304944751" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.debugging.level.248813545" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+                                								
+                                <option id="gnu.cpp.compiler.option.warnings.extrawarn.501752045" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.731811515" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.c.linker.2038417609" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+                            							
+                            <tool command="ld" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1800388683" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.827544577" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                    									
+                                    <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+                                    									
+                                    <additionalInput kind="additionalinput" paths="$(LIBS)"/>
+                                    								
+                                </inputType>
+                                							
+                            </tool>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.archiver.1919722454" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+                            							
+                            <tool id="cdt.managedbuild.tool.gnu.cross.assembler.1358049297" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                                								
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1655539813" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                							
+                            </tool>
+                            						
+                        </toolChain>
+                        					
+                    </folderInfo>
+                    					
+                    <sourceEntries>
+                        						
+                        <entry excluding="apfsfuse|ApfsDumpQuick|ApfsDump|3rdparty/lzfse/tests|3rdparty/lzfse/src/lzfse_main.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="apfs-fuse"/>
+                        						
+                        <entry excluding="src/CryptoOpenssl.cpp|src/main-hdiutil.cpp|test|src/main-fuse.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="darling-dmg"/>
+                        						
+                        <entry excluding="apfs-fuse.old|tinyxml2/xmltest.cpp|tinyxml2/tinyxml2|tinyxml2/resources|tinyxml2/docs|tinyxml2/contrib|utf8proc/utf8proc_data.c|utf8proc/test|utf8proc/data|utf8proc/bench|Main.cpp|crypto++|crypto|apfs-fuse/apfsfuse|apfs-fuse/ApfsDumpQuick|darling-dmg/src/main-hdiutil.cpp|darling-dmg/src/main-fuse.cpp|compression/lzfse/src/lzfse_main.c|darling-dmg/test|crypto/gladman-aes-modes.dis|crypto/gladman-aes.dis|crypto/hmac-sha1 OLD|crypto/gladman-sha/shasum.c|crypto/gladman-sha/hmac_test.c|crypto/gladman-sha/sha-512-t.c|crypto/gladman-sha/sha_time.c|crypto/gladman-sha/sha_test.c|crypto/gladman-sha/pwd2key.c|sparsefs/sparsebundlefs.cpp|main-hdiutil.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        						
+                        <entry excluding="create_and_compare|FolderReferenceCreation_include.cpp|compare_di_with_mounted|create_di|test_disk_images-osx" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src_tests_diskimages"/>
                         					
                     </sourceEntries>
                     				
@@ -1113,27 +1323,67 @@
     	
     <storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
     	
-    <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
-    	
     <storageModule moduleId="refreshScope" versionNumber="2">
         		
-        <configuration configurationName="DebugOsx">
+        <configuration configurationName="build_debug_osx-clang-openssl_hdimount"/>
+        		
+        <configuration configurationName="build_test_DebugOsx-clang-openssl">
             			
-            <resource resourceType="FOLDER" workspacePath="/hdimount--jief666--wip/DebugOsx"/>
+            <resource resourceType="PROJECT" workspacePath="/hdimount--jief666--wip"/>
             		
         </configuration>
         		
-        <configuration configurationName="build_DebugOsx"/>
+        <configuration configurationName="build_release-linux-gcc-openssl_test-all_crypto"/>
         		
-        <configuration configurationName="build_ReleaseArm"/>
+        <configuration configurationName="build_ReleaseArm-gcc-openssl"/>
         		
-        <configuration configurationName="DebugArm">
+        <configuration configurationName="build_release_arm-gcc-openssl_hdimount"/>
+        		
+        <configuration configurationName="build_test-all_crypto-linux-gcc-openssl_release"/>
+        		
+        <configuration configurationName="build_release_osx-gcc-cryptoc_hdimount"/>
+        		
+        <configuration configurationName="build_hdimount_linux-gcc-openssl_release">
             			
-            <resource resourceType="FOLDER" workspacePath="/hdimount--jief666--wip/DebugArm"/>
+            <resource resourceType="PROJECT" workspacePath="/hdimount--jief666--wip"/>
             		
         </configuration>
         		
-        <configuration configurationName="build_DebugArm"/>
+        <configuration configurationName="build_release-osx-gcc-openssl_test-all_crypto"/>
+        		
+        <configuration configurationName="build_hdimount_linux-openssl_release"/>
+        		
+        <configuration configurationName="build_DebugOsx-clang-crypto"/>
+        		
+        <configuration configurationName="build_tests-di_arm-gcc-openssl_release"/>
+        		
+        <configuration configurationName="build_test-all_crypto-osx-gcc-openssl_release"/>
+        		
+        <configuration configurationName="build_hdimount_osx-gcc-cryptoc_release"/>
+        		
+        <configuration configurationName="travis_DebugOsx-clang-openssl"/>
+        		
+        <configuration configurationName="build_DebugArm-gcc-openssl">
+            			
+            <resource resourceType="FOLDER" workspacePath="/hdimount--jief666--wip/build_DebugArm-gcc-openssl"/>
+            		
+        </configuration>
+        		
+        <configuration configurationName="build_DebugOsx-clang-crypto++"/>
+        		
+        <configuration configurationName="build_release_arm-gcc-cryptoc_hdimount"/>
+        		
+        <configuration configurationName="build_test-compare_di_with_constants-linux-gcc-openssl_release"/>
+        		
+        <configuration configurationName="build_debug_osx-gcc-openssl_hdimount"/>
+        		
+        <configuration configurationName="build_ReleaseOsx-clang-openssl"/>
+        		
+        <configuration configurationName="build_tests-di_linux-gcc-openssl_debug"/>
+        		
+        <configuration configurationName="build_hdimount_arm-gcc-cryptoc_release"/>
+        		
+        <configuration configurationName="build_ReleaseOsx-gcc-openssl"/>
         		
         <configuration configurationName="build_ReleaseOsx"/>
         		
@@ -1148,6 +1398,56 @@
             <resource resourceType="PROJECT" workspacePath="/hdimount--jief666--wip"/>
             		
         </configuration>
+        		
+        <configuration configurationName="build_DebugOsx-gcc-openssl"/>
+        		
+        <configuration configurationName="build_DebugOsx-clang-openssl"/>
+        		
+        <configuration configurationName="DebugOsx">
+            			
+            <resource resourceType="FOLDER" workspacePath="/hdimount--jief666--wip/DebugOsx"/>
+            		
+        </configuration>
+        		
+        <configuration configurationName="build_DebugOsx"/>
+        		
+        <configuration configurationName="build_ReleaseArm"/>
+        		
+        <configuration configurationName="build_release-linux-gcc-openssl_test-compare_di_with_constants"/>
+        		
+        <configuration configurationName="build_DebugOsx-clang-embeddedcrypto"/>
+        		
+        <configuration configurationName="DebugArm">
+            			
+            <resource resourceType="FOLDER" workspacePath="/hdimount--jief666--wip/DebugArm"/>
+            		
+        </configuration>
+        		
+        <configuration configurationName="build_DebugArm"/>
+        		
+        <configuration configurationName="build_hdimount_osx-gcc-openssl_debug"/>
+        		
+        <configuration configurationName="build_debug_osx-gcc-openssl_test-compare_di_with_mounted"/>
+        		
+        <configuration configurationName="build_hdimount_osx-clang-openssl_debug"/>
+        		
+        <configuration configurationName="build_test_DebugOsx-gcc-openssl">
+            			
+            <resource resourceType="PROJECT" workspacePath="/hdimount--jief666--wip"/>
+            		
+        </configuration>
+        		
+        <configuration configurationName="build_hdimount_arm-gcc-openssl_release"/>
+        		
+        <configuration configurationName="build_ReleaseLinux-gcc-openssl"/>
+        		
+        <configuration configurationName="build_release-linux-gcc-openssl_hdimount"/>
+        	
+    </storageModule>
+    	
+    <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+        		
+        <buildTargets/>
         	
     </storageModule>
     	
@@ -1155,13 +1455,79 @@
         		
         <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
         		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.2116351298;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.2116351298.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1389757977;cdt.managedbuild.tool.gnu.cpp.compiler.input.776711980">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.110488129;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.110488129.;cdt.managedbuild.tool.gnu.cross.c.compiler.381327805;cdt.managedbuild.tool.gnu.c.compiler.input.1445379645">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
         <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.;cdt.managedbuild.tool.gnu.cross.c.compiler.1506642277;cdt.managedbuild.tool.gnu.c.compiler.input.1082146874">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
             		
         </scannerConfigBuildInfo>
         		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.11946682;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.11946682.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.428611593;cdt.managedbuild.tool.gnu.cpp.compiler.input.1339092954">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.110488129;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.110488129.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.726490373;cdt.managedbuild.tool.gnu.cpp.compiler.input.1321207284">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.11946682;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.11946682.;cdt.managedbuild.tool.gnu.cross.c.compiler.2101108127;cdt.managedbuild.tool.gnu.c.compiler.input.890880386">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.;cdt.managedbuild.tool.gnu.cross.c.compiler.225152945;cdt.managedbuild.tool.gnu.c.compiler.input.761813230">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.;cdt.managedbuild.tool.gnu.c.compiler.macosx.exe.debug.1355093079;cdt.managedbuild.tool.gnu.c.compiler.input.828831829">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1942807347;cdt.managedbuild.tool.gnu.cpp.compiler.input.617020331">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.567059460;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.567059460.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1520885572;cdt.managedbuild.tool.gnu.cpp.compiler.input.2140586796">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1631522943;cdt.managedbuild.tool.gnu.cpp.compiler.input.1337349910">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
         <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.;cdt.managedbuild.tool.gnu.cpp.compiler.macosx.exe.debug.985209703;cdt.managedbuild.tool.gnu.cpp.compiler.input.426053367">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1218154829;cdt.managedbuild.tool.gnu.cpp.compiler.input.918791713">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
             		
@@ -1179,25 +1545,31 @@
             		
         </scannerConfigBuildInfo>
         		
-        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.;cdt.managedbuild.tool.gnu.c.compiler.macosx.exe.debug.1355093079;cdt.managedbuild.tool.gnu.c.compiler.input.828831829">
-            			
-            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-            		
-        </scannerConfigBuildInfo>
-        		
         <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.;cdt.managedbuild.tool.gnu.cross.c.compiler.826372983;cdt.managedbuild.tool.gnu.c.compiler.input.1654683470">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
             		
         </scannerConfigBuildInfo>
         		
-        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1942807347;cdt.managedbuild.tool.gnu.cpp.compiler.input.617020331">
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.;cdt.managedbuild.tool.gnu.cross.c.compiler.1766942553;cdt.managedbuild.tool.gnu.c.compiler.input.1510544968">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.2116351298;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.2116351298.;cdt.managedbuild.tool.gnu.cross.c.compiler.1909551584;cdt.managedbuild.tool.gnu.c.compiler.input.437296619">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
             		
         </scannerConfigBuildInfo>
         		
         <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.1465078919;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.1559088384.1465078919.;cdt.managedbuild.tool.gnu.cross.c.compiler.2117521118;cdt.managedbuild.tool.gnu.c.compiler.input.747068146">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.567059460;cdt.managedbuild.config.gnu.macosx.exe.debug.1485554328.639205363.809897721.1422875747.628958328.567059460.;cdt.managedbuild.tool.gnu.cross.c.compiler.115900590;cdt.managedbuild.tool.gnu.c.compiler.input.1511948161">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
             		

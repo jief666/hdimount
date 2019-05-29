@@ -1,0 +1,111 @@
+#!/bin/bash
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  TARGET="$(readlink "$SOURCE")"
+  if [[ $TARGET == /* ]]; then
+    #echo "SOURCE '$SOURCE' is an absolute symlink to '$TARGET'"
+    SOURCE="$TARGET"
+  else
+    DIR="$( dirname "$SOURCE" )"
+    #echo "SOURCE '$SOURCE' is a relative symlink to '$TARGET' (relative to '$DIR')"
+    SOURCE="$DIR/$TARGET" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  fi
+done
+#echo "SOURCE is '$SOURCE'"
+RDIR="$( dirname "$SOURCE" )"
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+if [ "$DIR" != "$RDIR" ]; then
+  #echo "DIR '$RDIR' resolves to '$DIR'"
+  :
+fi
+SCRIPT_DIR="$DIR"
+
+
+#do not set -e if this is sourced. It will apply to login shell !!
+
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+#echo $sourced
+
+
+function do_it
+{
+		
+	if [ $sourced -eq 0 ]
+	then
+	    echo Please, source this script.
+	    return 1
+	fi
+		
+	
+	
+	if [ "$(uname)" = "Darwin" ]
+	then
+	
+	    export HOMEBREW_NO_AUTO_UPDATE=1
+	    export DIST_ARTIFACT_NAME=hdimount-osx$(sw_vers -productVersion | /usr/bin/awk -F. '{print $2}')
+
+		# go env doesn't work on Travis X.11
+	    #export GOPATH=$(go env GOPATH)
+	    #export PATH=$PATH:$GOPATH/bin
+	    
+	    #go get github.com/gableroux/github-release
+	    
+	fi  
+	
+	#
+	
+	
+	#to get list of available packages : apt-cache pkgnames
+	
+	#Travis linux computer
+	if [ "$TRAVIS_OS_NAME" = "linux" ]
+	then
+		sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+		
+		sudo apt-get update
+		#sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install libfuse-dev
+		sudo apt-get -y install libfuse-dev
+		sudo apt-get -y install libattr1-dev
+		
+		if [ "$TRAVIS_DIST" = "precise" ]
+		then
+			gcc_suffix=4.9
+			export DIST_ARTIFACT_NAME=hdimount-ubuntu12
+		fi
+		if [ "$TRAVIS_DIST" = "trusty" ]
+		then
+			export DIST_ARTIFACT_NAME=hdimount-ubuntu14
+		fi
+		if [ "$TRAVIS_DIST" = "xenial" ]
+		then
+			export DIST_ARTIFACT_NAME=hdimount-ubuntu16
+		fi
+		
+	#	gcc_suffix=4.9
+	#	gcc_suffix=6
+		if ! [ -z "$gcc_suffix" ]
+		then
+			sudo apt-get install g++-$gcc_suffix # from ppa:ubuntu-toolchain-r/test
+			sudo rm /usr/bin/gcc /usr/bin/g++ /usr/bin/cpp
+			sudo ln -s cpp-$gcc_suffix /usr/bin/cpp
+			sudo ln -s gcc-$gcc_suffix /usr/bin/gcc
+			sudo ln -s g++-$gcc_suffix /usr/bin/g++
+		fi
+	
+	
+		go get github.com/gableroux/github-release
+	
+	fi
+	
+	
+	#non-Travis Linux computer
+	if [ -z "$TRAVIS_OS_NAME" ]  &&  ! [ "$(uname)" = "Darwin" ]  &&  [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]
+	then
+		sudo apt-get -y install make g++ libfuse-dev libattr1-dev libssl-dev #needed at least on ubuntu14
+		
+	fi
+	
+}
+
+do_it "$@"

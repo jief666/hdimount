@@ -1,0 +1,18 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+cd "$SCRIPT_DIR"
+
+
+function create_hfs_and_apfs
+{
+        local name=$1
+        local type=$2
+        shift; shift;
+
+        ./create_3_nomap_applemap_mbr_gpt ${name}Hfs $type 1m HFS+
+        ./create_3_nomap_applemap_mbr_gpt ${name}Apfs $type 2m APFS
+}
+
+create_hfs_and_apfs "$@"

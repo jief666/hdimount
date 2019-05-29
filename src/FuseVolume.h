@@ -1,8 +1,13 @@
 #ifndef FUSEVOLUME_H
 #define FUSEVOLUME_H
 
+#include <string>
+
 #include <sys/types.h>
 #include <fuse.h>
+
+#define HFS_FUSE_VOLUME 1
+#define APFS_FUSE_VOLUME 2
 
 class FuseVolume
 {
@@ -10,8 +15,10 @@ public:
 //	Volume(std::shared_ptr<Reader> reader);
 	FuseVolume() {};
 	virtual ~FuseVolume() {};
+ 
+    virtual int fsType() = 0;
 	
-	virtual int getattr(const char* path, struct stat* stat) = 0;
+	virtual int getattr(const char* path, struct FUSE_STAT* stat) = 0;
 	virtual int readlink(const char* path, char* buf, size_t size) = 0;
 	virtual int open(const char* path, struct fuse_file_info* info) = 0;
 	virtual int read(const char* path, char* buf, size_t bytes, off_t offset, struct fuse_file_info* info) = 0;

@@ -1,0 +1,5 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+echo -L../lib/lib_osx.11/openssl/1.0.2r/dylib -lz -lcrypto_ -lbz2 -losxfuse -llzma

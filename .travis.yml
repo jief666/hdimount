@@ -1,0 +1,70 @@
+sudo: true
+language: cpp
+
+matrix:
+  include:
+#    Ubuntu 12                                              
+#    - os: linux
+#      dist: precise
+
+#    Ubuntu 14                                              
+    - os: linux
+      dist: trusty
+      
+#    Ubuntu 16                                              
+    - os: linux
+      dist: xenial
+      
+      
+#    - os: osx
+#      osx_image: xcode6.4
+#      env: 'DST="arch=x86_64"'
+
+    - os: osx
+      osx_image: xcode8
+      env: 'DST="arch=x86_64"'
+      
+    - os: osx
+      osx_image: xcode9.3
+      env: 'DST="arch=x86_64"'
+      
+#    -os: windows
+    
+if: tag IS blank    
+    
+before_script:
+  - source ./tools/travis-ci.com/prebuild
+  - ./tools/scripts/build_test_all_crypto
+  - ./tools/scripts/build_test_create_di
+  - ./tools/scripts/build_test_compare_di_with_constants
+  - ./tools/scripts/build_test_compare_di_with_mounted
+  - ./tools/scripts/build_hdimount
+  
+
+
+script:
+  - ./tools/scripts/test_all_crypto
+  - git clone https://github.com/jief666/hdimount_diskimage_test.git ./GeneratedDiskImages
+  - ./tools/scripts/test_compare_di_with_constants
+  - ./tools/scripts/test_compare_di_with_mounted
+  - sleep 10
+  - ./tools/scripts/upload_to_github_releases
+  
+#before_deploy:
+#  # Set up git user name and tag this commit
+#  - git config --local user.name "YOUR GIT USER NAME"
+#  - git config --local user.email "YOUR GIT USER EMAIL"
+#  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+#  - git tag $TRAVIS_TAG
+
+#deploy:
+#  provider: releases
+#  api_key: $GITHUB_OAUTH_TOKEN
+#  file: 
+#    - dist/$DIST_ARTIFACT_NAME
+#  skip_cleanup: true
+#  on:
+#    repo: jief666/hdimount
+#    draft: true
+#    prerelease: true
+#    branch: wip

@@ -1,0 +1,8 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+echo -m64 -include ../src/CrossPlatform.h \
+     -I/usr/local/include \
+     -I/usr/local/include/osxfuse \
+     -I../lib/lib_osx.11/openssl/1.0.2r/include \

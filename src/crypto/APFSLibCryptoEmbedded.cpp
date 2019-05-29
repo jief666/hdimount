@@ -8,6 +8,7 @@
 #include "../apfs-fuse/ApfsLib/APFSLibCrypto.h"
 
 #include <stdio.h>
+#include <assert.h>
 
 #include "gladman-aes/aes.h"
 #include "gladman-sha/sha1.h"
@@ -25,12 +26,13 @@
 /*
  * aes : 128 or 256 = key size in bits.
  */
-bool APFSLibCrypto_Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, size_t size, const uint8_t *key, int aes_mode, uint64_t *iv)
+bool APFSLibCrypto_Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, unsigned int size, const uint8_t *key, int aes_mode, uint64_t *iv)
 {
-printHexBufAsCDecl(key, aes_mode/8, "kek");
+	(void)iv;
+//printHexBufAsCDecl(key, aes_mode/8, "kek");
 //printHexBufAsCDecl(crypto, size+8, "wrapped_key");
 //printHexBufAsCDecl((const uint8_t*)iv, 16, "iv");
-	bool rv = AES_unwrap_key_2(plain, crypto, size, key, aes_mode, NULL);
+	bool rv = AES_unwrap_key_2(plain, crypto, size, key, aes_mode, iv);
 //printHexBufAsCDecl(plain, size, "APFSLibCrypto_Rfc3394_KeyUnwrap");
 	return rv;
 }
@@ -59,8 +61,11 @@ void APFSLibCrypto_HMAC_SHA256(const uint8_t *key, size_t key_len, const uint8_t
 
 void APFSLibCrypto_aes_xtx_setkey(const uint8_t* key1, int key1_len, const uint8_t* key2, int key2_len, xts_ctx* ctx)
 {
+	assert(key1_len == 16);
+	assert(key2_len == 16);
 //	xts_start(0, NULL, key1, key1_len, key2, key2_len, 0, 0, ctx);
-	uint8_t keys[key1_len+key2_len];
+//	uint8_t keys[key1_len + key2_len];
+	uint8_t* keys = (uint8_t*)alloca(key1_len + key2_len);
 	memcpy(keys, key1, key1_len);
 	memcpy(keys+key1_len, key2, key2_len);
 	xts_key(keys, key1_len+key2_len, ctx);

@@ -1,15 +1,15 @@
-#include "../darling-dmg/src/DMGDisk.h"
+#include "darling-dmg/src/DMGDisk.h"
 #include <stdexcept>
-#include "../darling-dmg/src/be.h"
+#include "darling-dmg/src/be.h"
 #include <iostream>
 #include <cstring>
 #include <memory>
 #include <sstream>
 
 #include "RawDisk.h"
-#include "../darling-dmg/src/CachedReader.h"
+#include "darling-dmg/src/CachedReader.h"
 
-#include "../darling-dmg/src/exceptions.h"
+#include "darling-dmg/src/exceptions.h"
 #include "Utils.h"
 
 RawDisk::RawDisk(std::shared_ptr<Reader> reader)

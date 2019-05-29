@@ -1,0 +1,12 @@
+#this is sourced.
+
+if [ -z "$GCC_PATH" ]
+then
+  gcc_path=../../../x86_64-apple-darwin-gcc-v7.1.0
+  gcc_prefix=x86_64-apple-darwin14.5.0-
+  gcc_suffix=-7.1.0
+  bin_path="$gcc_path"/bin/"$gcc_prefix""$1""$gcc_suffix"
+else
+  bin_path="$GCC_PATH"/"$gcc_prefix""$1""$gcc_suffix"
+fi
+

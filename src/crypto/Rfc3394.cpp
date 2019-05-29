@@ -1,7 +1,7 @@
 #include "Rfc3394.h"
 
 //#include "Sha256.h"
-#include "Util.h"
+//#include "Util.h"
 
 #include <cstring>
 #include <cassert>
@@ -74,7 +74,8 @@ int AES_unwrap_key_2(unsigned char *out, const unsigned char *in, int inlen, con
 		aes_decrypt_key256((const unsigned char *) key, &rijndael_ctx);
 
 	unsigned char *A, B[16], *R;
-	unsigned int i, j, t;
+	int i;
+	unsigned int j, t;
 	inlen -= 8;
 	if (inlen & 0x7)
 		return -1;

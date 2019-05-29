@@ -1,0 +1,34 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+cd "$SCRIPT_DIR"
+
+path=$1
+
+
+mkdir -p mnt_darling
+
+diskutil eject mnt_hdiutil  # just in case
+umount mnt_darling  # just in case
+
+hdiutil attach -readonly -owners on _ImgReference.dmg
+/JiefLand/5.Devel/Syno/Fuse/darling-dmg--darlinghq--master/DerivedData/darling-dmg--darlinghq--master/Build/Products/Debug/darling-dmg--darlinghq--master ImgHfsGptModif.dmg mnt_darling
+
+nblines=$(/JiefLand/5.Devel/RsyncJief/rsync-v3.1.3/rsync-3.1.3-crtimes-osx-xcode/XcodeProj/DerivedData/rsync-v3.1.3/Build/Products/Debug/rsync-v3.1.3 \
+  -azHX --crtimes \
+  --out-format='%i  - %n  - %M' \
+  -n \
+  /Volumes/ImgReference/ mnt_darling | wc -l)
+
+echo $nblines
+
+if [ $nblines -gt 0 ]
+then
+  echo OK
+else
+  echo FAILED !!!!!!!!!!!!!
+fi
+
+#diskutil eject  /Volumes/ImgReference
+umount mnt_darling

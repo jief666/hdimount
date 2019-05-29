@@ -1,0 +1,44 @@
+#!/bin/bash
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  TARGET="$(readlink "$SOURCE")"
+  if [[ $TARGET == /* ]]; then
+    #echo "SOURCE '$SOURCE' is an absolute symlink to '$TARGET'"
+    SOURCE="$TARGET"
+  else
+    DIR="$( dirname "$SOURCE" )"
+    #echo "SOURCE '$SOURCE' is a relative symlink to '$TARGET' (relative to '$DIR')"
+    SOURCE="$DIR/$TARGET" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  fi
+done
+#echo "SOURCE is '$SOURCE'"
+RDIR="$( dirname "$SOURCE" )"
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+if [ "$DIR" != "$RDIR" ]; then
+  #echo "DIR '$RDIR' resolves to '$DIR'"
+  :
+fi
+SCRIPT_DIR="$DIR"
+
+set -e
+
+
+function do_it
+{
+	
+	if [ -z $HOME_URL ]
+	then
+		echo HOME_URL is not defined. HOME_URL is the address of your computer, running rsyncd_portable. 
+		return 1
+	fi
+	
+	
+	rsync -a --out-format='%i  - %n  - %M' rsync://$HOME_URL:2220/root/src "$SCRIPT_DIR"/../../ "$@"
+	rsync -a --out-format='%i  - %n  - %M' rsync://$HOME_URL:2220/root/src_tests "$SCRIPT_DIR"/../../ "$@"
+	rsync -a --out-format='%i  - %n  - %M' -f "- Generated*" rsync://$HOME_URL:2220/root/src_tests_diskimages "$SCRIPT_DIR"/../../ "$@"
+	rsync -a --out-format='%i  - %n  - %M' rsync://$HOME_URL:2220/root/src_tests_encryption "$SCRIPT_DIR"/../../ "$@"
+	
+}
+
+do_it "$@"
+	

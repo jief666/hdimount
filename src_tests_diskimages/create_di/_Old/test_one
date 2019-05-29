@@ -1,0 +1,134 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+cd "$SCRIPT_DIR"
+
+
+function print_array
+{
+    local -a 'arraykeys=("${!'"$1"'[@]}")'
+    arraykeysString=${arraykeys[*]}
+
+    needspace=false
+    for index in $arraykeysString
+    do
+        if [ $needspace = true ]
+        then
+            printf " "
+        else
+            needspace=true 
+        fi
+        current=$1"[$index]"
+        val=${!current}
+        if [ -z "$val" ]
+        then
+            printf "''"
+        else
+            re='.* .*'
+            if [[ "$val" =~ $re ]]
+            then
+                prefix=${val%%'='*}
+                if [[ "$prefix" = "$val" ]]
+                then
+                    printf "'%s'" "$val"
+                else
+                    idx=${#prefix}
+                    printf "%s'%s'" "${val:0:$((idx+1))}" "${val:$((idx+1))}"
+                fi
+            else
+                printf "%s" "$val"
+            fi
+        fi
+    done
+    printf "\n"
+}
+
+function runCommand
+{
+    printf "%s" '----> '
+    print_array $1
+    local -a 'arraykeys=("${!'"$1"'[@]}")' copy
+
+    arraykeysString=${arraykeys[*]}
+    for index in $arraykeysString;
+    do
+        current=$1"[$index]"
+        copy[$index]=${!current}
+    done
+    "${copy[@]}"
+}
+
+
+
+
+
+path=$1
+
+#set -x
+
+echo '=============================================================>' Testing $(basename "$1")
+
+mkdir -p mnt_hdiutil
+mkdir -p mnt_fuse
+
+diskutil eject mnt_hdiutil >/dev/null 2>&1 # just in case
+umount mnt_fuse >/dev/null 2>&1 # just in case
+
+hdiutil_cmd=(hdiutil attach -mountpoint mnt_hdiutil -readonly -owners on "$path" -stdinpass)
+echo '---->' "${hdiutil_cmd[@]}"
+
+echo -n "foo" | "${hdiutil_cmd[@]}" >/dev/null
+if ! [ $? -eq 0 ]
+then
+  echo cannot mount "$path"
+  exit 1
+fi
+diskids=( $(echo -n "foo" | hdiutil attach -mountpoint mnt_hdiutil -readonly -owners on "$path" -stdinpass  | awk '{if ($1) print $1}') )
+
+hdimount_cmd=("../../hdimount--jief666--wip.xcodeproj/DerivedData/hdimount--jief666--wip/Build/Products/Debug/hdimount--jief666--wip openssl libfuse" "$path" mnt_fuse)
+runCommand hdimount_cmd  2>&1 >hdimount_log  &
+#jobs %%
+
+
+sleep 0.5 #extra safety
+
+rc=1
+while [[ $rc != 0 ]]
+do
+    mount | grep "$SCRIPT_DIR"/mnt_fuse >/dev/null 2>&1
+    rc=$?
+    if [[ $rc = 0 ]]
+    then
+        # ok, it's mounted
+        sleep 0.5 #extra safety
+    else
+        if jobs 1 >/dev/null 2>&1
+        then
+            #echo   "$0: no apfs-fuse mount yet. Retry in 1 second"
+            sleep 1
+        else
+            cat hdimount_log
+            echo cannot mount "$path" with hdimount
+            exit 1
+        fi
+    fi
+done
+
+./test_one_2 "$path"
+ret=$?
+
+#diskutil eject mnt_hdiutil >/dev/null
+umount mnt_fuse >/dev/null
+
+for (( idx=${#diskids[@]}-1 ; idx>=0 ; idx-- ))
+do
+    diskutil list | grep "${diskids[idx]}" >/dev/null 2>&1
+    rc=$?
+    if [[ $rc = 0 ]]
+    then
+        diskutil eject "${diskids[idx]}"
+    fi
+done
+
+exit $ret

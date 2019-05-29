@@ -1,0 +1,114 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+
+dryrun=0
+ 
+while getopts ":r" opt; do
+  case $opt in
+    r)
+      dryrun=1
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+shift $((OPTIND-1))
+
+
+echo '------------> Checking file ' \'"$1"\'
+
+if [ -L "$libdirname/$libbasename" ]
+then
+    #We don't process symlinks. We'll should process the original instead
+    :
+    echo Symlink : nothing to do. Process the original instead.
+    exit 1
+
+else
+
+    #set -x
+
+    libbasename=`basename "$1"`
+    libdirname=`dirname "$1"`
+
+    #echo libdirname=$libdirname
+    #echo pwd = `pwd`
+
+    #cd "$libdirname"
+    returnValue=0
+
+    nbline=$(otool -D "$libdirname"/"$libbasename" | wc -l)
+    if [ $nbline -gt 1 ]
+    then
+        firstline_is_id=1
+    else
+        firstline_is_id=0
+    fi
+
+    while read -r line;
+     do
+      # line would be something like "/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)"
+      #echo line=$line
+
+        ex='^(.*) \(.*\)$'
+        if [[ "$line" =~ $ex ]]
+        then
+    		#echo lib name \(BASH_REMATCH\)=${BASH_REMATCH[1]}
+    		reqlibfullname="${BASH_REMATCH[1]}"
+            ex2='^.*Framework.*$'
+            if ! [[ "$reqlibfullname" =~ $ex2 ]]
+            then
+
+
+        		reqlibbasename=$(basename "$reqlibfullname")
+
+                if [ $firstline_is_id -eq 1 ]
+                then
+                    libabsolutepath=$(cd "$libdirname"; pwd)/"$libbasename"
+            		#If the id is alredy correct
+            		if [ "$reqlibfullname" = "$libabsolutepath" ]
+            		then
+            			:
+            			# do nothing
+            		else
+            			CMD="install_name_tool -id "$libabsolutepath" "$libdirname"/"$libbasename""
+            			if [ $dryrun -eq 1 ]; then
+            				echo Must issue cmd : "$CMD"
+            			else
+            				echo issuing cmd : "$CMD"
+            				$CMD
+            			fi
+            		fi
+                    firstline_is_id=0
+                else
+            		
+        			reqlibnewpath=$("$SCRIPT_DIR"/lib_path "$libdirname" "$reqlibbasename") || exit 1
+        			#echo reqlibnewpath=$reqlibnewpath
+        			if [ -z "$reqlibnewpath" ]
+        			then
+        				echo "ERROR ****> Can't find lib "$reqlibbasename" required by $libdirname/$libbasename"
+        	        	returnValue=1
+        			else
+        				newpath="@loader_path"/"$reqlibnewpath"
+        				[[ "$reqlibnewpath" == /* ]] && newpath="$reqlibnewpath"
+        				if [ "$reqlibfullname" != "$newpath" ]
+        				then
+        					CMD="install_name_tool -change "$reqlibfullname" "$newpath" "$libdirname"/"$libbasename""
+        					if [ $dryrun -eq 1 ]; then
+        						echo Must issue cmd : "$CMD"
+        					else
+        						echo issuing cmd : "$CMD"
+        						$CMD
+        					fi
+        				fi
+        			fi
+                fi
+            fi
+        fi
+    done <<< "$(otool -XL "$libdirname"/"$libbasename")"
+
+    exit $returnValue
+fi

@@ -1,0 +1,30 @@
+hdiutil create ImgNoMapAPFSEncTest.dmg -size 2m -volname "ImgNoMapAPFSEncTest" -fs APFS -layout NONE -encryption AES-128
+
+hdiutil create SparsebundleNoMapAPFSTest -size 2m -volname "SparsebundleNoMapAPFSTest" -type SPARSEBUNDLE -fs APFS -layout NONE
+echo -n "foo" | hdiutil create SparsebundleNoMapAPFSEncTest -size 2m -volname "SparsebundleNoMapAPFSEncTest" -type SPARSEBUNDLE -fs APFS -layout NONE -encryption AES-128 -stdinpass
+
+#hdiutil create /JiefWorld/Nobu/BigUDCOTest -volname "BigUDCOTest" -fs HFS+ -layout NONE -format UDCO -srcfolder /JiefWorld/2.Videos.sparsebundle
+
+
+
+#Image from disk
+sudo hdiutil create "/JiefLand/5.Devel/Syno/Fuse/ImagesTest/ImgUDCO (adc compression)" -volname "ImgUDCO" -fs HFS+ -layout NONE -format UDCO -srcfolder /Volumes/ImgNoMapHfs
+sudo hdiutil create "/JiefLand/5.Devel/Syno/Fuse/ImagesTest/ImgUDZO (? compression)" -volname "ImgUDZO" -fs HFS+ -layout NONE -format UDZO -srcfolder /Volumes/ImgNoMapHfs
+sudo hdiutil create "/JiefLand/5.Devel/Syno/Fuse/ImagesTest/ImgUDBZ (bzip2 compression)" -volname "ImgUDBZ" -fs HFS+ -layout NONE -format UDBZ -srcfolder /Volumes/ImgNoMapHfs
+sudo hdiutil create "/JiefLand/5.Devel/Syno/Fuse/ImagesTest/ImgULFO (lzfse compression)" -volname "ImgULFO" -fs HFS+ -layout NONE -format ULFO -srcfolder /Volumes/ImgNoMapHfs
+
+#sparsebundle HFS
+sudo hdiutil create "/JiefLand/5.Devel/Syno/Fuse/ImagesTest/SbNoMapHfs" -volname "SbNoMapHfs" -size 1m -fs HFS+ -type SPARSEBUNDLE -layout NONE
+echo -n "foo" | sudo hdiutil create "/JiefLand/5.Devel/Syno/Fuse/ImagesTest/SbNoMapHfsEnc" -volname "SbNoMapHfsEnc" -size 1m -fs HFS+ -type SPARSEBUNDLE -layout NONE -encryption AES-128 -stdinpass
+
+#Image disk HFS
+echo -n "foo" | sudo hdiutil create "/JiefLand/5.Devel/Syno/Fuse/ImagesTest/ImgNoMapHfsEnc" -volname "ImgNoMapHfsEnc" -size 1m -fs HFS+ -layout NONE -encryption AES-128 -stdinpass
+
+#Image disk APFS
+hdiutil create ImgNoMapApfs.dmg -size 2m -volname "ImgNoMapApfs" -fs APFS -layout NONE
+hdiutil create ImgGptApfs.dmg -size 2m -volname "ImgGptApfs" -fs APFS
+echo -n "foo" | sudo hdiutil create ImgGptApfsEnc.dmg -size 2m -volname "ImgGptApfsEnc" -fs APFS -encryption AES-128 -stdinpass
+
+
+#sparse image
+sudo hdiutil create "/JiefLand/No_backup/SprsHfsGpt.sparseimage" -volname "SprsHfsGpt" -size 6g -fs HFS+ -type SPARSE -layout GPTSPUD

@@ -1,0 +1,37 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+
+set -e
+
+
+
+cd "$SCRIPT_DIR"
+
+entries=(./icu4c/64.2/include/* ./openssl/1.0.2r/include/* ./osxfuse/3.8.2/include/*)
+
+rm -rf "$SCRIPT_DIR"/include
+mkdir "$SCRIPT_DIR"/include
+for entry in "${entries[@]}"
+do
+    rm -f include/$(basename "$entry")
+    echo ln -s ../"$entry" include/$(basename "$entry")
+    ln -s ../"$entry" include/$(basename "$entry")
+done
+
+
+entries=( \
+    ./icu4c/64.2/lib/*   ./openssl/1.0.2r/lib/*   \
+    ./icu4c/64.2/dylib/* ./openssl/1.0.2r/dylib/* ./osxfuse/3.8.2/dylib/*\
+    \
+)
+
+rm -rf "$SCRIPT_DIR"/lib
+mkdir "$SCRIPT_DIR"/lib
+for entry in "${entries[@]}"
+do
+    rm -f lib/$(basename "$entry")
+    echo ln -s ../"$entry" lib/$(basename "$entry")
+    ln -s ../"$entry" lib/$(basename "$entry")
+done

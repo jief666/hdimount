@@ -12,6 +12,7 @@
 #include "PBKDF2_HMAC_SHA1.h"
 #include "TripleDes.h"
 
+#include <assert.h>
 
 
 int DarlingDMGCrypto_PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
@@ -19,14 +20,15 @@ int DarlingDMGCrypto_PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
                            int keylen, unsigned char *out)
 {
 //printHexBufAsCDecl(salt, saltlen);
-	Password_Based_Key_Derivation_Function_2_SHA1((const uint8_t*)pass, (size_t)passlen, (const uint8_t*)salt, (size_t)saltlen, iter, (uint8_t*)out, (size_t)keylen);
+	Password_Based_Key_Derivation_Function_2_SHA1((const uint8_t*)pass, passlen, (const uint8_t*)salt, saltlen, iter, (uint8_t*)out, keylen);
 //printHexBufAsCDecl(out, keylen);
 	return 1;
 }
 
 // TODO outl unused
-void DarlingDMGCrypto_DES_CBC(const unsigned char *key, const unsigned char *iv, unsigned char *out, int *outl, const unsigned char *in, int inl)
+void DarlingDMGCrypto_DES_CBC(const unsigned char *key, const unsigned char *iv, unsigned char *out, const unsigned char *in, int inl)
 {
+
 	TripleDESData_t ctx;
 	TripleDesSetKey(key, &ctx);
 	TripleDesSetIV(iv, &ctx);
@@ -54,7 +56,8 @@ void DarlingDMGCrypto_aes_cbc_decrypt(const unsigned char *in, unsigned char *ou
                      size_t length, const void *key,
                      unsigned char *ivec)
 {
-   	aes_cbc_decrypt(in, out, length, ivec, (aes_decrypt_ctx*)key);
+	assert(length < INT_MAX);
+   	aes_cbc_decrypt(in, out, (int)length, ivec, (aes_decrypt_ctx*)key);
 }
 
 
@@ -66,11 +69,11 @@ bool base64Decode(const std::string& input, std::vector<uint8_t>& output)
 {
 	static const std::string base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	
-	const int in_len_const = input.size();
-	int in_len = input.size();
-	int i = 0;
-	int j = 0;
-	int in_ = 0;
+	const size_t in_len_const = input.size();
+	size_t in_len = input.size();
+	size_t i = 0;
+	size_t j = 0;
+	size_t in_ = 0;
 	uint8_t char_array_4[4], char_array_3[3];
 	
 	while (in_len-- && (input[in_] != '='))

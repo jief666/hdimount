@@ -1,0 +1,17 @@
+use chroot = no
+max connections = 5
+#syslog facility = local5
+log file = LOGFILE
+pid file = PIDFILE
+charset = utf-8
+port = 2220
+
+[root]
+ path = PATH
+ comment = root
+ list = yes
+ read only = yes
+ lock file = LOCKFILE
+ 
+
+

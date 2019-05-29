@@ -1,0 +1,13 @@
+#this is sourced.
+
+if [ -z "$GCC_PATH" ]
+then
+  gcc_path=/usr
+  gcc_prefix=
+  gcc_suffix=
+  #only bin_path is used bt the caller
+  bin_path="$gcc_path"/bin/"$gcc_prefix""$1""$gcc_suffix"
+else
+  bin_path="$GCC_PATH"/"$gcc_prefix""$1""$gcc_suffix"
+fi
+

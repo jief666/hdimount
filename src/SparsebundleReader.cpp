@@ -34,21 +34,23 @@ along with hdimount.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SparsebundleReader.h"
 
+#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h> // open, read, close...
+
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h> // for strtoumax, PRIx64 (be sure to define __STDC_FORMAT_MACROS before)
+
 #include <cstring>
 #include <vector>
 #include <iostream>
 #include <iomanip>
 
-#include <stdio.h>
-#include <unistd.h>
-#include <inttypes.h> // for strtoumax
-#include <fcntl.h> // open, read, close...
-
 #include "Utils.h"
-#include "../darling-dmg/src/exceptions.h"
-#include "../darling-dmg/src/FileReader.h"
+#include "darling-dmg/src/exceptions.h"
+#include "darling-dmg/src/FileReader.h"
 
-#include "../darling-dmg/src/SubReader.h"
+#include "darling-dmg/src/SubReader.h"
 
 static uint64_t xml_get_integer(const char* filename, const char* elem)
 {
@@ -57,14 +59,15 @@ static uint64_t xml_get_integer(const char* filename, const char* elem)
 	size_t fsize = ftell(f);
 	if ( fseek(f, 0, SEEK_SET) != 0 ) return 0;  //same as rewind(f);
 
-	char token[fsize + 1];
+	//char token[fsize + 1];
+	char* token = (char*)alloca(fsize + 1);
 	if ( fread(token, 1, fsize, f) != fsize ) return 0;
 	fclose(f);
 	token[fsize] = 0;
 
 	char* bufferPtr = token;
 
-	while (bufferPtr)
+	while (*bufferPtr)
 	{
 		char* posKey = strstr(bufferPtr, "<key>");
 		if ( !posKey ) return 0;
@@ -108,9 +111,10 @@ SparsebundleReader::SparsebundleReader(const std::string& path)
 		throw io_error("Name is needed to create a SparsebundleReader");
     }
 
-    m_path = realpath(path.c_str(), NULL);
-    if (!m_path) {
-		throw io_error(stprintf("Realpath not found for '%s'", path.c_str()));
+//	m_path = realpath(path.c_str(), NULL);
+	m_path = strdup(path.c_str());
+	if (!m_path) {
+		throw io_error(stringPrintf("Realpath not found for '%s'", path.c_str()));
     }
     size_t m_band_path_len = strlen(m_path) + 7 + 20 + 1;  // 7 for "/bands/" and 20 is the max nb of digits of 64 bits unsigned int.
     m_band_path = (char*)malloc(m_band_path_len);
@@ -123,22 +127,23 @@ SparsebundleReader::SparsebundleReader(const std::string& path)
 
 	// Read plist
     printf_size = snprintf(printf_zerobuf, 0, "%s/Info.plist", m_path);
-    char plist_path[printf_size+1];
-    snprintf(plist_path, printf_size+1, "%s/Info.plist", m_path);
+//    char plist_path[printf_size+1];
+	char* plist_path = (char*)alloca(printf_size + 1);
+	snprintf(plist_path, printf_size+1, "%s/Info.plist", m_path);
 	m_band_size = xml_get_integer(plist_path, "band-size");
 	m_size = xml_get_integer(plist_path, "size");
 	if ( m_band_size == 0 ) {
 		free(m_path);
-		throw io_error(stprintf("Cannot get band-size from plist '%s'", plist_path));
+		throw io_error(stringPrintf("Cannot get band-size from plist '%s'", plist_path));
 	}
 	if ( m_size == 0 ) {
 		free(m_path);
-		throw io_error(stprintf("Cannot get size from plist '%s'", plist_path));
+		throw io_error(stringPrintf("Cannot get size from plist '%s'", plist_path));
 	}
 
-printf("Initialized %s, band size %zu, total size %" PRId64 "\n", m_path, m_band_size, m_size);
+//printf("Initialized %s, band size %zu, total size %" PRId64 "\n", m_path, m_band_size, m_size);
 
-	std::string tokenFilename = stprintf("%s/token", m_path);
+	std::string tokenFilename = stringPrintf("%s/token", m_path);
 	m_tokenReader = std::make_shared<FileReader>(tokenFilename);
 //
 //	DmgCryptHeaderV2 hdr;
@@ -174,6 +179,7 @@ SparsebundleReader::~SparsebundleReader()
 		m_path = NULL;
 		if ( m_opened_file_fd != -1 ) close(m_opened_file_fd);
 	}
+    free(m_band_path);
 }
 //
 //std::shared_ptr<Reader> SparsebundleReader::getTokenReader()
@@ -186,7 +192,7 @@ SparsebundleReader::~SparsebundleReader()
 //	char token_filename[printf_size+1];
 //	snprintf(token_filename, printf_size+1, "%s/token", m_path);
 //
-//	std::string token_filename2 = stprintf("%s/token", m_path);
+//	std::string token_filename2 = stringPrintf("%s/token", m_path);
 //	return std::make_shared<FileReader>(token_filename2);
 //
 //
@@ -205,36 +211,36 @@ SparsebundleReader::~SparsebundleReader()
 //	}
 //}
 
-int32_t SparsebundleReader::read(void* buffer, int32_t nbytes, uint64_t offset)
+int32_t SparsebundleReader::read(void* buf, int32_t count, uint64_t offset)
 {
-    if (nbytes < 0)
+    if (count < 0)
         throw io_error("SparsebundleReader::read nbytes : 0");
     if (offset >= length())
         throw io_error("SparsebundleReader::read offset >= size");
 
-    if ( offset + (off_t)nbytes > length()) {
-        nbytes = length() - offset;
+    if ( (uint64_t)count > length() - offset) {
+        count = uint32_t(length() - offset);   // length() - offset < nbytes so length() - offset < UINT32_MAX
     }
 
     int32_t bytes_read = 0;
 
 	if ( offset < m_tokenReader->length() )
 	{
-		int32_t bytes_to_read = std::min(uint64_t(nbytes), m_tokenReader->length() - offset);
-        bytes_read = m_tokenReader->read((uint8_t*)buffer, bytes_to_read, offset);
+		int32_t bytes_to_read = (uint32_t)MIN(uint64_t(count), m_tokenReader->length() - offset); // nbytes is uint32_t so min(nbytes, ...) is < UINT32_MAX
+        bytes_read = m_tokenReader->read((uint8_t*)buf, bytes_to_read, offset);
         if (bytes_read != bytes_to_read)
-            throw io_error(stprintf("SparsebundleReader::read Cannot read %d bytes in token file at '%s', read %d bytes", bytes_to_read, m_path, bytes_read));
+            throw io_error(stringPrintf("SparsebundleReader::read Cannot read %d bytes at offset %" PRIu64 " in token file at '%s/token', read %d bytes", bytes_to_read, offset, m_path, bytes_read));
 		offset = m_tokenReader->length();
 	}
 	uint64_t offsetInBands = offset - m_tokenReader->length();
-    while (bytes_read < nbytes) {
-        off_t band_number = (offsetInBands + bytes_read) / m_band_size;
-        off_t band_offset = (offsetInBands + bytes_read) % m_band_size;
+    while (bytes_read < count) {
+        uint64_t band_number = (offsetInBands + bytes_read) / m_band_size;
+        uint64_t band_offset = (offsetInBands + bytes_read) % m_band_size;
 //if ( band_number == 0x24F6  &&  band_offset/512 >= 0xFF8  &&  band_offset/512 < 0x1000) {
 //	printf("Reading band 24f6, block %llx\n", band_offset/512);
 //}
 
-        size_t to_read = nbytes - bytes_read;
+        size_t to_read = count - bytes_read;
         if ( to_read > m_band_size - band_offset )  to_read = m_band_size - band_offset;
 
         // Caching opened file desciptor to avoid open and close.
@@ -242,34 +248,34 @@ int32_t SparsebundleReader::read(void* buffer, int32_t nbytes, uint64_t offset)
         {
         	if ( m_opened_file_fd != -1 ) close(m_opened_file_fd);
 			sprintf(m_band_path_band_number_start, "%" PRIx64, band_number);
-        	m_opened_file_fd = open(m_band_path, O_RDONLY);
+            m_opened_file_fd = open(m_band_path, O_RDONLY + O_BINARY);
         	if ( m_opened_file_fd == -1 ) {
         		m_opened_file_band_number = -1;
-        		throw io_error(stprintf("SparsebundleReader::read cannot open band %lld (block %lld, at '%s')", band_number, band_offset/512, m_band_path));
+        		throw io_error(stringPrintf("SparsebundleReader::read cannot open band %" PRIx64 " (block %" PRIx64 ", at '%s')", band_number, band_offset/512, m_band_path));
         	}
         	m_opened_file_band_number = band_number;
         }
 
-        ssize_t nb_read = pread(m_opened_file_fd, ((uint8_t*)buffer)+bytes_read, to_read, band_offset);
+        ssize_t nb_read = pread(m_opened_file_fd, ((uint8_t*)buf)+bytes_read, to_read, band_offset);
         if (nb_read < 0) {
-            throw io_error(stprintf("SparsebundleReader::read read at offset %lld returns %zd", band_offset, nb_read));
+            throw io_error(stringPrintf("SparsebundleReader::read read at offset %" PRIx64 " returns %zd", band_offset, nb_read));
         }
 
         if (size_t(nb_read) < to_read) { // nb_read is > 0 so cast is safe
             ssize_t to_pad = to_read - nb_read;
-            if ( to_pad+bytes_read+nb_read > nbytes ) {
+            if ( to_pad+bytes_read+nb_read > count ) {
             	exit(1);
             }
-if (nbytes < 0)
+if (count < 0)
 	throw io_error("");
-            memset(((uint8_t*)buffer)+bytes_read+nb_read, 0, to_pad);
+            memset(((uint8_t*)buf)+bytes_read+nb_read, 0, to_pad);
             nb_read += to_pad;
         }
 
         bytes_read += nb_read;
     }
 	return bytes_read;
-//	if (bytes_read != nbytes) throw io_error(stprintf("DeviceSparsebundle::ReadRaw read only %zd bytes instead of %zd", bytes_read, nbytes));
+//	if (bytes_read != nbytes) throw io_error(stringPrintf("DeviceSparsebundle::ReadRaw read only %zd bytes instead of %zd", bytes_read, nbytes));
 }
 
 uint64_t SparsebundleReader::length()

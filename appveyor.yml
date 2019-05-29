@@ -1,0 +1,56 @@
+os: Visual Studio 2017
+
+environment:
+  GITHUB_TOKEN:
+    secure: 6yUITZY7M9Bv3APoAFVDnjTneXs0ID4Va+ME73phndVECfPIdZUCymTQNqq4yWx4
+  matrix:
+    - arch: x64
+      compiler: msvc2017
+
+platform:
+  - x64
+
+# Do not build on tags (GitHub and BitBucket)
+skip_tags: true
+
+#init:
+#  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+install:
+  - git submodule update --init --recursive
+
+
+build_script:
+  - .\tools\travis-ci.com\prebuild
+  - .\tools\scripts\build_test_all_crypto
+  - .\tools\scripts\build_test_create_di
+  - .\tools\scripts\build_test_compare_di_with_constants
+  - .\tools\scripts\build_test_compare_di_with_mounted
+  - .\tools\scripts\build_hdimount
+
+test_script:
+  - .\tools\scripts\test_all_crypto
+  - git clone https://github.com/jief666/hdimount_diskimage_test.git .\GeneratedDiskImages
+  - .\tools\scripts\test_compare_di_with_constants
+  - .\tools\scripts\test_compare_di_with_mounted
+  - .\tools\scripts\upload_to_github_releases
+  - echo That's all folks  
+
+#artifacts:
+#  - path: dist\hdimount-win10x64
+#    name: hdimount-win64
+
+#deploy:
+#  - provider: GitHub
+#    description: "Windows version"
+#    auth_token:
+#      secure: 6yUITZY7M9Bv3APoAFVDnjTneXs0ID4Va+ME73phndVECfPIdZUCymTQNqq4yWx4
+#    artifact: hdimount-win64
+#    draft: true
+#    prerelease: true
+#    skip_tags: true
+
+
+
+#on_finish:
+#  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))

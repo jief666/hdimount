@@ -1,40 +1,20 @@
 #include "ApfsFuseVolume.h"
 #include "ApfsFuseOps.h"
 
-#include "../apfs-fuse/ApfsLib/ApfsContainer.h"
-#include "../apfs-fuse/ApfsLib/ApfsVolume.h"
-#include "../apfs-fuse/ApfsLib/ApfsDir.h"
-#include "../apfs-fuse/ApfsLib/Decmpfs.h"
+#include "apfs-fuse/ApfsLib/ApfsContainer.h"
+#include "apfs-fuse/ApfsLib/ApfsVolume.h"
+#include "apfs-fuse/ApfsLib/ApfsDir.h"
+#include "apfs-fuse/ApfsLib/Decmpfs.h"
 
 #include "Utils.h"
+#include "utf8proc/utf8proc.h"
 
 #include <inttypes.h>
 #include <limits.h>
 #include <string.h> // for memset
-#include <strings.h>
 #include <assert.h>
-
+#include <unistd.h>
 #include <iostream>
-
-
-#ifdef DEBUG
-static void trace_fuse_op(const char* path, const char* format, ...) __attribute__((__format__(printf, 2, 3)));
-static void trace_fuse_op(const char* path, const char* format, ...)
-{
-	if ( strcmp("/", path) == 0 ) return;
-
-    if (!(g_debug & Dbg_Info)) return;
-
-    va_list valist;
-	va_start(valist, format);
-
-	char buf[2000];
-	vsnprintf(buf, sizeof(buf)-1, format, valist);
-	fprintf(stderr, "%s", buf);
-}
-#else
-	#define trace_fuse_op(path, format, ...)
-#endif
 
 
 struct Directory
@@ -50,7 +30,7 @@ struct File
 	File() {}
 	~File() {}
 
-	bool IsCompressed() const { return ino.ino.isCompressed(); }
+	bool IsCompressed() const { return ino.isCompressed(); }
 
 	ApfsDir::Inode ino;
 	std::vector<uint8_t> decomp_data;
@@ -60,33 +40,40 @@ struct File
 int ApfsFuseVolume::apfs_getInodeId(uint64_t* id, const char* path)
 {
     ApfsDir dir(*apfsVolume);
-    ApfsDir::Name res;
+    ApfsDir::DirRec res;
     *id = 1;
     bool rc;
 
+    rc = dir.LookupName(res, *id, "root");
+    if ( !rc ) return -ENOENT;
+    *id = res.file_id;
+
     path ++;
-    if ( *path == 0 ) return 0;
+    if ( *path == 0 ) {
+        return 0;
+    }
 	
-    const char* pathend = index(path, '/');
+    const char* pathend = strchr(path, '/');
     while (pathend != NULL) {
         rc = dir.LookupName(res, *id, std::string(path, pathend-path).c_str());
         if ( !rc ) return -ENOENT;
-        *id = res.inode_id;
+        *id = res.file_id;
         path = pathend + 1;
-        pathend = index(path, '/');
+        pathend = strchr(path, '/');
     }
     rc = dir.LookupName(res, *id, path);
-    *id = res.inode_id;
-    if ( !rc ) return -ENOENT;
+    *id = res.file_id;
+    if ( !rc )
+        return -ENOENT;
     return 0;
 }
 
-bool ApfsFuseVolume::apfs_stat_internal(uint64_t ino, struct stat* stPtr)
+bool ApfsFuseVolume::apfs_stat_internal(uint64_t ino, struct FUSE_STAT* stPtr)
 {
 	ApfsDir dir(*apfsVolume);
 	ApfsDir::Inode rec;
 	bool rc = false;
-	struct stat& st = *stPtr;
+	struct FUSE_STAT& st = *stPtr;
 
 	memset(&st, 0, sizeof(st));
 
@@ -109,17 +96,17 @@ bool ApfsFuseVolume::apfs_stat_internal(uint64_t ino, struct stat* stPtr)
 	st.st_dev = 0; // st_dev?
 	st.st_rdev = 0;	// st_rdev?
 	st.st_ino = ino;
-	st.st_mode = rec.ino.mode;
-	st.st_nlink = rec.ino.nchildren;
-	st.st_uid = rec.ino.uid;
-	st.st_gid = rec.ino.gid;
+	st.st_mode = rec.mode;
+	st.st_nlink = rec.nchildren_nlink;
+	st.st_uid = rec.owner;
+	st.st_gid = rec.group;
 	st.st_blksize = apfsVolume->getContainer().GetBlocksize();
-	assert(st.st_blksize == 4096); // TODO : one day, we will have to support bigger block ?
-	st.st_blocks = rec.sizes.alloced_size / 512; // number of 512 bytes blocks
+    assert(st.st_blksize == 4096); // TODO : one day, we will have to support bigger block ?
+	st.st_blocks = rec.ds_alloced_size / 512; // number of 512 bytes blocks
 
 	if (S_ISREG(st.st_mode))
 	{
-		if (rec.ino.isCompressed())
+		if (rec.isCompressed())
 		{
 			std::vector<uint8_t> data;
 			rc = dir.GetAttribute(data, ino, "com.apple.decmpfs");
@@ -160,44 +147,45 @@ bool ApfsFuseVolume::apfs_stat_internal(uint64_t ino, struct stat* stPtr)
 		}
 		else
 		{
-			st.st_size = rec.sizes.size;
+			st.st_size = rec.ds_size;
 		}
 	}
 	else if (S_ISDIR(st.st_mode))
 	{
-		st.st_size = rec.ino.nchildren;
+        st.st_nlink = rec.nchildren_nlink+2;
+        st.st_size = st.st_nlink*32; // Jief: this 32 is probably the size of an inode, it shouldnmt be hard coded. I have to look.
 	}
 	else if (S_ISLNK(st.st_mode))
 	{
 		st.st_size = dir.GetAttributeSize(ino, "com.apple.fs.symlink") -1;
 	}
 
-#ifdef __linux__
+#if defined(__linux__) || defined(_WIN32)
 	// What about this?
 	// st.st_birthtime.tv_sec = rec.ino.birthtime / div_nsec;
 	// st.st_birthtime.tv_nsec = rec.ino.birthtime % div_nsec;
 
-	st.st_mtim.tv_sec = rec.ino.mtime / div_nsec;
-	st.st_mtim.tv_nsec = rec.ino.mtime % div_nsec;
-	st.st_ctim.tv_sec = rec.ino.ctime / div_nsec;
-	st.st_ctim.tv_nsec = rec.ino.ctime % div_nsec;
-	st.st_atim.tv_sec = rec.ino.atime / div_nsec;
-	st.st_atim.tv_nsec = rec.ino.atime % div_nsec;
+	st.st_mtim.tv_sec = rec.mod_time / div_nsec;
+	st.st_mtim.tv_nsec = rec.mod_time % div_nsec;
+	st.st_ctim.tv_sec = rec.change_time / div_nsec;
+	st.st_ctim.tv_nsec = rec.change_time % div_nsec;
+	st.st_atim.tv_sec = rec.access_time / div_nsec;
+	st.st_atim.tv_nsec = rec.access_time % div_nsec;
 #endif
 #ifdef __APPLE__
-	st.st_birthtimespec.tv_sec = rec.ino.birthtime / div_nsec;
-	st.st_birthtimespec.tv_nsec = rec.ino.birthtime % div_nsec;
-	st.st_mtimespec.tv_sec = rec.ino.mtime / div_nsec;
-	st.st_mtimespec.tv_nsec = rec.ino.mtime % div_nsec;
-	st.st_ctimespec.tv_sec = rec.ino.ctime / div_nsec;
-	st.st_ctimespec.tv_nsec = rec.ino.ctime % div_nsec;
-	st.st_atimespec.tv_sec = rec.ino.ctime / div_nsec;
-	st.st_atimespec.tv_nsec = rec.ino.ctime % div_nsec;
+	st.st_birthtimespec.tv_sec = rec.create_time / div_nsec;
+	st.st_birthtimespec.tv_nsec = rec.create_time % div_nsec;
+	st.st_mtimespec.tv_sec = rec.mod_time / div_nsec;
+	st.st_mtimespec.tv_nsec = rec.mod_time % div_nsec;
+	st.st_ctimespec.tv_sec = rec.change_time / div_nsec;
+	st.st_ctimespec.tv_nsec = rec.change_time % div_nsec;
+	st.st_atimespec.tv_sec = rec.access_time / div_nsec;
+	st.st_atimespec.tv_nsec = rec.access_time % div_nsec;
 #endif
 	return true;
 }
 
-int ApfsFuseVolume::getattr(const char* path, struct stat* stPtr)
+int ApfsFuseVolume::getattr(const char* path, struct FUSE_STAT* stPtr)
 {
 	trace_fuse_op(path, "apfs_stat(%s)\n", path);
 
@@ -225,7 +213,6 @@ int ApfsFuseVolume::getattr(const char* path, struct stat* stPtr)
 		return -ENOENT;
     }
 }
-#define min(x, y) ((x) < (y) ? (x) : (y))
 
 int ApfsFuseVolume::readlink(const char* path, char* buf, size_t size)
 {
@@ -242,7 +229,7 @@ int ApfsFuseVolume::readlink(const char* path, char* buf, size_t size)
 	rc = dir.GetAttribute(data, inode_id, "com.apple.fs.symlink");
 	if (!rc)
 		return -ENOENT;
-    memcpy(buf, data.data(), min(size, data.size()));
+    memcpy(buf, data.data(), MIN(size, data.size()));
     return 0;
 }
 
@@ -279,21 +266,21 @@ int ApfsFuseVolume::open(const char* path, struct fuse_file_info* fi)
 		{
 			std::vector<uint8_t> attr;
 
-			rc = dir.GetAttribute(attr, f->ino.id, "com.apple.decmpfs");
+			rc = dir.GetAttribute(attr, f->ino.obj_id, "com.apple.decmpfs");
 
 			if (!rc)
 			{
-				std::cerr << "Couldn't get attribute com.apple.decmpfs for " << f->ino.id << std::endl;
+				std::cerr << "Couldn't get attribute com.apple.decmpfs for " << f->ino.obj_id << std::endl;
 				delete f;
                 return -ENOENT;
 			}
 
 			if (g_debug & Dbg_Info)
 			{
-				std::cout << "Inode info: size=" << f->ino.sizes.size
-				          << ", size_on_disk=" << f->ino.sizes.alloced_size << std::endl;
+				std::cout << "Inode info: size=" << f->ino.ds_size
+				          << ", size_on_disk=" << f->ino.ds_alloced_size << std::endl;
 			}
-			rc = DecompressFile(dir, f->ino.id, f->decomp_data, attr);
+			rc = DecompressFile(dir, f->ino.obj_id, f->decomp_data, attr);
 			// In strict mode, do not return uncompressed data.
 			if (!rc && !g_lax)
 			{
@@ -309,6 +296,7 @@ int ApfsFuseVolume::open(const char* path, struct fuse_file_info* fi)
 
 int ApfsFuseVolume::read(const char* path, char* buf, size_t size, off_t offset, struct fuse_file_info* fi)
 {
+	(void)path;
 	trace_fuse_op(path, "apfs_read(%s, size=%zd, offset=%lld)\n", path, size, offset);
 	
     ApfsDir dir(*apfsVolume);
@@ -325,15 +313,19 @@ printf("break\n");
 }
     if (!file->IsCompressed())
     {
-        off_t offsetInBlock = offset;
-        off_t size2 = size;
+        uint64_t offsetInBlock = offset;
+        uint64_t size2 = size;
 
         offsetInBlock &= 0xFFF; // if off doesn't start on a block boundary, substract the distance between begin of block and offset
         size2 += offset & 0xFFF; // if off doesn't start on a block boundary, add the distance between begin of block and offset
         size2 = ( (size2-1) | 0xFFF) + 1; // make size2 a multiple of block size by extending it to the next block boundary.
 		
-        char* bufTmp[size2];
-        bool rc = dir.ReadFile(bufTmp, file->ino.ino.private_id, offset-offsetInBlock, size2);
+//		char bufTmp[size2];
+		char* bufTmp = (char*)alloca(size2);
+#ifdef DEBUG
+        memset(bufTmp, 0, size2);
+#endif
+        bool rc = dir.ReadFile(bufTmp, file->ino.private_id, offset-offsetInBlock, size2);
         memcpy(buf, bufTmp+offsetInBlock, size);
         if ( !rc ) return -EIO;
 		assert(size < INT_MAX);
@@ -341,7 +333,7 @@ printf("break\n");
     }
     else
     {
-        if (uoff_t(offset) >= file->decomp_data.size()) {
+        if (uint64_t(offset) >= file->decomp_data.size()) {
             return 0;
         }
         if (offset + size > file->decomp_data.size())
@@ -379,7 +371,7 @@ int ApfsFuseVolume::readdir(const char* path, void* buf, fuse_fill_dir_t filler,
     if ( err != 0 ) return err;
 
     ApfsDir dir(*apfsVolume);
-    std::vector<ApfsDir::Name> dir_list;
+    std::vector<ApfsDir::DirRec> dir_list;
     std::vector<char> dirbuf;
     bool rc;
 

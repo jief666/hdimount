@@ -1,0 +1,72 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+#to copy paste cmd in shell do before : SCRIPT_DIR=$(pwd)
+
+#set -x
+function booh
+{
+	exit_status=$?
+	pid=$(ps -xo pid,args | grep -v grep | grep "$rsyncd_dir/rsync" | awk '{ print $1 }')
+	#echo booh pid=$pid
+	[ -z $pid ] || kill $pid
+	exit "$exit_status"
+}
+trap booh SIGINT SIGTERM
+
+#Launch custom sshd
+
+rsyncd_dir=$(cd "$SCRIPT_DIR"/../rsyncd_portable/ ; pwd)
+
+
+pid=$(ps -xo pid,args | grep -v grep | grep "$rsyncd_dir/rsync" | awk '{ print $1 }')
+#echo rsyncd pid=$pid
+if [ -z $pid ]
+then
+	"$rsyncd_dir/rsyncd.sh"
+fi
+pid=$(ps -xo pid,args | grep -v grep | grep "$rsyncd_dir/rsync" | awk '{ print $1 }')
+echo rsyncd pid=$pid
+
+
+NAME=$1
+TOKEN=$2
+JOB_NUMBER=$3
+
+echo '==========>' POST
+curl -s -X POST \
+   -H "Content-Type: application/json" \
+   -H "Accept: application/json" \
+   -H "Travis-API-Version: 3" \
+   -H "Authorization: token $TOKEN" \
+   -d '{ "quiet": true }' \
+   https://api.travis-ci.com/job/$JOB_NUMBER/debug
+
+echo
+echo '==========>' Open location in Safari
+open "https://travis-ci.com/$NAME/hdimount/jobs/$JOB_NUMBER"
+
+sleep 10
+
+echo
+echo '==========>' Loop to get ssh command
+found=false
+while [ $found = false ]
+do
+    page_content=$(osascript -e '
+        use scripting additions
+        tell application "Safari"
+            set page_content to text of document 1
+        end tell
+    ')
+
+    if [[ "$page_content" =~ .*(ssh\ .*@ny2.tmate.io) ]] || [[ "$page_content" =~ .*(ssh\ .*@to2.tmate.io) ]]
+    then
+        cmd=${BASH_REMATCH[1]}
+        found=true
+        $cmd
+    else
+        sleep 1
+    fi
+done

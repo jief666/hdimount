@@ -1,0 +1,181 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+# Usage example : ./create_one UdifHfsGpt UDIF 1m HFS+ GPTSPUD NONE
+
+cd "$SCRIPT_DIR"
+
+function print_array
+{
+    local -a 'arraykeys=("${!'"$1"'[@]}")'
+    arraykeysString=${arraykeys[*]}
+
+    needspace=false
+    for index in $arraykeysString
+    do
+        if [ $needspace = true ]
+        then
+            printf " "
+        else
+            needspace=true 
+        fi
+        current=$1"[$index]"
+        val=${!current}
+        if [ -z "$val" ]
+        then
+            printf "''"
+        else
+            re='.* .*'
+            if [[ "$val" =~ $re ]]
+            then
+                prefix=${val%%'='*}
+                if [[ "$prefix" = "$val" ]]
+                then
+                    printf "'%s'" "$val"
+                else
+                    idx=${#prefix}
+                    printf "%s'%s'" "${val:0:$((idx+1))}" "${val:$((idx+1))}"
+                fi
+            else
+                printf "%s" "$val"
+            fi
+        fi
+    done
+    printf "\n"
+}
+
+function runCommand
+{
+    print_array $1
+    local -a 'arraykeys=("${!'"$1"'[@]}")' copy
+
+    arraykeysString=${arraykeys[*]}
+    for index in $arraykeysString;
+    do
+        current=$1"[$index]"
+        copy[$index]=${!current}
+    done
+    "${copy[@]}"
+}
+
+function do_rsync
+{
+        local name=$1
+        local extension=$2
+
+        echo name=$name
+        echo extension=$extension
+
+        diskutil eject /Volumes/$name >/dev/null 2>&1 # just in case
+
+        echo -n "foo" | hdiutil attach -owners on Images/$name.${extension} -stdinpass
+        hdiutil_ret=$?
+        if [ $hdiutil_ret -eq 0 ]
+        then
+            diskids=( $(echo -n "foo" | hdiutil attach -owners on Images/$name.${extension} -stdinpass  | awk '{if ($1) print $1}') )
+
+			ditto_cmd=(sudo ditto --preserveHFSCompression "$SCRIPT_DIR"/ImgReference/ /Volumes/$name/)
+			runCommand ditto_cmd
+            #"${ditto_cmd[@]}" # ditto first to preserve HfsCompression
+
+            rsync_cmd=(sudo "$SCRIPT_DIR"/rsync-v3.1.3+crtimes --out-format='%i  - %n  - %M' -a -H -X --crtimes --exclude=/.Trashes --exclude=/.fseventsd --delete-excluded "$SCRIPT_DIR"/ImgReference/ /Volumes/$name/ -c)
+            runCommand rsync_cmd
+            #"${rsync_cmd[@]}"
+
+            #sudo rm -rf /Volumes/$name/.fseventsd
+
+            for (( idx=${#diskids[@]}-1 ; idx>=0 ; idx-- ))
+            do
+                diskutil list | grep "${diskids[idx]}" >/dev/null 2>&1
+                rc=$?
+                if [[ $rc = 0 ]]
+                then
+                    diskutil eject "${diskids[idx]}"
+                fi
+            done
+        fi
+}  
+
+# Ex : create_image UdifHfsGpt UDIF 1m HFS+ GPTSPUD NONE
+function create_image
+{
+        local name=$1
+        local type=$2
+        local size=$3
+        local fs=$4
+        local layout=$5
+        local encryption=$6
+        shift; shift; shift; shift; shift;
+
+        echo '======================================>' ./create_5_image $name $type $size $fs $layout $encryption
+
+        if [[ $type == SPARSEBUNDLE ]]; then
+                local extension=sparsebundle
+                local type_args=( -type $type )
+                local do_rsync="yes"
+        elif  [[ $type == SPARSE ]]; then
+                local extension=sparseimage
+                local type_args=( -type $type )
+                local do_rsync="yes"
+        elif  [[ $type == UDIF ]]; then
+                local extension=dmg
+                local type_args=( -type $type )
+                local do_rsync="yes"
+        elif  [[ $type == UDTO ]]; then
+                local extension=cdr
+                local type_args=( -type $type )
+                local do_rsync="yes"
+        else
+            local extension=dmg
+            local type_args=( -srcfolder "$SCRIPT_DIR"/ImgReference -format $type )
+            local do_rsync="no"
+            #if [[ $type == UDTO ]]; then
+            #    local extension=cdr
+            if [[ $type == RdWrx ]]; then
+                local extension=img
+            elif [[ $type == Rdxx ]]; then
+                local extension=img
+            elif [[ $type == Rken ]]; then
+                local extension=img
+            fi
+        fi
+
+        if ! [[ $encryption == NONE ]]; then
+                local encryption_args=( -encryption "$encryption" -stdinpass )
+        fi
+
+        if [ -f Images/$name.${extension} ] || [ -d Images/$name.${extension} ]
+        then
+            return
+        fi
+        #rm -rf Images/$name.${extension}
+
+        cmdArgs=()
+        cmdArgs=( hdiutil create Images/$name  -volname $name  "${type_args[@]}"  -size $size  -fs $fs  -layout "$layout"  "${encryption_args[@]}" )
+
+        echo "${cmdArgs[@]}"
+        echo -n "foo" | sudo "${cmdArgs[@]}"
+
+        sudo chown -R `id -u`:`id -g` Images/$name.${extension}
+
+        if [ $? -eq 0 ] && [ $do_rsync = "yes" ]; then
+                do_rsync $name ${extension}
+        fi
+
+        chmod -R a-w Images/$name.${extension}
+
+#read -p "Press enter to continue"
+
+}
+
+# test_array=(aaaa 'bbb ccc' 'ddd=eee' 'fff=ggg hhh' 'iii=' '')
+# echo "${test_array[@]}"
+# print_array test_array
+# exit 1
+
+mkdir -p Images
+[ -f "$SCRIPT_DIR"/ImgReference/SmallFile0 ] || hdiutil attach -readonly -owners on -mountpoint  "$SCRIPT_DIR"/ImgReference ImgReference.dmg
+
+create_image "$@"
+

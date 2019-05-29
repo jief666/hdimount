@@ -21,20 +21,21 @@ int DarlingDMGCrypto_PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
 }
 
 
-void DarlingDMGCrypto_DES_CBC(const unsigned char *key, const unsigned char *iv, unsigned char *out, int *outl, const unsigned char *in, int inl)
+void DarlingDMGCrypto_DES_CBC(const unsigned char *key, const unsigned char *iv, unsigned char *out, const unsigned char *in, int inl)
 {
 //printHexBufAsCDecl(key, 24, "key");
 //printHexBufAsCDecl(iv, 32, "iv");
 //printHexBufAsCDecl(in, inl, "in");
-	EVP_CIPHER_CTX ctx;
-	int outl2;
+	EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+	int outl, outl2;
 
-	EVP_CIPHER_CTX_init(&ctx);
-	EVP_DecryptInit_ex(&ctx, EVP_des_ede3_cbc(), NULL, key, iv);
-	EVP_DecryptUpdate(&ctx, out, outl, in, inl);
-	EVP_DecryptFinal_ex(&ctx, out + *outl, &outl2);
-	*outl += outl2;
-	EVP_CIPHER_CTX_cleanup(&ctx);
+	EVP_CIPHER_CTX_init(ctx);
+	EVP_DecryptInit_ex(ctx, EVP_des_ede3_cbc(), NULL, key, iv);
+	EVP_DecryptUpdate(ctx, out, &outl, in, inl);
+	EVP_DecryptFinal_ex(ctx, out + outl, &outl2);
+	outl += outl2;
+	EVP_CIPHER_CTX_cleanup(ctx);
+	EVP_CIPHER_CTX_free(ctx);
 //printHexBufAsCDecl(out, *outl, "expected_result");
 }
 

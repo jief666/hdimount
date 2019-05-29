@@ -1,11 +1,12 @@
-#include "Sha1.h"
+#include "Sha1++.h"
 #include "Sha256.h"
 #include "Crypto.h"
-#include "Util.h"
+#include "../Utils.h"
+
+#include <limits.h>
 
 #include <cstring>
 #include <cassert>
-
 #include <iostream>
 #include <iomanip>
 
@@ -46,6 +47,7 @@
 
 #else
 #include <endian.h>
+#define bswap_be(x) htobe64(x)
 #endif
 
 
@@ -64,7 +66,8 @@ void Rfc3394_KeyWrap(uint8_t *crypto, const uint8_t *plain, size_t size, const u
 	uint64_t r[6];
 	int i;
 	int j;
-	int n = size / sizeof(uint64_t);
+	assert(size / sizeof(uint64_t) <= INT_MAX);
+	int n = (int)(size / sizeof(uint64_t));
 	uint64_t t;
 	const uint64_t *p = reinterpret_cast<const uint64_t *>(plain);
 	uint64_t *c = reinterpret_cast<uint64_t *>(crypto);
@@ -101,9 +104,10 @@ bool Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, size_t size, const
 	Rfc3394_Unit u;
 	uint64_t a;
 	uint64_t r[6];
-	int i;
-	int j;
-	int n = size / sizeof(uint64_t);
+	int i; // cannot be unsigned because of loop : for (i = n - 1; i >= 0; i--)
+	int j; // cannot be unsigned because of loop : for (j = 5; j >= 0; j--)
+	assert(size / sizeof(uint64_t) <= INT_MAX);
+	int n = (int)(size / sizeof(uint64_t));
 	uint64_t t;
 	const uint64_t *c = reinterpret_cast<const uint64_t *>(crypto);
 	uint64_t *p = reinterpret_cast<uint64_t *>(plain);

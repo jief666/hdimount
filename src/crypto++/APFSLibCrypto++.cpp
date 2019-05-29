@@ -10,17 +10,17 @@
 #include "Crypto.h"
 #include "Sha256.h"
 #include "AesXts.h"
-#include "Crc32.h"
+#include "Crc32++.h"
 
 #include "../Utils.h" // for printHexBufAsCDecl
+#include <assert.h>
 
-
-bool APFSLibCrypto_Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, size_t size, const uint8_t *key, int aes_mode, uint64_t *iv)
+bool APFSLibCrypto_Rfc3394_KeyUnwrap(uint8_t *plain, const uint8_t *crypto, unsigned int size, const uint8_t *key, int aes_mode, uint64_t *iv)
 {
 	bool rv = false;
 	if ( aes_mode == 128 ) rv = Rfc3394_KeyUnwrap(plain, crypto, size-8, key, AES::AES_128, iv);
 	if ( aes_mode == 256 ) rv = Rfc3394_KeyUnwrap(plain, crypto, size-8, key, AES::AES_256, iv);
-printHexBufAsCDecl(plain, size-8, "APFSLibCrypto_Rfc3394_KeyUnwrap");
+//printHexBufAsCDecl(plain, size-8, "APFSLibCrypto_Rfc3394_KeyUnwrap");
 	return rv;
 }
 
@@ -49,11 +49,13 @@ void APFSLibCrypto_HMAC_SHA256(const uint8_t *key, size_t key_len, const uint8_t
 //printHexBufAsCDecl(key, key_len, "key");
 //printHexBufAsCDecl(data, data_len, "data");
 	HMAC_SHA256(key, key_len, data, data_len, mac);
-printHexBufAsCDecl(mac, 0x20, "APFSLibCrypto_HMAC_SHA256");
+//printHexBufAsCDecl(mac, 0x20, "APFSLibCrypto_HMAC_SHA256");
 }
 
 void APFSLibCrypto_aes_xtx_setkey(const uint8_t* key1, int key1_len, const uint8_t* key2, int key2_len, AesXts* ctx)
 {
+	assert(key1_len == 16);
+	assert(key2_len == 16);
 //printHexBufAsCDecl(key1, key1_len, "key1");
 //printHexBufAsCDecl(key2, key2_len, "key2");
 	ctx->SetKey(key1, key2);

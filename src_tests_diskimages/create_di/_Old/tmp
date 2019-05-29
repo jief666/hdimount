@@ -1,0 +1,13 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+cd "$SCRIPT_DIR"
+
+
+arr=($(hdiutil attach -owners on -puppetstrings /JiefLand/5.Devel/Syno/Fuse/ImagesTestAuto/Images/ImgApfsGpt.dmg | awk '{if ($1) print $1}') )
+echo "${arr[@]}"
+for i in ${arr[@]}
+do
+  echo $i
+done

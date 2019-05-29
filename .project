@@ -24,6 +24,18 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>ds.armada370-6.1.dev</name>
+			<type>2</type>
+			<location>/JiefLand/5.Devel/Syno/DSM6.1/ds.armada370-6.1.dev</location>
+		</link>
+		<link>
+			<name>ds.armada370-6.1.env</name>
+			<type>2</type>
+			<location>/JiefLand/5.Devel/Syno/DSM6.1/ds.armada370-6.1.env</location>
+		</link>
+	</linkedResources>
 	<filteredResources>
 		<filter>
 			<id>1535890341347</id>

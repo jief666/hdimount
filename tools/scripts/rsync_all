@@ -1,0 +1,66 @@
+#!/bin/bash
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  TARGET="$(readlink "$SOURCE")"
+  if [[ $TARGET == /* ]]; then
+    #echo "SOURCE '$SOURCE' is an absolute symlink to '$TARGET'"
+    SOURCE="$TARGET"
+  else
+    DIR="$( dirname "$SOURCE" )"
+    #echo "SOURCE '$SOURCE' is a relative symlink to '$TARGET' (relative to '$DIR')"
+    SOURCE="$DIR/$TARGET" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  fi
+done
+#echo "SOURCE is '$SOURCE'"
+RDIR="$( dirname "$SOURCE" )"
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+if [ "$DIR" != "$RDIR" ]; then
+  #echo "DIR '$RDIR' resolves to '$DIR'"
+  :
+fi
+SCRIPT_DIR="$DIR"
+
+set -e
+
+function do_it
+{
+	if [ -z $HOME_URL ]
+	then
+		echo HOME_URL is not defined. HOME_URL is the address of your computer, running rsyncd_portable. 
+		return 1
+	fi
+	
+	
+	rsync -a --out-format='%i  - %n  - %M' \
+	  -f "- private" \
+	  -f "- .git" \
+	  -f "+ /build_release_linux*" \
+	  -f "- /build_release_linux*/**/*.o" \
+	  -f "- /build_release_linux*/**/*.d" \
+	  -f "- /build_*" \
+	  -f "- /build_*/hdimount*" \
+	  -f "- /dist" \
+	  -f "- /tools/build*" \
+	  -f "- DerivedData" \
+	  -f "- .vscode" \
+	  -f "- .vs" \
+	  -f "- /msvc/x64" \
+	  -f "- /msvc/Win32" \
+	  -f "- /msvc/hdimount_x64.sdf" \
+	  -f "- *Old" \
+	  -f "- * copy" \
+	  -f "- * copy 2" \
+	  -f "- * copy 3" \
+	  -f "- * copy 4" \
+	  -f "- * copy 5" \
+	  -f "- * copy 6" \
+	  -f "- * copy 7" \
+	  -f "- /Generated*" \
+	  -f "- SavedImages" \
+	  -f "- /src_tests/*.dmg" \
+	  rsync://$HOME_URL:2220/root/ "$SCRIPT_DIR"/../../ "$@"
+}
+
+do_it "$@"
+	
+	

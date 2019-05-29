@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:..">
+      location = "group:/JiefLand/5.Devel/Syno/Fuse/hdimount--jief666--travis_test/lib/bzip2_static.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../lib/zlib_static.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

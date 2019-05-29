@@ -1,0 +1,11 @@
+
+echo "
+
+../src/apfs-lib_stubs
+../src/compression/lzfse/src
+
+" | awk '$0!=""{ printf " -I%s", $0; }'
+
+
+#../lib/lib_osx.11/icu4c/64.2/include
+#../lib/lib_osx.11/openssl/1.0.2o_2/include

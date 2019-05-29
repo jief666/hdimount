@@ -1,0 +1,33 @@
+#!/bin/bash
+SCRIPT_ABS_FILENAME=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "${BASH_SOURCE[0]}"`
+SCRIPT_DIR=`dirname "$SCRIPT_ABS_FILENAME"`
+
+dryrun=""
+
+sudo chown -R $(id -F)  "$SCRIPT_DIR"
+sudo chmod -R u+w  "$SCRIPT_DIR"
+
+while getopts ":r" opt; do
+  case $opt in
+    r)
+      dryrun="-r "
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+shift $((OPTIND-1))
+
+
+if [ -z "$1" ]
+then
+  echo "Usage: $0 top_dir"
+  exit 1
+fi
+
+nberror=0
+
+find "$1" -type f -exec sh -c "file \"{}\" | grep -q "Mach-O"" \; -print | xargs -n 1 "$SCRIPT_DIR"/update_lib_path $dryrun
+
+#echo $?

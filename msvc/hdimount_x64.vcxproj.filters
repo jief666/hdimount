@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{ff0969dc-589f-48e9-8f1b-ad00cf6bfe9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\ApfsLib">
+      <UniqueIdentifier>{2210ae0d-abe8-41a7-abe9-d53216cd42f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\apfs-lib_stubs">
+      <UniqueIdentifier>{2105f9db-0cdb-442f-8305-7fb05e48fad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\compression">
+      <UniqueIdentifier>{d5e19424-b312-4314-bddd-bbddfd04c36c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\compression\lzfse src">
+      <UniqueIdentifier>{b5b62a8c-6a30-434b-8c37-35085f67216b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\crypto">
+      <UniqueIdentifier>{29469fde-dd78-4b82-ad37-641dfbb5c7f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\crypto\gladman-aes">
+      <UniqueIdentifier>{1659fe92-b5e7-4cae-b3ed-adbb76b49633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\crypto\gladman-aes-modes">
+      <UniqueIdentifier>{804ee74d-4a34-46ed-91e2-7d34b5d8891e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\crypto\gladman-sha">
+      <UniqueIdentifier>{ca4956cb-dddf-4de0-ae22-455921d216e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\darling-dmg">
+      <UniqueIdentifier>{c6144290-780e-4b85-a7ec-623bb8c03ff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\conversion">
+      <UniqueIdentifier>{7311fe24-f50a-4d28-b593-ce42c167b126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\tinyxml2">
+      <UniqueIdentifier>{7653e58f-5bdb-4a4c-a82f-0db46391e95a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\utf8proc">
+      <UniqueIdentifier>{455dd29a-7839-4e23-9f6d-9cdffbfc698c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\ApfsFuseOps.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ApfsFuseVolume.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\FuseVolume.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\HfsFuseVolume.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Main.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MBRDisk.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OpenDisk.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RawDisk.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SparsebundleReader.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SparseimageDisk.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Volume.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Util.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsContainer.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsDir.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\APFSLibCrypto.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsNodeMapper.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsNodeMapperBTree.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\ApfsVolume.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\BlockDumper.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\BTree.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Decmpfs.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\DiskStruct.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Endian.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Global.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\KeyMgmt.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\Unicode.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\UnicodeTables_v10.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-lib_stubs\Device.h">
+      <Filter>Source Files\src\apfs-lib_stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse.h">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse_encode_tables.h">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse_fse.h">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse_internal.h">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\compression\lzfse\src\lzfse_tunables.h">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\compression\lzfse\src\lzvn_decode_base.h">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\compression\lzfse\src\lzvn_encode_base.h">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes\aes.h">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes\aes_ni.h">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes\aes_via_ace.h">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes\aesopt.h">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes\aestab.h">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes\brg_endian.h">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes\brg_types.h">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes-modes\mode_hdr.h">
+      <Filter>Source Files\src\crypto\gladman-aes-modes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-aes-modes\xts.h">
+      <Filter>Source Files\src\crypto\gladman-aes-modes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-sha\brg_endian.h">
+      <Filter>Source Files\src\crypto\gladman-sha</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-sha\brg_types.h">
+      <Filter>Source Files\src\crypto\gladman-sha</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-sha\hmac.h">
+      <Filter>Source Files\src\crypto\gladman-sha</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-sha\sha1.h">
+      <Filter>Source Files\src\crypto\gladman-sha</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\gladman-sha\sha2.h">
+      <Filter>Source Files\src\crypto\gladman-sha</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\crc32c.h">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\Des.h">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\PBKDF2_HMAC_SHA1.h">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\PBKDF2_HMAC_SHA256.h">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\Rfc3394.h">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\crypto\TripleDes.h">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\adc.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\apm.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\AppleDisk.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\be.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\CachedReader.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\CacheZone.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\DarlingDMGCrypto.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\decmpfs.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\dmg.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\DMGDecompressor.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\DMGDisk.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\DMGPartition.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\EncryptReader.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\exceptions.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\FileReader.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\gpt.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\GPTDisk.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\hfs.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSAttributeBTree.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSBTree.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSBTreeNode.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSCatalogBTree.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSExtentsOverflowBTree.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSFork.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSHighLevelVolume.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\hfsplus.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSVolume.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\HFSZlibReader.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\MacBinary.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\MemoryReader.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\PartitionedDisk.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\Reader.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\ResourceFork.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\rsrc.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\stat_xlate.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\darling-dmg\src\SubReader.h">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CrossPlatform.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\conversion\fast_unicode_compare_apple.h">
+      <Filter>Source Files\src\conversion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\conversion\utf16Tables.h">
+      <Filter>Source Files\src\conversion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\conversion\utf816Conversion.h">
+      <Filter>Source Files\src\conversion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tinyxml2\tinyxml2.h">
+      <Filter>Source Files\src\tinyxml2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utf8proc\utf8proc.h">
+      <Filter>Source Files\src\utf8proc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\apfs-fuse\ApfsLib\CheckPointMap.h">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\ApfsFuseVolume.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FuseVolume.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\HfsFuseVolume.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MBRDisk.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OpenDisk.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RawDisk.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SparsebundleReader.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SparseimageDisk.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utils.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsContainer.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsDir.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsNodeMapper.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsNodeMapperBTree.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\ApfsVolume.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\BlockDumper.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\BTree.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\Decmpfs.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\KeyMgmt.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\Unicode.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\Util.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_decode.c">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_decode_base.c">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_encode.c">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_encode_base.c">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compression\lzfse\src\lzfse_fse.c">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compression\lzfse\src\lzvn_decode_base.c">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compression\lzfse\src\lzvn_encode_base.c">
+      <Filter>Source Files\src\compression\lzfse src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-aes\aes_modes.c">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-aes\aes_ni.c">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-aes\aescrypt.c">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-aes\aeskey.c">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-aes\aestab.c">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-aes-modes\xts.c">
+      <Filter>Source Files\src\crypto\gladman-aes-modes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-sha\hmac.c">
+      <Filter>Source Files\src\crypto\gladman-sha</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-sha\sha1.c">
+      <Filter>Source Files\src\crypto\gladman-sha</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\gladman-sha\sha2.c">
+      <Filter>Source Files\src\crypto\gladman-sha</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\APFSLibCryptoEmbedded.cpp">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\crc32c.c">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\DarlingDMGCryptoEmbedded.cpp">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\Des.c">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\PBKDF2_HMAC_SHA1.c">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\PBKDF2_HMAC_SHA256.c">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\Rfc3394.cpp">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crypto\TripleDes.c">
+      <Filter>Source Files\src\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\adc.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\AppleDisk.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\CachedReader.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\CacheZone.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\DMGDecompressor.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\DMGDisk.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\DMGPartition.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\EncryptReader.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\FileReader.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\GPTDisk.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\HFSAttributeBTree.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\HFSBTree.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\HFSCatalogBTree.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\HFSExtentsOverflowBTree.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\HFSFork.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\HFSHighLevelVolume.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\HFSVolume.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\HFSZlibReader.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\MacBinary.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\MemoryReader.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\Reader.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\ResourceFork.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\darling-dmg\src\SubReader.cpp">
+      <Filter>Source Files\src\darling-dmg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CrossPlatform.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Main.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\conversion\fast_unicode_compare_apple.cpp">
+      <Filter>Source Files\src\conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\conversion\utf16Tables.cpp">
+      <Filter>Source Files\src\conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\conversion\utf816Conversion.cpp">
+      <Filter>Source Files\src\conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml2\tinyxml2.cpp">
+      <Filter>Source Files\src\tinyxml2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utf8proc\utf8proc.c">
+      <Filter>Source Files\src\utf8proc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\apfs-fuse\ApfsLib\CheckPointMap.cpp">
+      <Filter>Source Files\src\ApfsLib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\src\crypto\gladman-aes\aes.txt">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </Text>
+    <Text Include="..\src\crypto\gladman-aes\license.txt">
+      <Filter>Source Files\src\crypto\gladman-aes</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\crypto\README.md">
+      <Filter>Source Files\src\crypto</Filter>
+    </None>
+  </ItemGroup>
+</Project>

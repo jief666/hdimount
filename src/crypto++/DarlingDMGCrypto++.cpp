@@ -11,8 +11,8 @@
 #include <vector>
 
 #include "Crypto.h"
-#include "Aes.h"
-#include "TripleDes.h"
+#include "Aes++.h"
+#include "TripleDes++.h"
 
 
 int DarlingDMGCrypto_PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
@@ -24,7 +24,7 @@ int DarlingDMGCrypto_PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
 }
 
 
-void DarlingDMGCrypto_DES_CBC(const unsigned char *key, const unsigned char *iv, unsigned char *out, int *outl, const unsigned char *in, int inl)
+void DarlingDMGCrypto_DES_CBC(const unsigned char *key, const unsigned char *iv, unsigned char *out, const unsigned char *in, int inl)
 {
 	TripleDES tdes;
 	tdes.SetKey(key);

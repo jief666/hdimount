@@ -2,7 +2,7 @@
 #define APFSFUSEFUSEVOLUME_H
 
 #include "FuseVolume.h"
-#include "../apfs-fuse/ApfsLib/ApfsVolume.h"
+#include "apfs-fuse/ApfsLib/ApfsVolume.h"
 
 #include <sys/types.h>
 #include <fuse.h>
@@ -14,7 +14,9 @@ public:
 	ApfsFuseVolume(std::unique_ptr<ApfsVolume> volume) : apfsVolume(std::move(volume)) {};
 	virtual ~ApfsFuseVolume() {};
 	
-	virtual int getattr(const char* path, struct stat* stat);
+    virtual int fsType() { return APFS_FUSE_VOLUME; };
+
+	virtual int getattr(const char* path, struct FUSE_STAT* stat);
 	virtual int readlink(const char* path, char* buf, size_t size);
 	virtual int open(const char* path, struct fuse_file_info* info);
 	virtual int read(const char* path, char* buf, size_t bytes, off_t offset, struct fuse_file_info* info);
@@ -29,7 +31,7 @@ public:
 
 private:
 	int apfs_getInodeId(uint64_t* id, const char* path);
-	bool apfs_stat_internal(uint64_t ino, struct stat* stPtr);
+	bool apfs_stat_internal(uint64_t ino, struct FUSE_STAT* stPtr);
 
 	std::unique_ptr<ApfsVolume> apfsVolume;
 

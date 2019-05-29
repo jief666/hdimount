@@ -1,0 +1,8 @@
+echo "
+
+FUSE_USE_VERSION=26
+_FILE_OFFSET_BITS=64
+COMPILE_WITH_LZFSE
+
+" | awk '$0!=""{ printf " -D%s", $0; }'
+

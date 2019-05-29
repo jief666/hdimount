@@ -25,7 +25,7 @@ along with apfs-fuse.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <vector>
 
-#include "../darling-dmg/src/Reader.h"
+#include "darling-dmg/src/Reader.h"
 //#include "StruturedFileReader.h"
 
 #undef DMG_DEBUG
@@ -39,6 +39,7 @@ public:
 	virtual int32_t read(void* buf, int32_t count, uint64_t offset);
 	virtual uint64_t length();
 	virtual uint64_t band_size() { return m_band_size; }
+
 //	virtual bool isEncrypted() { return m_is_encrypted; };
 //	virtual std::shared_ptr<Reader> getTokenReader();
 //	virtual int32_t getTokenLength();
@@ -54,7 +55,7 @@ private:
 
     size_t m_band_size;
     size_t m_blocksize;
-    off_t m_size;
-    off_t m_opened_file_band_number;
+    uint64_t m_size;
+    uint64_t m_opened_file_band_number;
     int m_opened_file_fd;
 };
