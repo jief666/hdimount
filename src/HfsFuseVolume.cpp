@@ -12,7 +12,8 @@
 #elif defined(_MSC_VER)
 #  define ENOATTR (93) // TODO better ?
 #else
-#  include <attr/xattr.h> // for ENOATTR
+#  include <sys/xattr.h>
+#  define ENOATTR ENODATA
 #endif
 
 #include <iostream>
